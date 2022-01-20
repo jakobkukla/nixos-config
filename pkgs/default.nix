@@ -1,0 +1,3 @@
+ [
+  (import ./pywal.nix)
+ ]
