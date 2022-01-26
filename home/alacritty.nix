@@ -5,9 +5,13 @@
     programs.alacritty = {
       enable = true;
       settings = {
-        window.padding = {
-          x = 10;
-          y = 10;
+        window = {
+          padding = {
+            x = 10;
+            y = 10;
+          };
+
+          opacity = 0.85;
         };
 
         scrolling = {
@@ -36,12 +40,10 @@
             style = "Bold Italic";
           };
 
-          size = 10.0;
+          size = 9.0;
         };
 
         draw_bold_text_with_bright_colors = true;
-
-        background_opacity = 0.85;
 
         cursor.style.blinking = "On";
       };

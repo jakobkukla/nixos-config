@@ -21,6 +21,11 @@
           #"wmname LG3D" # Java Applications Fix (Intellij IDEA)
           "wal -R"
         ];
+	rules = {
+	  "Zathura" = {
+	    state = "tiled";
+	  };
+	};
         settings = {
           border_width = 8;
           window_gap = 20;

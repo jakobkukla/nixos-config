@@ -21,6 +21,7 @@ let secrets = import ./secrets.nix; in
     home.homeDirectory = "/home/jakob";
 
     home.packages = with pkgs; [
+      geogebra6
     ];
 
     xdg.enable = true;
@@ -72,6 +73,8 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
     };
 
     programs.bat.enable = true;
+
+    programs.zathura.enable = true;
 
     services.spotifyd = {
       enable = true;

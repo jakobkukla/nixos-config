@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -46,10 +46,17 @@
   # Overlays
   nixpkgs.overlays = import ./pkgs;
 
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "geogebra"
+  ];
+
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome
   ];
+
+  # Power management
+  services.tlp.enable = true;
 
   services.xserver = {
     enable = true;
@@ -59,6 +66,7 @@
     libinput = {
       enable = true;
       touchpad = {
+        accelSpeed = "0.4";
         tapping = false;
         clickMethod = "clickfinger";
         disableWhileTyping = true;
@@ -148,7 +156,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pywal     # Automatic themeing for bspwm
+    pywal             # Automatic themeing for bspwm
 
     wget
     htop
