@@ -5,11 +5,6 @@ let secrets = import ./secrets.nix; in
   imports =
     [
       <home-manager/nixos>
-      ./bspwm.nix
-      ./sxhkd.nix
-      ./picom.nix
-      ./polybar.nix
-      ./rofi.nix
       ./alacritty.nix
       ./firefox.nix
     ];
@@ -83,7 +78,7 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
           username = secrets.spotifyd.username;
           password = secrets.spotifyd.password;
           backend = "pulseaudio";
-          device_name = "nixos-matebook";
+          device_name = "${config.networking.hostName}";
           bitrate = 320;
           cache_path = "/home/jakob/.cache/spotifyd";
           volume-normalisation = true;

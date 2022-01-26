@@ -5,12 +5,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./home/home.nix
-    ];
-
   # Auto-update NixOS
   system.autoUpgrade.enable = true;
   # Auto garbage collection
@@ -18,17 +12,13 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # Linux kernel configuration
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "i915.enable_psr=0" ];
 
-  networking.hostName = "nixos-matebook"; # Define your hostname.
   networking.networkmanager.enable = true;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  
-  hardware.bluetooth.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
@@ -55,67 +45,6 @@
     font-awesome
   ];
 
-  # Power management
-  services.tlp.enable = true;
-
-  services.xserver = {
-    enable = true;
-    dpi = 192;
-    layout = "de";
-
-    libinput = {
-      enable = true;
-      touchpad = {
-        accelSpeed = "0.4";
-        tapping = false;
-        clickMethod = "clickfinger";
-        disableWhileTyping = true;
-        naturalScrolling = true;
-      };
-    };
-
-    desktopManager.xterm.enable = false;
-    displayManager.defaultSession = "none+bspwm";
-    displayManager.lightdm = {
-      greeters.mini = {
-        enable = true;
-        user = "jakob";
-        extraConfig = ''
-          [greeter]
-          user = jakob
-          password-input-width = 15
-          show-input-cursor = false
-          [greeter-theme]
-          font = "Source Code Pro"
-          font-size = 30px
-          background-image = ""
-          background-color = "#0e0409"
-          border-width = 5px
-          border-color = "#edf0e1"
-          text-color = "#0e0409"
-          password-color = "#edf0e1"
-          password-background-color = "#0e0409"
-          password-border-radius = 0.341125em
-          window-color = "#63956D"
-          layout-space = 40
-        '';
-      };
-
-      # This is needed for tiny and mini greeters
-      extraSeatDefaults = "user-session = ${config.services.xserver.displayManager.defaultSession}";
-    };
-    windowManager.bspwm.enable = true;
-  };
-
-  services.greetd = {
-    enable = false;
-    settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd /nix/store/cvnw5xmp30fs4g2mg3a9xqlwv2yijnxh-xsession-wrapper";
-      };
-    };
-  };
-
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -131,8 +60,6 @@
     viAlias = true;
     vimAlias = true;
   };
-
-  programs.light.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -161,7 +88,6 @@
     wget
     htop
     git
-    git-crypt
     pavucontrol
     neofetch
     pulseaudio # Only needed for pactl
