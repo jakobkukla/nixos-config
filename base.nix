@@ -83,7 +83,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pywal             # Automatic themeing for bspwm
+    pywal             # Automatic theming for bspwm
 
     wget
     htop
