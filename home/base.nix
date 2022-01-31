@@ -17,6 +17,7 @@ let secrets = import ./secrets.nix; in
 
     home.packages = with pkgs; [
       geogebra6
+      signal-desktop
     ];
 
     xdg.enable = true;

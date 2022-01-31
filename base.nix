@@ -85,6 +85,7 @@
   environment.systemPackages = with pkgs; [
     pywal             # Automatic theming for bspwm
 
+    libarchive
     wget
     htop
     git
