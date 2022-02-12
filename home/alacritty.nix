@@ -10,9 +10,9 @@
             x = 10;
             y = 10;
           };
-
-          opacity = 0.85;
         };
+
+        background_opacity = 0.85;
 
         scrolling = {
           history = 1000;
