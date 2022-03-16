@@ -10,6 +10,14 @@
   # Auto garbage collection
   nix.gc.automatic = true;
 
+  # Enable flakes
+  nix = {
+    package = pkgs.nixFlakes; # or versioned attributes like nix_2_7
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+   };
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -35,7 +43,7 @@
   console.keyMap = "de";
 
   # Overlays
-  nixpkgs.overlays = import ./pkgs;
+  nixpkgs.overlays = import ../pkgs;
 
   nixpkgs.config.allowUnfree = true;
  
@@ -59,6 +67,10 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  # Secrets
+  age.secrets.spotify.file = ../secrets/spotify.age;
+  age.identityPaths = [ "/home/jakob/.ssh/id_ed25519" ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;

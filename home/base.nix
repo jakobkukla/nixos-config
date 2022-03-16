@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
-let secrets = import ./secrets.nix; in
 {
   imports =
     [
-      <home-manager/nixos>
       ./alacritty.nix
       ./firefox.nix
       ./vscode.nix
@@ -84,8 +82,8 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
       enable = true;
       settings = {
         global = {
-          username = secrets.spotifyd.username;
-          password = secrets.spotifyd.password;
+          username = "der_kukla";
+          password_cmd = "cat ${config.age.secrets.spotify.path}";
           backend = "pulseaudio";
           device_name = "${config.networking.hostName}";
           bitrate = 320;
