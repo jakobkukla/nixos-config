@@ -69,8 +69,13 @@
   };
 
   # Secrets
-  age.secrets.spotify.file = ../secrets/spotify.age;
-  age.identityPaths = [ "/home/jakob/.ssh/id_ed25519" ];
+  age = {
+    secrets.spotify = {
+      file = ../secrets/spotify.age;
+      owner = "jakob";
+    };
+    identityPaths = [ "/home/jakob/.ssh/id_ed25519" ];
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
