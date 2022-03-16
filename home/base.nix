@@ -7,6 +7,7 @@ let secrets = import ./secrets.nix; in
       <home-manager/nixos>
       ./alacritty.nix
       ./firefox.nix
+      ./vscode.nix
     ];
 
   home-manager.users.jakob = {
@@ -15,9 +16,17 @@ let secrets = import ./secrets.nix; in
     home.username = "jakob";
     home.homeDirectory = "/home/jakob";
 
+    nixpkgs.config.allowUnfree = true;
+
     home.packages = with pkgs; [
       geogebra6
       signal-desktop
+      android-studio
+      dotnet-sdk
+      postman ### replace this with hoppscotch eventually
+      jetbrains.rider
+      android-tools
+      ffmpeg
     ];
 
     xdg.enable = true;
@@ -37,7 +46,6 @@ bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
 (cat ~/.cache/wal/sequences &)
-cat ~/.cache/wal/sequences
 source ~/.cache/wal/colors-tty.sh
 
 PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "

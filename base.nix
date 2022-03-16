@@ -15,9 +15,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Linux kernel configuration
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -36,10 +37,8 @@
   # Overlays
   nixpkgs.overlays = import ./pkgs;
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "geogebra"
-  ];
-
+  nixpkgs.config.allowUnfree = true;
+ 
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome
@@ -77,13 +76,19 @@
   users.users.jakob = {
     isNormalUser = true;
     home = "/home/jakob";
-    extraGroups = [ "wheel" "networkmanager" "video" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" ]; # Enable ‘sudo’ for the user.
   };
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     pywal             # Automatic theming for bspwm
+
+    python
+    docker-compose
 
     libarchive
     wget

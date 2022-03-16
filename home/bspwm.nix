@@ -47,6 +47,10 @@
       };
     };
 
+    home.sessionVariables = {
+      _JAVA_AWT_WM_NONREPARENTING = 1; # Fix java non-parenting issues
+    };
+
     programs.rofi = {
       enable = true;
     };
