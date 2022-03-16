@@ -6,6 +6,7 @@
       ./alacritty.nix
       ./firefox.nix
       ./vscode.nix
+      ./doom-emacs.nix
     ];
 
   home-manager.users.jakob = {

@@ -24,7 +24,11 @@
 	rules = {
 	  "Zathura" = {
 	    state = "tiled";
-	  };
+          };
+
+          "Emacs" = {
+	    state = "tiled";
+          };
 	};
         settings = {
           border_width = 8;
