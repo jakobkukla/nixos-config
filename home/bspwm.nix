@@ -5,6 +5,8 @@
     xsession = {
       enable = true;
 
+      # warning: jakob profile: GTK cursor settings will no longer be handled in the xsession.pointerCursor module in future.
+      # Please use gtk.cursorTheme for GTK cursor settings instead.
       pointerCursor = {
         package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
