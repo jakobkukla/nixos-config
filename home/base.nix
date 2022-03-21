@@ -26,6 +26,7 @@
       jetbrains.rider
       android-tools
       ffmpeg
+      mpv
     ];
 
     xdg.enable = true;
