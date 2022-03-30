@@ -117,6 +117,9 @@
     neofetch
     pulseaudio # Only needed for pactl
     zsh-history-substring-search
+
+    man-pages
+    man-pages-posix
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
