@@ -112,12 +112,13 @@
     libarchive
     wget
     htop
-    git
     pavucontrol
     neofetch
     pulseaudio # Only needed for pactl
     zsh-history-substring-search
 
+    gcc
+    git
     man-pages
     man-pages-posix
   ];
