@@ -7,8 +7,13 @@
 {
   # Auto-update NixOS
   system.autoUpgrade.enable = true;
+
   # Auto garbage collection
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 5d";
+  };
 
   # Enable flakes
   nix = {
@@ -67,6 +72,8 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  programs.gnupg.agent.enable = true;
 
   # Secrets
   age = {
