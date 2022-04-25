@@ -22,7 +22,6 @@
       signal-desktop
       android-studio
       dotnet-sdk
-      postman ### replace this with hoppscotch eventually
       jetbrains.rider
       android-tools
       ffmpeg
