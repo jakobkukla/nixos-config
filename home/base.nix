@@ -18,7 +18,7 @@
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
-      geogebra6
+      #geogebra6
       signal-desktop
       android-studio
       dotnet-sdk
