@@ -7,7 +7,8 @@
     ../../home/matebook.nix
   ];
 
-  boot.kernelParams = [ "i915.enable_psr=0" ];
+  # Shouldn't be necessary from 5.14 and up
+  # boot.kernelParams = [ "i915.enable_psr=0" ];
 
   networking.hostName = "nixos-matebook";
 
