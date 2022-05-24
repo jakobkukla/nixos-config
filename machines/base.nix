@@ -6,7 +6,7 @@
 
 {
   # Auto-update NixOS
-  system.autoUpgrade.enable = true;
+  # system.autoUpgrade.enable = true;
 
   # Auto garbage collection
   nix.gc = {
@@ -125,6 +125,7 @@
     zsh-history-substring-search
 
     gcc
+    gnumake
     git
     man-pages
     man-pages-posix
