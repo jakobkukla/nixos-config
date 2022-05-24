@@ -18,6 +18,10 @@ super + Return
 super + d
         rofi -show drun
 
+# lock screen
+super + alt + o
+        dm-tool lock
+
 # make sxhkd reload its configuration files:
 super + Escape
         pkill -USR1 -x sxhkd
