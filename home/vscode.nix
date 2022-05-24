@@ -8,6 +8,7 @@
         vscodevim.vim
         ms-dotnettools.csharp
         ms-azuretools.vscode-docker
+        james-yu.latex-workshop
       ];
       userSettings = {
          "window.menuBarVisibility" = "toggle";

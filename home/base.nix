@@ -7,6 +7,7 @@
       ./firefox.nix
       ./vscode.nix
       ./doom-emacs.nix
+      ./texlive.nix
     ];
 
   home-manager.users.jakob = {
@@ -23,6 +24,7 @@
       android-studio
       dotnet-sdk
       jetbrains.rider
+      jetbrains.idea-community
       android-tools
       ffmpeg
       mpv
