@@ -2,21 +2,17 @@
 
 {
   home-manager.users.jakob = {
+    home.pointerCursor = {
+      package = pkgs.gnome.adwaita-icon-theme;
+      name = "Adwaita";
+      size = 48;
+
+      x11.enable = true;
+      gtk.enable = true;
+    };
+
     xsession = {
       enable = true;
-
-      # warning: jakob profile: GTK cursor settings will no longer be handled in the xsession.pointerCursor module in future.
-      # Please use gtk.cursorTheme for GTK cursor settings instead.
-
-      # warning: jakob profile: The option `xsession.pointerCursor` has been merged into `home.pointerCursor` and will be removed
-      # in the future. Please change to set `home.pointerCursor` directly and enable `home.pointerCursor.x11.enable`
-      # to generate x11 specific cursor configurations. You can refer to the documentation for more details.
-
-      pointerCursor = {
-        package = pkgs.gnome.adwaita-icon-theme;
-        name = "Adwaita";
-        size = 48;
-      };
 
       windowManager.bspwm = {
         enable = true;

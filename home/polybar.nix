@@ -45,9 +45,9 @@ module-margin-left = 1
 module-margin-right = 2
 
 font-0 = SourceCodePro:pixelsize=10;1
-font-1 = FontAwesome5Brands:style=regular:size=10
-font-2 = FontAwesome5Free:style=regular:size=10
-font-3 = FontAwesome5Free:style=solid:size=10
+font-1 = Font Awesome 6 Brands:style=regular:size=10
+font-2 = Font Awesome 6 Free:style=regular:size=10
+font-3 = Font Awesome 6 Free:style=solid:size=10
 
 modules-left = bspwm
 modules-center = date
