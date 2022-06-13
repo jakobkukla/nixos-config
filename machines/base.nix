@@ -126,6 +126,8 @@
 
     gcc
     gnumake
+    gdb
+    valgrind
     git
     man-pages
     man-pages-posix
