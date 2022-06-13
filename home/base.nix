@@ -60,6 +60,9 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
       extraConfig = ''
         set number
 	highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+        set tabstop=4
+        set shiftwidth=4
       '';
       plugins = with pkgs.vimPlugins; [
         vim-nix
