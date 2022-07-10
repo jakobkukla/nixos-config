@@ -4,7 +4,7 @@
   home-manager.users.jakob = {
     imports = [ nix-doom-emacs.hmModule ];
     programs.doom-emacs = {
-      enable = true;
+      enable = false;
       doomPrivateDir = ./dotfiles/doom.d;
     };
 
