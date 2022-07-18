@@ -23,15 +23,15 @@
           #"dunst"
           #"wmname LG3D" # Java Applications Fix (Intellij IDEA)
         ];
-	rules = {
-	  "Zathura" = {
-	    state = "tiled";
-          };
+        rules = {
+          "Zathura" = {
+            state = "tiled";
+              };
 
-          "Emacs" = {
-	    state = "tiled";
-          };
-	};
+              "Emacs" = {
+            state = "tiled";
+              };
+        };
         settings = {
           border_width = 8;
           window_gap = 20;
