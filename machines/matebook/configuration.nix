@@ -12,7 +12,10 @@
 
   networking.hostName = "nixos-matebook";
 
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = false;
+  };
  
   # Power management
   services.tlp.enable = true;
