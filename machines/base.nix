@@ -28,7 +28,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Linux kernel configuration
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
