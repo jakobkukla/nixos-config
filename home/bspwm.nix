@@ -22,7 +22,6 @@
         startupPrograms = [
           #"dunst"
           #"wmname LG3D" # Java Applications Fix (Intellij IDEA)
-          "wal -R"
         ];
 	rules = {
 	  "Zathura" = {
@@ -45,11 +44,6 @@
           active_border_color = "$color2";
           focused_border_color = "$color5";
           presel_feedback_color = "$color15";
-
-  #        #
-  #        ### Pywal
-  #        #
-  #       . "${HOME}/.cache/wal/colors.sh"
         };
       };
     };

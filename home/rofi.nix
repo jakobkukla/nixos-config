@@ -5,7 +5,6 @@
     programs.rofi = {
       enable = true;
       extraConfig.dpi = 192;
-      theme = "~/.cache/wal/colors-rofi-dark.rasi";
     };
   };
 }

@@ -109,8 +109,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    pywal             # Automatic theming for bspwm
-
     python
     docker-compose
 
