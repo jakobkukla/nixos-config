@@ -11,6 +11,9 @@
       # Disable ads on start page
       "browser.newtabpage.activity-stream.showSponsored" = false;
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+
+      # Enable vaapi video acceleration
+      "media.ffmpeg.vaapi.enabled" = true;
     };
   };
 }
