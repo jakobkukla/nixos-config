@@ -20,6 +20,7 @@
 
     home.packages = with pkgs; [
       #geogebra6
+      jellyfin-media-player
       signal-desktop
       android-studio
       dotnet-sdk
