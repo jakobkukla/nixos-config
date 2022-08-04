@@ -20,6 +20,7 @@
 
     home.packages = with pkgs; [
       #geogebra6
+      spotify-tui
       jellyfin-media-player
       signal-desktop
       android-studio
