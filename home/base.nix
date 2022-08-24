@@ -83,8 +83,13 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
 
     programs.zathura.enable = true;
 
+    services.mpris-proxy.enable = true;
     services.spotifyd = {
       enable = true;
+      package = pkgs.spotifyd.override {
+        withPulseAudio = true;
+        withMpris = true;
+      };
       settings = {
         global = {
           username = "der_kukla";
@@ -92,6 +97,7 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
           backend = "pulseaudio";
           device_name = "${config.networking.hostName}";
           bitrate = 320;
+          use_mpris = true;
           cache_path = "/home/jakob/.cache/spotifyd";
           volume-normalisation = true;
           normalisation-pregain = -10;
