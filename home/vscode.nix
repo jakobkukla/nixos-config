@@ -9,10 +9,12 @@
         ms-dotnettools.csharp
         ms-azuretools.vscode-docker
         james-yu.latex-workshop
+        valentjn.vscode-ltex # Latex spell checking
       ];
       userSettings = {
-         "window.menuBarVisibility" = "toggle";
-         "omnisharp.path" = "/home/jakob/.nix-profile/bin/omnisharp";
+        "window.menuBarVisibility" = "toggle";
+        "omnisharp.path" = "/home/jakob/.nix-profile/bin/omnisharp";
+        "ltex.language" = "de-DE";
       };
     };
 
