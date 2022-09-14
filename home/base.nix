@@ -30,6 +30,8 @@
       android-tools
       ffmpeg
       mpv
+      easyeffects
+      scrcpy
     ];
 
     xdg.enable = true;
