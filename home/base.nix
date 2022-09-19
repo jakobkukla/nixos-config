@@ -23,6 +23,7 @@
       spotify-tui
       jellyfin-media-player
       signal-desktop
+      element-desktop
       android-studio
       dotnet-sdk
       jetbrains.rider
