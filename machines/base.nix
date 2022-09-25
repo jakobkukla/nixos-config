@@ -130,7 +130,6 @@
     wget
     htop
     pavucontrol
-    neofetch
     pulseaudio # Only needed for pactl
     zsh-history-substring-search
 

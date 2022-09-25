@@ -20,6 +20,8 @@
 
     home.packages = with pkgs; [
       #geogebra6
+      neofetch
+      onefetch
       spotify-tui
       jellyfin-media-player
       signal-desktop
