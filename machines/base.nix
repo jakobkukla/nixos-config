@@ -87,6 +87,18 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable SANE for scanner support.
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.sane-airscan ];
+  };
+
+  # Needed for scanner network discovery
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
   # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -100,7 +112,7 @@
   users.users.jakob = {
     isNormalUser = true;
     home = "/home/jakob";
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
   };
 
   # Enable Docker
