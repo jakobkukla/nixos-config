@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./services
       ./alacritty.nix
       ./firefox.nix
       ./vscode.nix
@@ -42,6 +43,8 @@
       enable = true;
       createDirectories = true;
     };
+
+    services.dunst.enable = true;
 
     programs.zsh = {
       enable = true;
