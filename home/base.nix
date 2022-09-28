@@ -30,6 +30,7 @@
       android-studio
       dotnet-sdk
       jetbrains.rider
+      jetbrains.clion
       jetbrains.idea-community
       android-tools
       ffmpeg

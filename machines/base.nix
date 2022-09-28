@@ -135,6 +135,7 @@
 
     gcc
     gnumake
+    rustup
     gdb
     valgrind
     git
