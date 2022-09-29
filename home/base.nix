@@ -23,6 +23,7 @@
       #geogebra6
       neofetch
       onefetch
+      spotify
       spotify-tui
       jellyfin-media-player
       signal-desktop
