@@ -14,6 +14,9 @@
 
       # Enable vaapi video acceleration
       "media.ffmpeg.vaapi.enabled" = true;
+
+      # Use self hosted sync server
+      "identity.sync.tokenserver.uri" = "https://firefox-sync.jakobkukla.xyz/1.0/sync/1.5";
     };
   };
 }
