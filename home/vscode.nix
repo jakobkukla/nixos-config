@@ -10,6 +10,7 @@
         ms-azuretools.vscode-docker
         james-yu.latex-workshop
         valentjn.vscode-ltex # Latex spell checking
+        ocamllabs.ocaml-platform
       ];
       userSettings = {
         "window.menuBarVisibility" = "toggle";
@@ -20,6 +21,8 @@
 
     home.packages = with pkgs; [
       omnisharp-roslyn
+      ocamlPackages.ocaml-lsp
+      ocamlformat
     ];
   };
 }

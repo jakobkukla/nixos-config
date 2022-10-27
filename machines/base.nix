@@ -136,6 +136,7 @@
     gcc
     gnumake
     rustup
+    ocaml
     gdb
     valgrind
     git
