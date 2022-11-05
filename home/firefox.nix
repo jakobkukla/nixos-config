@@ -12,6 +12,9 @@
       "browser.newtabpage.activity-stream.showSponsored" = false;
       "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
 
+      # Disable pocket
+      "extensions.pocket.enabled" = false;
+
       # Enable vaapi video acceleration
       "media.ffmpeg.vaapi.enabled" = true;
 
