@@ -16,12 +16,7 @@
   };
 
   # Enable flakes
-  nix = {
-    package = pkgs.nixVersions.stable; # or versioned attributes like nix_2_7
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-   };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
