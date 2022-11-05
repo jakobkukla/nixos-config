@@ -21,6 +21,7 @@
 
     home.packages = with pkgs; [
       #geogebra6
+      discord
       neofetch
       onefetch
       spotify
