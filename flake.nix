@@ -7,10 +7,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, agenix, nix-doom-emacs, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, agenix, ... }: {
     nixosConfigurations = {
       matebook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -21,7 +20,6 @@
         ];
         specialArgs = {
           inherit agenix;
-          inherit nix-doom-emacs;
         };
       };
     };

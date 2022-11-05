@@ -7,7 +7,6 @@
       ./alacritty.nix
       ./firefox.nix
       ./vscode.nix
-      ./doom-emacs.nix
       ./texlive.nix
     ];
 
