@@ -2,10 +2,7 @@
   imports = 
     [
       ./base.nix
-      ./bspwm.nix
-      ./sxhkd.nix
-      ./picom.nix
-      ./polybar.nix
+      ./sway.nix
       ./rofi.nix
     ];
 }
