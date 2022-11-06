@@ -1,8 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home-manager.users.jakob.programs.firefox = {
     enable = true;
+    package = pkgs.firefox-wayland;
 
     profiles.main.settings = {
       # This fixes the go-back-on-right-click bug
