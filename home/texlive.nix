@@ -3,7 +3,8 @@
 {
   home-manager.users.jakob = {
     home.packages = with pkgs; [
-      texlive.combined.scheme-medium
+      #texlive.combined.scheme-medium
+      (texlive.combine { inherit (texlive) scheme-medium biblatex; })
     ];
   };
 }
