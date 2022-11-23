@@ -4,7 +4,6 @@
   imports = [
     ./hardware-configuration.nix
     ../base.nix
-    ../../home/matebook.nix
     ../sway.nix
   ];
 
