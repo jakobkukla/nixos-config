@@ -13,18 +13,35 @@
   };
 
   outputs = inputs@{ nixpkgs, impermanence, home-manager, agenix, vscode-server, ... }: {
-    nixosConfigurations = {
+    nixosConfigurations =
+    let
+      commonModules = [
+        impermanence.nixosModules.impermanence (import ./machines/impermanence.nix)
+        agenix.nixosModules.age
+      ];
+      
+      system = "x86_64-linux";
+
+      specialArgs = {
+        inherit agenix vscode-server;
+      };
+    in
+    {
       matebook = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
+        inherit system specialArgs;
+
+        modules = commonModules ++ [
           ./machines/matebook/configuration.nix
-          impermanence.nixosModules.impermanence (import ./machines/impermanence.nix)
-          home-manager.nixosModules.home-manager (import ./home/matebook.nix)
-          agenix.nixosModules.age
+          home-manager.nixosModules.home-manager (import ./home/machines/matebook.nix)
         ];
-        specialArgs = {
-          inherit agenix vscode-server;
-        };
+      };
+      pc = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+
+        modules = commonModules ++ [
+          ./machines/pc/configuration.nix
+          home-manager.nixosModules.home-manager (import ./home/machines/pc.nix)
+        ];
       };
     };
   };

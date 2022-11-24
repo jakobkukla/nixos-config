@@ -12,6 +12,10 @@
 
   networking.hostName = "nixos-matebook";
 
+  # Use the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
