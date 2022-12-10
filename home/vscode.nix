@@ -11,6 +11,8 @@
         james-yu.latex-workshop
         valentjn.vscode-ltex # Latex spell checking
         ocamllabs.ocaml-platform
+        bbenoist.nix # nix language support
+        arrterian.nix-env-selector # nix shell integration
       ];
       userSettings = {
         "window.menuBarVisibility" = "toggle";
