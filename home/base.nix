@@ -16,6 +16,7 @@
     home.username = "jakob";
     home.homeDirectory = "/home/jakob";
 
+    nixpkgs.overlays = import ../pkgs;
     nixpkgs.config.allowUnfree = true;
 
     home.packages = with pkgs; [
