@@ -26,6 +26,8 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
+
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -36,7 +38,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.wlan0.useDHCP = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "de_AT.UTF-8";
