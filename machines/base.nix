@@ -34,12 +34,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.wlan0.useDHCP = true;
-
   # Select internationalisation properties.
   i18n.defaultLocale = "de_AT.UTF-8";
   console.keyMap = "de";
