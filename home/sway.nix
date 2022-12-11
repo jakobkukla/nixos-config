@@ -22,6 +22,16 @@
       gtk.enable = true;
     };
 
+    services.swayidle = {
+      enable = true;
+      timeouts= [
+        {
+          timeout = 300;
+          command = "${pkgs.systemd}/bin/systemctl suspend";
+        }
+      ];
+    };
+
     wayland.windowManager.sway = {
       enable = true;
 
