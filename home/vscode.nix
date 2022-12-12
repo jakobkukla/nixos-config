@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, vscode-server, ... }:
 
 {
   home-manager.users.jakob = {
@@ -13,6 +13,7 @@
         ocamllabs.ocaml-platform
         bbenoist.nix # nix language support
         arrterian.nix-env-selector # nix shell integration
+        ms-vscode-remote.remote-ssh
       ];
       userSettings = {
         "window.menuBarVisibility" = "toggle";
@@ -20,6 +21,12 @@
         "ltex.language" = "de-DE";
       };
     };
+
+    # Use vscode-server flake to get remote ssh working
+    imports = [
+      vscode-server.nixosModules.home
+    ];
+    services.vscode-server.enable = true;
 
     home.packages = with pkgs; [
       omnisharp-roslyn

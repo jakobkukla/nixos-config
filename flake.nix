@@ -7,9 +7,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
+    vscode-server.url = "github:msteen/nixos-vscode-server";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, agenix, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, agenix, vscode-server, ... }: {
     nixosConfigurations = {
       matebook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -19,7 +21,7 @@
           agenix.nixosModules.age
         ];
         specialArgs = {
-          inherit agenix;
+          inherit agenix vscode-server;
         };
       };
     };
