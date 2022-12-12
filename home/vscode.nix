@@ -14,6 +14,7 @@
         bbenoist.nix # nix language support
         arrterian.nix-env-selector # nix shell integration
         ms-vscode-remote.remote-ssh
+        tomoki1207.pdf # PDF support
       ];
       userSettings = {
         "window.menuBarVisibility" = "toggle";
