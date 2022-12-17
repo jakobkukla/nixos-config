@@ -18,6 +18,18 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Use personal binary cache and nixos cache
+  nix.settings = {
+    substituters = [
+      "https://jakobkukla.cachix.org/"
+      "https://cache.nixos.org/"
+    ];
+    trusted-public-keys = [
+      "jakobkukla.cachix.org-1:Wk6Y2/s1YlTwsZKCs46v9uYejYUnVdzXTXzbJbYv+1s="
+    ];
+  };
+
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
