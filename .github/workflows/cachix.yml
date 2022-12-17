@@ -3,6 +3,14 @@ on:
   push:
     branches:
       - master
+      # TODO: remove these when merged
+      - btrfs
+      - multi
+    paths-ignore:
+      - 'README.md'
+      - 'TODO.md'
+      - 'LICENSE'
+      - '.gitignore'
 jobs:
   tests:
     runs-on: ubuntu-latest
