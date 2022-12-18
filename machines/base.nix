@@ -5,6 +5,10 @@
 { config, pkgs, lib, agenix, ... }:
 
 {
+  imports = [
+    ./fs.nix
+  ];
+
   # Auto-update NixOS
   # system.autoUpgrade.enable = true;
 
@@ -80,11 +84,12 @@
 
   # Secrets
   age = {
+    secrets.root.file = ../secrets/root.age;
+    secrets.jakob.file = ../secrets/jakob.age;
     secrets.spotify = {
       file = ../secrets/spotify.age;
       owner = "jakob";
     };
-    identityPaths = [ "/home/jakob/.ssh/id_ed25519" ];
   };
 
   # Enable CUPS to print documents.
@@ -111,9 +116,12 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
   users.defaultUserShell = pkgs.zsh;
+  users.users.root.passwordFile = config.age.secrets.root.path;
   users.users.jakob = {
     isNormalUser = true;
+    passwordFile = config.age.secrets.jakob.path;
     home = "/home/jakob";
     extraGroups = [ "wheel" "networkmanager" "video" "docker" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
   };

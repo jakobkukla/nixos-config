@@ -3,7 +3,14 @@
 {
   # Sway config is managed by home-manager. This is needed for the DM and xdg-desktop-portal.
   programs.sway.enable = true;
-  services.xserver.displayManager.defaultSession = "sway";
+
+  services.xserver.displayManager = {
+    defaultSession = "sway";
+    autoLogin = {
+      enable = true;
+      user = "jakob";
+    };
+  };
 
   # Enable xdg-desktop-portal
   services.dbus.enable = true;

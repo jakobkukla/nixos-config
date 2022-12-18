@@ -7,6 +7,9 @@
     ../sway.nix
   ];
 
+  # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
+  boot.initrd.availableKernelModules = [ "aesni_intel" "cryptd" ];
+
   networking.hostName = "nixos-matebook";
 
   hardware.bluetooth = {

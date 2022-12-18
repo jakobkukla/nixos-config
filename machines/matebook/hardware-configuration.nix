@@ -13,18 +13,18 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/0c5e2772-5203-4ac0-89e8-b669270d34b7";
-      fsType = "ext4";
-    };
+  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/539226f0-9dce-4aa1-9011-947c75e8248c";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/F062-89F0";
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices =
+    [ { device = "/dev/disk/by-uuid/7a2edb6e-f845-4db3-85fa-6a587fe90d8b"; }
+    ];
 
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   # high-resolution display
