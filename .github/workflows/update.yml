@@ -32,8 +32,8 @@ jobs:
         with:
           commit_message: 'base: update packages'
           file_pattern: 'flake.lock'
-      # FIXME: Prevent cachix from pushing after a failed build
-      - name: Remove store on failure
+      # FIXME: This is bad
+      - name: Prevent cachix from pushing on failure
         if: failure() && steps.build.outcome == 'failure'
-        run: rm -rf /nix/store/*
+        run: /usr/bin/sh -c /home/runner/work/_actions/cachix/cachix-action/v12/dist/main/list-nix-store.sh > /tmp/store-path-pre-build
 
