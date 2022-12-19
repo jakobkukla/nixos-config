@@ -4,7 +4,6 @@ on:
     branches:
       - master
       # TODO: remove these when merged
-      - btrfs
       - multi
     paths-ignore:
       - 'README.md'
