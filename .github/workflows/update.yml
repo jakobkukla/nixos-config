@@ -1,0 +1,31 @@
+name: "Update"
+
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: '30 04 * * MON' # runs weekly on Monday at 04:30
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+      - uses: cachix/cachix-action@v11
+        with:
+          name: jakobkukla
+          authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+      - name: Update flake.lock and build
+        id: build
+        run: |
+          nix flake update
+          nix build .#nixosConfigurations.matebook.config.system.build.toplevel
+      - name: Commit flake.lock on success
+        if: steps.build.outcome == 'success'
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'base: update packages'
+          file_pattern: 'flake.lock'
+
