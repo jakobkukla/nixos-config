@@ -10,6 +10,10 @@ on:
       - 'TODO.md'
       - 'LICENSE'
       - '.gitignore'
+
+env:
+  NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+
 jobs:
   build:
     runs-on: ubuntu-latest

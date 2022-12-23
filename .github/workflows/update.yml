@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '30 04 * * MON' # runs weekly on Monday at 04:30
 
+env:
+  NIX_CONFIG: "access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}"
+
 jobs:
   update:
     runs-on: ubuntu-latest
