@@ -5,6 +5,8 @@
       "/var/log"
       "/var/lib/bluetooth"
       "/var/lib/systemd/coredump"
+      # Save docker images and containers
+      "/var/lib/docker"
       # Don't prompt sudo lecture on every reboot
       "/var/db/sudo/lectured"
       # Save NetworkManager connections
