@@ -86,6 +86,9 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
       lfs.enable = true;
       userName = "jakobkukla";
       userEmail = "jakob.kukla@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
     };
 
     programs.exa = {
