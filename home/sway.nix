@@ -39,7 +39,7 @@
 
       config = {
         modifier = "Mod4";
-        terminal = "${pkgs.alacritty}/bin/alacritty";
+        terminal = "${pkgs.foot}/bin/footclient";
         menu = "${pkgs.rofi-wayland}/bin/rofi -m 1 -show drun | xargs swaymsg exec --";
 
         output = {

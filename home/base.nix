@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./services
+    ./foot.nix
     ./alacritty.nix
     ./firefox.nix
     ./vscode.nix
