@@ -40,6 +40,7 @@
       mpv
       easyeffects
       scrcpy
+      grim
     ];
 
     xdg.enable = true;
