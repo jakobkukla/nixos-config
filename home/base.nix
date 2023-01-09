@@ -29,6 +29,7 @@
       jellyfin-media-player
       signal-desktop
       element-desktop
+      gomuks
       android-studio
       dotnet-sdk
       jetbrains.rider
