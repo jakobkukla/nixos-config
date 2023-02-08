@@ -135,7 +135,7 @@
     python3
     docker-compose
 
-    agenix.defaultPackage.x86_64-linux
+    agenix.packages.x86_64-linux.default
 
     libarchive
     wget

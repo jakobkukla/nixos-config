@@ -20,7 +20,7 @@
           ./machines/matebook/configuration.nix
           impermanence.nixosModules.impermanence (import ./machines/impermanence.nix)
           home-manager.nixosModules.home-manager (import ./home/matebook.nix)
-          agenix.nixosModules.age
+          agenix.nixosModules.default
         ];
         specialArgs = {
           inherit agenix vscode-server;
