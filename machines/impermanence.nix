@@ -4,6 +4,7 @@
     directories = [
       "/var/log"
       "/var/lib/bluetooth"
+      "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       # Save docker images and containers
       "/var/lib/docker"
