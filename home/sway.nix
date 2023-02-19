@@ -1,6 +1,8 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   home-manager.users.jakob = {
     home.packages = with pkgs; [
       wl-clipboard
@@ -24,7 +26,7 @@
 
     services.swayidle = {
       enable = true;
-      timeouts= [
+      timeouts = [
         {
           timeout = 1200;
           command = "${pkgs.systemd}/bin/systemctl suspend";
@@ -76,4 +78,3 @@
     };
   };
 }
-

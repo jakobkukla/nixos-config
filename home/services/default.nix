@@ -3,4 +3,3 @@
     ./batsignal.nix
   ];
 }
-

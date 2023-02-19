@@ -1,6 +1,8 @@
-{ pkgs, vscode-server, ... }:
-
 {
+  pkgs,
+  vscode-server,
+  ...
+}: {
   home-manager.users.jakob = {
     programs.vscode = {
       enable = true;

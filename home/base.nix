@@ -1,14 +1,15 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./services
-      ./alacritty.nix
-      ./firefox.nix
-      ./vscode.nix
-      ./texlive.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./services
+    ./alacritty.nix
+    ./firefox.nix
+    ./vscode.nix
+    ./texlive.nix
+  ];
 
   home-manager.users.jakob = {
     # Home Manager needs a bit of information about you and the
@@ -57,11 +58,11 @@
         cat = "bat";
       };
       initExtra = ''
-source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+        source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+        bindkey "$terminfo[kcuu1]" history-substring-search-up
+        bindkey "$terminfo[kcud1]" history-substring-search-down
 
-PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
+        PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
       '';
     };
 
@@ -71,7 +72,7 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
       vimAlias = true;
       extraConfig = ''
         set number
-	highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+        highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
         set tabstop=4
         set shiftwidth=4
@@ -127,7 +128,7 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
         };
       };
     };
-    
+
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
@@ -142,4 +143,3 @@ PS1="%B%F{blue}%n%F{red}@%F{green}%m%f:%F{blue}%~ %b%f$ "
     programs.home-manager.enable = true;
   };
 }
-

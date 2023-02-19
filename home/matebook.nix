@@ -1,8 +1,7 @@
 {
-  imports = 
-    [
-      ./base.nix
-      ./sway.nix
-      ./rofi.nix
-    ];
+  imports = [
+    ./base.nix
+    ./sway.nix
+    ./rofi.nix
+  ];
 }

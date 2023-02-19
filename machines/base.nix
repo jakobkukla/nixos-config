@@ -1,10 +1,13 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, agenix, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  agenix,
+  ...
+}: {
   imports = [
     ./fs.nix
   ];
@@ -20,7 +23,7 @@
   };
 
   # Enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Use personal binary cache and nixos cache
   nix.settings = {
@@ -32,7 +35,6 @@
       "jakobkukla.cachix.org-1:Wk6Y2/s1YlTwsZKCs46v9uYejYUnVdzXTXzbJbYv+1s="
     ];
   };
-
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -58,7 +60,7 @@
   nixpkgs.overlays = import ../pkgs;
 
   nixpkgs.config.allowUnfree = true;
- 
+
   fonts.fonts = with pkgs; [
     source-code-pro
     font-awesome
@@ -98,7 +100,7 @@
   # Enable SANE for scanner support.
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.sane-airscan ];
+    extraBackends = [pkgs.sane-airscan];
   };
 
   # Needed for scanner network discovery
@@ -123,7 +125,7 @@
     isNormalUser = true;
     passwordFile = config.age.secrets.jakob.path;
     home = "/home/jakob";
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" "scanner" "lp" ]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable Docker
@@ -182,6 +184,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }
-

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home-manager.users.jakob.programs.firefox = {
     enable = true;
     package = pkgs.firefox-wayland;

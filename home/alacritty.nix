@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   home-manager.users.jakob = {
     programs.alacritty = {
       enable = true;

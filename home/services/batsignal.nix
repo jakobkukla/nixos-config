@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home-manager.users.jakob = {
     home.packages = with pkgs; [
       batsignal
@@ -10,21 +8,20 @@
       batsignal = {
         Unit = {
           Description = "Battery monitor daemon";
-          Documentation = [ "man:batsignal(1)" ];
+          Documentation = ["man:batsignal(1)"];
         };
 
         Service = {
-          Type= "simple";
+          Type = "simple";
           ExecStart = "${pkgs.batsignal}/bin/batsignal";
           Restart = "on-failure";
           RestartSec = "1";
         };
 
         Install = {
-          WantedBy = [ "default.target" ];
+          WantedBy = ["default.target"];
         };
       };
     };
   };
 }
-
