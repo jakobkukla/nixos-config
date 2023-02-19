@@ -1,26 +1,28 @@
-{
+{lib, ...}: {
   fileSystems."/" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = ["size=3G" "mode=755"];
+    device = "rpool/nixos/root";
+    fsType = "zfs";
+    options = ["X-mount.mkdir"];
   };
 
   fileSystems."/home" = {
-    device = "/dev/mapper/enc";
-    fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd" "noatime"];
+    device = "rpool/nixos/home";
+    fsType = "zfs";
+    options = ["X-mount.mkdir"];
+    # Remove this after testing
+    neededForBoot = true;
   };
 
   fileSystems."/nix" = {
-    device = "/dev/mapper/enc";
-    fsType = "btrfs";
-    options = ["subvol=nix" "compress=zstd" "noatime"];
+    device = "rpool/nixos/nix";
+    fsType = "zfs";
+    options = ["X-mount.mkdir"];
   };
 
   fileSystems."/persist" = {
-    device = "/dev/mapper/enc";
-    fsType = "btrfs";
-    options = ["subvol=persist" "compress=zstd" "noatime"];
+    device = "rpool/nixos/persist";
+    fsType = "zfs";
+    options = ["X-mount.mkdir"];
     neededForBoot = true;
   };
 
@@ -29,4 +31,8 @@
     depends = ["/persist"];
     neededForBoot = true;
   };
+
+  boot.initrd.postDeviceCommands = lib.mkAfter ''
+    zfs rollback -r rpool/nixos/root@blank
+  '';
 }

@@ -41,7 +41,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Linux kernel configuration
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+
+  # ZFS
+  boot.supportedFilesystems = ["zfs"];
+  networking.hostId = "abcd1234";
+  systemd.services.zfs-mount.enable = false;
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";

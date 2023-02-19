@@ -17,15 +17,21 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/af950379-d07a-462e-9f88-eb388247d77b";
-
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F062-89F0";
+    device = "/dev/disk/by-uuid/F69B-DDB3";
     fsType = "vfat";
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/3f35adb4-8eaf-4b43-a967-a0045101cd50";}
+    {
+      # Use partuuid here. Label and uuid will be gone after a reboot with encryption.
+      device = "/dev/disk/by-partuuid/2f4e369a-6bc8-514f-9602-31a01f09dc6f";
+      discardPolicy = "both";
+      randomEncryption = {
+        enable = true;
+        allowDiscards = true;
+      };
+    }
   ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
