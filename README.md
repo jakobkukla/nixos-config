@@ -69,7 +69,7 @@ $ cp /path/to/.ssh/id_ed25519* /mnt/home/jakob/.ssh
 #### Install and reboot:
 
 ```
-# nixos-install --flake github:jakobkukla/nixos-config/btrfs#matebook
+# nixos-install --flake github:jakobkukla/nixos-config#matebook
 # reboot
 ```
 
