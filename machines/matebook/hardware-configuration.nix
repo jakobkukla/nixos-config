@@ -13,7 +13,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/539226f0-9dce-4aa1-9011-947c75e8248c";
+  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/af950379-d07a-462e-9f88-eb388247d77b";
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/F062-89F0";
