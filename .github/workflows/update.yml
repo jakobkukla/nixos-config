@@ -12,6 +12,8 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Install Nix
