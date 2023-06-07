@@ -14,9 +14,8 @@
         valentjn.vscode-ltex # Latex spell checking
         ocamllabs.ocaml-platform
         bbenoist.nix # nix language support
-        arrterian.nix-env-selector # nix shell integration
+        mkhl.direnv
         ms-vscode-remote.remote-ssh
-        tomoki1207.pdf # PDF support
       ];
       userSettings = {
         "window.menuBarVisibility" = "toggle";
