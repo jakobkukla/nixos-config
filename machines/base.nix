@@ -52,6 +52,9 @@
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
+  # location (needed for gammastep)
+  location.provider = "geoclue2";
+
   # Select internationalisation properties.
   i18n.defaultLocale = "de_AT.UTF-8";
   console.keyMap = "de";
