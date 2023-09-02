@@ -64,7 +64,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     source-code-pro
     font-awesome
   ];
