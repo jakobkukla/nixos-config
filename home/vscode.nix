@@ -20,7 +20,7 @@
       userSettings = {
         "window.menuBarVisibility" = "toggle";
         "omnisharp.path" = "/home/jakob/.nix-profile/bin/omnisharp";
-        "ltex.language" = "de-DE";
+        "ltex.language" = "en-US";
       };
     };
 
