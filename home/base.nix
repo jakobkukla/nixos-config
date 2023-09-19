@@ -42,6 +42,7 @@
       easyeffects
       scrcpy
       grim
+      rustdesk
     ];
 
     xdg.enable = true;
