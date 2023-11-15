@@ -42,6 +42,11 @@
     wayland.windowManager.sway = {
       enable = true;
 
+      # fix xdg-open with xdgOpenUsePortals in sway (see https://github.com/NixOS/nixpkgs/issues/160923#issuecomment-1627438735)
+      extraSessionCommands = ''
+        dbus-update-activation-environment --systemd --all
+      '';
+
       config = {
         modifier = "Mod4";
         terminal = "${pkgs.alacritty}/bin/alacritty";

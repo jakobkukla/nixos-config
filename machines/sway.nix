@@ -15,6 +15,8 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    # fix xdg-open in FHS or wrappers (see https://github.com/NixOS/nixpkgs/issues/160923)
+    xdgOpenUsePortal = true;
     # gtk portal needed to make gtk apps happy
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
