@@ -21,6 +21,16 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
+  # Enable real-time capabilities for all programs run by the users group (in particular sway)
+  security.pam.loginLimits = [
+    {
+      domain = "@users";
+      item = "rtprio";
+      type = "-";
+      value = 1;
+    }
+  ];
+
   # Enable polkit authentication agent
   environment.systemPackages = with pkgs; [
     polkit_gnome
