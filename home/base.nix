@@ -43,6 +43,7 @@
       scrcpy
       grim
       rustdesk
+      xpra
     ];
 
     xdg.enable = true;
