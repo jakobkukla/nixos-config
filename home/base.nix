@@ -123,6 +123,8 @@
 
     programs.bat.enable = true;
 
+    programs.ripgrep.enable = true;
+
     programs.zathura.enable = true;
 
     services.mpris-proxy.enable = true;
