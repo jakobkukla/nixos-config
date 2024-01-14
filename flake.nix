@@ -5,6 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
     impermanence.url = "github:nix-community/impermanence";
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -17,6 +20,7 @@
 
   outputs = inputs @ {
     nixpkgs,
+    nixos-hardware,
     impermanence,
     home-manager,
     agenix,
@@ -28,6 +32,8 @@
       matebook = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nixos-hardware.nixosModules.common-cpu-intel
+          nixos-hardware.nixosModules.common-gpu-nvidia-disable
           ./machines/matebook/configuration.nix
           impermanence.nixosModules.impermanence
           (import ./machines/impermanence.nix)

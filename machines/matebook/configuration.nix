@@ -19,14 +19,16 @@
     powerOnBoot = true;
   };
 
-  # Power management
-  services.tlp.enable = true;
+  # Power management and performance scaling
+  powerManagement.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.thermald.enable = true;
+
+  # Automatic SSD TRIM
+  services.fstrim.enable = true;
 
   hardware.opengl = {
     enable = true;
-    extraPackages = with pkgs; [
-      intel-media-driver # LIBVA_DRIVER_NAME=iHD
-    ];
   };
 
   services.xserver = {
