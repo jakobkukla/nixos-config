@@ -146,7 +146,6 @@
     wget
     htop
     pavucontrol
-    pulseaudio # Only needed for pactl
     zsh-history-substring-search
 
     gcc
