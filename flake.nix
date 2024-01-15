@@ -47,19 +47,25 @@
       };
     };
 
-    devShells.x86_64-linux.default = devenv.lib.mkShell {
-      inherit inputs;
+    devShells.x86_64-linux.default = let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
       };
-      modules = [
-        {
-          pre-commit.hooks = {
-            alejandra.enable = true;
-            markdownlint.enable = true;
-          };
-        }
-      ];
-    };
+    in
+      devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          {
+            packages = with pkgs; [
+              alejandra
+            ];
+
+            pre-commit.hooks = {
+              alejandra.enable = true;
+              markdownlint.enable = true;
+            };
+          }
+        ];
+      };
   };
 }
