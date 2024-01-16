@@ -1,6 +1,6 @@
 {
+  inputs,
   pkgs,
-  vscode-server,
   ...
 }: {
   home-manager.users.jakob = {
@@ -26,7 +26,7 @@
 
     # Use vscode-server flake to get remote ssh working
     imports = [
-      vscode-server.nixosModules.home
+      inputs.vscode-server.nixosModules.home
     ];
     services.vscode-server.enable = true;
 

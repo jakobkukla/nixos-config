@@ -18,41 +18,32 @@
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ {
-    nixpkgs,
-    nixos-hardware,
-    impermanence,
-    home-manager,
-    agenix,
-    vscode-server,
-    devenv,
-    ...
-  }: {
+  outputs = inputs: {
     nixosConfigurations = {
-      matebook = nixpkgs.lib.nixosSystem {
+      matebook = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          nixos-hardware.nixosModules.common-cpu-intel
-          nixos-hardware.nixosModules.common-gpu-nvidia-disable
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
           ./machines/matebook/configuration.nix
-          impermanence.nixosModules.impermanence
+          inputs.impermanence.nixosModules.impermanence
           (import ./machines/impermanence.nix)
-          home-manager.nixosModules.home-manager
+          inputs.home-manager.nixosModules.home-manager
           (import ./home/matebook.nix)
-          agenix.nixosModules.default
+          inputs.agenix.nixosModules.default
         ];
         specialArgs = {
-          inherit agenix vscode-server;
+          inherit inputs;
         };
       };
     };
 
     devShells.x86_64-linux.default = let
-      pkgs = import nixpkgs {
+      pkgs = import inputs.nixpkgs {
         system = "x86_64-linux";
       };
     in
-      devenv.lib.mkShell {
+      inputs.devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [
           {

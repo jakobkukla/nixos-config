@@ -2,10 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
+  inputs,
   config,
   pkgs,
   lib,
-  agenix,
   ...
 }: {
   imports = [
@@ -140,7 +140,7 @@
     python3
     docker-compose
 
-    agenix.packages.x86_64-linux.default
+    inputs.agenix.packages.x86_64-linux.default
 
     libarchive
     wget
