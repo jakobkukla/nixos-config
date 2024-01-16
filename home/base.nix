@@ -23,7 +23,7 @@
     home.packages = with pkgs; [
       #geogebra6
       discord
-      neofetch
+      nitch
       onefetch
       spotify
       spotify-tui
