@@ -27,7 +27,6 @@
       nitch
       onefetch
       spotify
-      spotify-tui
       jellyfin-media-player
       signal-desktop
       element-desktop
