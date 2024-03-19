@@ -41,4 +41,4 @@ jobs:
     - name: Push system to private cache
       run: |
         nix run github:zhaofengli/attic#default login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
-        nix run github:zhaofengli/attic#default push system result
+        nix run github:zhaofengli/attic#default push system result -j 2
