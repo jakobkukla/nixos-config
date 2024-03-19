@@ -8,6 +8,7 @@
     ./alacritty.nix
     ./firefox.nix
     ./vscode.nix
+    ./helix.nix
     ./texlive.nix
   ];
 
