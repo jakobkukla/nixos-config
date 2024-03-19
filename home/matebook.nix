@@ -1,7 +1,7 @@
 {
   imports = [
     ./base.nix
-    ./sway.nix
+    ./hyprland
     ./rofi.nix
   ];
 }

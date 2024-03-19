@@ -6,7 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ../base.nix
-    ../sway.nix
+    ../hyprland.nix
   ];
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
