@@ -124,7 +124,6 @@
 
     programs.eza = {
       enable = true;
-      enableAliases = true;
     };
 
     programs.bat.enable = true;
