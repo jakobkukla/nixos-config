@@ -34,7 +34,7 @@
   services.xserver = {
     enable = true;
     dpi = 192;
-    layout = "de";
+    xkb.layout = "de";
 
     libinput = {
       enable = true;
