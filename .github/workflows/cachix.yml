@@ -20,6 +20,10 @@ jobs:
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
     - uses: actions/checkout@v4
+    - name: Create netrc file for private cache authentication
+      run: |
+        sudo mkdir -p /etc/nix
+        echo "machine attic.jakobkukla.xyz password ${{ secrets.ATTIC_TOKEN }}" | sudo tee /etc/nix/netrc > /dev/null
     - uses: DeterminateSystems/nix-installer-action@main
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
