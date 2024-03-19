@@ -34,7 +34,9 @@ jobs:
         id: build
         run: |
           nix flake update
-          nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
+          # FIXME: nix-fast-build hangs indefinitely while copying some sources
+          # nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
+          nix build ".#nixosConfigurations.matebook.config.system.build.toplevel"
       - name: Commit flake.lock on success
         if: steps.build.outcome == 'success'
         uses: stefanzweifel/git-auto-commit-action@v5
