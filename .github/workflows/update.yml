@@ -12,17 +12,14 @@ jobs:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Install Nix
-        uses: cachix/install-nix-action@v20
+        uses: cachix/install-nix-action@v26
         with:
-          nix_path: nixpkgs=channel:nixos-unstable
-          extra_nix_config: |
-            experimental-features = nix-command flakes
-            access-tokens = github.com=${{ secrets.GITHUB_TOKEN }}
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install nix-build-uncached
         run: nix-env -f '<nixpkgs>' -iA nix-build-uncached
-      - uses: cachix/cachix-action@v12
+      - uses: cachix/cachix-action@v14
         with:
           name: jakobkukla
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
@@ -33,7 +30,7 @@ jobs:
           nix-build-uncached ./ci.nix
       - name: Commit flake.lock on success
         if: steps.build.outcome == 'success'
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'base: update packages'
           file_pattern: 'flake.lock'
