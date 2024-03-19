@@ -1,3 +1,5 @@
+# See https://lgug2z.com/articles/building-and-privately-caching-x86-and-aarch64-nixos-systems-on-github-actions/
+
 name: "Cachix"
 on:
   push:
@@ -18,12 +20,19 @@ jobs:
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
     - uses: actions/checkout@v4
-    - uses: cachix/install-nix-action@v26
+    - uses: DeterminateSystems/nix-installer-action@main
       with:
-        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        extra-conf: |
+          fallback = true
+          http-connections = 128
+          max-substitution-jobs = 128
+          substituters = https://attic.jakobkukla.xyz/system?priority=43 https://nix-community.cachix.org?priority=41 https://numtide.cachix.org?priority=42 https://cache.nixos.org/
+          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:7gMaV5t8G5VkXhIOs8yV/divVtfZ90aXu4Wo0bYpIG8= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE=
     - uses: DeterminateSystems/magic-nix-cache-action@main
-    - uses: cachix/cachix-action@v14
-      with:
-        name: jakobkukla
-        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix shell nixpkgs#nix-build-uncached -c nix-build-uncached ./ci.nix
+    - name: Build system
+      run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
+    - name: Push system to private cache
+      run: |
+        nix run github:zhaofengli/attic#default login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
+        nix run github:zhaofengli/attic#default push system result
