@@ -7,5 +7,6 @@ let
 in {
   "root.age".publicKeys = systems;
   "jakob.age".publicKeys = [jakob] ++ systems;
+  "netrc-attic.age".publicKeys = users ++ systems;
   "spotify.age".publicKeys = users ++ systems;
 }

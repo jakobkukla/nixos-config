@@ -81,6 +81,7 @@
   age = {
     secrets.root.file = ../secrets/root.age;
     secrets.jakob.file = ../secrets/jakob.age;
+    secrets.netrc-attic.file = ../secrets/netrc-attic.age;
     secrets.spotify = {
       file = ../secrets/spotify.age;
       owner = "jakob";

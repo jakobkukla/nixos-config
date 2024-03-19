@@ -1,4 +1,4 @@
-{
+{config, ...}: {
   # Use personal binary cache and nixos cache
   nix.settings = {
     substituters = [
@@ -14,5 +14,8 @@
       "jakobkukla.cachix.org-1:Wk6Y2/s1YlTwsZKCs46v9uYejYUnVdzXTXzbJbYv+1s="
       "system:7gMaV5t8G5VkXhIOs8yV/divVtfZ90aXu4Wo0bYpIG8="
     ];
+
+    # Netrc file for private cache authentication
+    netrc-file = config.age.secrets.netrc-attic.path;
   };
 }
