@@ -76,6 +76,9 @@
       enable = true;
       shellAliases = {
         cat = "bat";
+        ip = "ip --color";
+        # rescan wireless APs and open nmtui
+        nmrt = "nmcli device wifi rescan; nmtui";
       };
       initExtra = ''
         source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
