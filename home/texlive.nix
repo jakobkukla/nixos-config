@@ -4,6 +4,8 @@
       texlive.combined.scheme-full
       # language server
       texlab
+      # another language server
+      ltex-ls
     ];
   };
 }
