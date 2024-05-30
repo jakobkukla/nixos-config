@@ -6,8 +6,11 @@
   imports = [
     ./hardware-configuration.nix
     ../base.nix
-    ../sway.nix
+
+    ../../modules/nixos
   ];
+
+  modules.hyprland.enable = true;
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
   boot.initrd.availableKernelModules = ["aesni_intel" "cryptd"];
