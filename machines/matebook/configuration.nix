@@ -35,16 +35,16 @@
     enable = true;
     dpi = 192;
     xkb.layout = "de";
+  };
 
-    libinput = {
-      enable = true;
-      touchpad = {
-        accelSpeed = "0.4";
-        tapping = false;
-        clickMethod = "clickfinger";
-        disableWhileTyping = true;
-        naturalScrolling = true;
-      };
+  services.libinput = {
+    enable = true;
+    touchpad = {
+      accelSpeed = "0.4";
+      tapping = false;
+      clickMethod = "clickfinger";
+      disableWhileTyping = true;
+      naturalScrolling = true;
     };
   };
 
