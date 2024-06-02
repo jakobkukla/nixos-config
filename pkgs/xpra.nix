@@ -1,3 +1,4 @@
+# Remove once https://github.com/NixOS/nixpkgs/pull/303930 gets merged
 self: super: {
   xpra = super.xpra.overrideAttrs (old: {
     version = "5.0.4";
