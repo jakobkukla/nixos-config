@@ -21,6 +21,13 @@ in {
     '';
   in
     lib.mkIf cfg.enable {
+      assertions = [
+        {
+          assertion = !config.modules.sway.enable;
+          message = "`sway` and `hyprland` modules must not be enabled at the same time";
+        }
+      ];
+
       modules.greetd = {
         enable = true;
         command = hyprlandWrapper.outPath;
