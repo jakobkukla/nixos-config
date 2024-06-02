@@ -86,6 +86,8 @@ in {
         # start swayidle as part of hyprland, not sway
         systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
+        modules.home.rofi.enable = true;
+
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.variables = ["--all"];

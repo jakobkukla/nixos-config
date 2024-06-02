@@ -104,6 +104,8 @@ in {
         provider = "geoclue2";
       };
 
+      modules.home.rofi.enable = true;
+
       wayland.windowManager.sway = {
         enable = true;
 

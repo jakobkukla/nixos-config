@@ -2,6 +2,7 @@
   imports = [
     ./shell.nix
     ./alacritty.nix
+    ./rofi.nix
     ./languages
     ./neovim.nix
     ./helix.nix
