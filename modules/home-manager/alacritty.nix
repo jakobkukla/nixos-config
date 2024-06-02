@@ -1,5 +1,15 @@
-{...}: {
-  home-manager.users.jakob = {
+{
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.modules.home.alacritty;
+in {
+  options.modules.home.alacritty = with lib; {
+    enable = mkEnableOption "Alacritty terminal emulator";
+  };
+
+  config = lib.mkIf cfg.enable {
     programs.alacritty = {
       enable = true;
       settings = {

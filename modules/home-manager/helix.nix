@@ -1,6 +1,14 @@
 # Borrowed from fufexan (https://github.com/fufexan/dotfiles/blob/main/home/editors/helix/default.nix)
-{...}: {
-  home-manager.users.jakob = {
+{
+  lib,
+  config,
+  ...
+}: {
+  options.modules.home.helix = with lib; {
+    enable = mkEnableOption "Helix text editor";
+  };
+
+  config = lib.mkIf config.modules.home.helix.enable {
     programs.helix = {
       enable = true;
 

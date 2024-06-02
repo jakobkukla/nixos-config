@@ -1,5 +1,16 @@
-{pkgs, ...}: {
-  home-manager.users.jakob = {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
+  cfg = config.modules.home.batsignal;
+in {
+  options.modules.home.batsignal = with lib; {
+    enable = mkEnableOption "batsignal battery monitor daemon";
+  };
+
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       batsignal
     ];
