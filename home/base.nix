@@ -45,7 +45,6 @@
       ffmpeg
       mpv
       easyeffects
-      grim
       rustdesk
     ];
 

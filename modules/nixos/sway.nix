@@ -71,6 +71,7 @@ in {
     home-manager.users.jakob = {
       home.packages = with pkgs; [
         wl-clipboard
+        grim
       ];
 
       home.sessionVariables = {
