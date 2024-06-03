@@ -8,12 +8,17 @@
     ../base.nix
 
     # FIXME: temporary import place
-    ../../modules/nixos
     ../../modules/profiles
   ];
 
-  profiles.gui.enable = true;
-  profiles.work.enable = true;
+  profiles = {
+    core.enable = true;
+    chat.enable = true;
+    gui.enable = true;
+    laptop.enable = true;
+    media.enable = true;
+    work.enable = true;
+  };
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
   boot.initrd.availableKernelModules = ["aesni_intel" "cryptd"];

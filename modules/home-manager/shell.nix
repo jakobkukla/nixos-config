@@ -9,6 +9,12 @@
   };
 
   config = lib.mkIf config.modules.home.shell.enable {
+    home.packages = with pkgs; [
+      nitch
+      onefetch
+      # FIXME: add zsh-history-substring here instead of globally
+    ];
+
     programs.zsh = {
       enable = true;
       shellAliases = {
@@ -36,5 +42,15 @@
     programs.eza.enable = true;
     programs.bat.enable = true;
     programs.ripgrep.enable = true;
+
+    programs.git = {
+      enable = true;
+      lfs.enable = true;
+      userName = "jakobkukla";
+      userEmail = "jakob.kukla@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+      };
+    };
   };
 }

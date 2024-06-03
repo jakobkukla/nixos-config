@@ -18,6 +18,9 @@ in {
         jetbrains.rider
         jetbrains.clion
         jetbrains.idea-community
+
+        # ADB
+        android-tools
       ];
 
       modules.home = {

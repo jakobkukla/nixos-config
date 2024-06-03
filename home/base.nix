@@ -4,25 +4,11 @@
   inputs,
   ...
 }: {
-  # FIXME: remove unused imports statement
-  imports = [
-  ];
-
   home-manager.users.jakob = {
-    # FIXME: this is temporary: import modules, find a better way to do that.
     imports = [
       # FIXME: I need to import the vscode-server module somewhere. inf rec if in vscode module?
       inputs.vscode-server.nixosModules.home
-
-      ../modules/home-manager
     ];
-
-    modules.home.shell.enable = true;
-    modules.home.neovim.enable = true;
-    modules.home.helix.enable = true;
-    modules.home.spotify.enable = true;
-
-    services.batsignal.enable = true;
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
@@ -32,22 +18,6 @@
     nixpkgs.overlays = import ../pkgs;
     nixpkgs.config.allowUnfree = true;
 
-    home.packages = with pkgs; [
-      #geogebra6
-      discord
-      nitch
-      onefetch
-      jellyfin-media-player
-      signal-desktop
-      element-desktop
-      gomuks
-      android-tools
-      ffmpeg
-      mpv
-      easyeffects
-      rustdesk
-    ];
-
     xdg = {
       enable = true;
       mimeApps.enable = true;
@@ -55,16 +25,6 @@
       userDirs = {
         enable = true;
         createDirectories = true;
-      };
-    };
-
-    programs.git = {
-      enable = true;
-      lfs.enable = true;
-      userName = "jakobkukla";
-      userEmail = "jakob.kukla@gmail.com";
-      extraConfig = {
-        init.defaultBranch = "main";
       };
     };
 
