@@ -13,6 +13,12 @@
     ./caches.nix
   ];
 
+  # TODO: put this somewhere else
+  modules.user = {
+    enable = true;
+    user = "jakob";
+  };
+
   # Auto-update NixOS
   # system.autoUpgrade.enable = true;
 
@@ -109,17 +115,6 @@
     enable = true;
     pulse.enable = true;
     alsa.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.mutableUsers = false;
-  users.defaultUserShell = pkgs.zsh;
-  users.users.root.hashedPasswordFile = config.age.secrets.root.path;
-  users.users.jakob = {
-    isNormalUser = true;
-    hashedPasswordFile = config.age.secrets.jakob.path;
-    home = "/home/jakob";
-    extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
   };
 
   # Enable Docker

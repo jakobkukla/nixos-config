@@ -10,23 +10,11 @@
       inputs.vscode-server.nixosModules.home
     ];
 
-    # Home Manager needs a bit of information about you and the
-    # paths it should manage.
-    home.username = "jakob";
-    home.homeDirectory = "/home/jakob";
-
     nixpkgs.overlays = import ../pkgs;
     nixpkgs.config.allowUnfree = true;
 
-    xdg = {
-      enable = true;
-      mimeApps.enable = true;
-
-      userDirs = {
-        enable = true;
-        createDirectories = true;
-      };
-    };
+    # FIXME: where to put this? currently all defaultApps declarations live in the firefox module
+    xdg.mimeApps.enable = true;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
