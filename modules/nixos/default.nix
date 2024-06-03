@@ -4,5 +4,6 @@
     ./greetd.nix
     ./sway.nix
     ./hyprland
+    ./printer.nix
   ];
 }
