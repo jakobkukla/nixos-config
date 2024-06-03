@@ -32,7 +32,7 @@
     };
 
     modules.home.firefox.enable = true;
-    modules.home.batsignal.enable = true;
+    services.batsignal.enable = true;
     modules.home.alacritty.enable = true;
 
     # Home Manager needs a bit of information about you and the

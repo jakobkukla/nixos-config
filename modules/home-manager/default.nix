@@ -9,6 +9,5 @@
     ./vscode.nix
     ./firefox.nix
     ./spotify.nix
-    ./batsignal.nix
   ];
 }
