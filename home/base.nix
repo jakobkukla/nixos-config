@@ -10,9 +10,6 @@
       inputs.vscode-server.nixosModules.home
     ];
 
-    nixpkgs.overlays = import ../pkgs;
-    nixpkgs.config.allowUnfree = true;
-
     # FIXME: where to put this? currently all defaultApps declarations live in the firefox module
     xdg.mimeApps.enable = true;
 
