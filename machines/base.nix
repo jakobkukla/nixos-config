@@ -8,13 +8,14 @@
   lib,
   ...
 }: {
-  imports = [
-    ./fs.nix
-  ];
-
   # TODO: put this somewhere else
   modules = {
     nix.enable = true;
+
+    filesystem = {
+      enable = true;
+      enableImpermanence = true;
+    };
 
     user = {
       enable = true;

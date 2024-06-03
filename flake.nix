@@ -32,7 +32,6 @@
           inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
           ./machines/matebook/configuration.nix
           inputs.impermanence.nixosModules.impermanence
-          (import ./machines/impermanence.nix)
           inputs.home-manager.nixosModules.home-manager
           (import ./home/matebook.nix)
           inputs.agenix.nixosModules.default
