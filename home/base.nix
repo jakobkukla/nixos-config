@@ -22,18 +22,7 @@
     modules.home.helix.enable = true;
     modules.home.spotify.enable = true;
 
-    modules.home.languages = {
-      ocaml.enable = true;
-      latex.enable = true;
-    };
-
-    modules.home.vscode = {
-      enable = true;
-    };
-
-    modules.home.firefox.enable = true;
     services.batsignal.enable = true;
-    modules.home.alacritty.enable = true;
 
     # Home Manager needs a bit of information about you and the
     # paths it should manage.
@@ -52,18 +41,12 @@
       signal-desktop
       element-desktop
       gomuks
-      android-studio
-      jetbrains.rider
-      jetbrains.clion
-      jetbrains.idea-community
       android-tools
       ffmpeg
       mpv
       easyeffects
-      scrcpy
       grim
       rustdesk
-      xpra
     ];
 
     xdg.enable = true;
@@ -89,8 +72,6 @@
       };
     };
 
-    services.dunst.enable = true;
-
     programs.git = {
       enable = true;
       lfs.enable = true;
@@ -100,8 +81,6 @@
         init.defaultBranch = "main";
       };
     };
-
-    programs.zathura.enable = true;
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage

@@ -7,10 +7,13 @@
     ./hardware-configuration.nix
     ../base.nix
 
+    # FIXME: temporary import place
     ../../modules/nixos
+    ../../modules/profiles
   ];
 
-  modules.hyprland.enable = true;
+  profiles.gui.enable = true;
+  profiles.work.enable = true;
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
   boot.initrd.availableKernelModules = ["aesni_intel" "cryptd"];
