@@ -2,3 +2,7 @@
 .direnv/
 .pre-commit-config.yaml
 
+# output of nix-rebuild build-vm and vm disk
+result
+*.qcow2
+
