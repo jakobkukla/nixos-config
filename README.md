@@ -84,3 +84,13 @@ $ cp /path/to/.ssh/id_ed25519* /mnt/home/jakob/.ssh
 # nix-channel --update
 ```
 
+## Test in VM
+
+Build and run the VM with:
+
+```
+$ nixos-rebuild build-vm --flake .#matebook
+$ sudo ./result/bin/run-nixos-matebook-vm
+```
+
+Run the resulting path with `sudo`, otherwise agenix will fail to decrypt secrets.
