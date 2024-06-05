@@ -24,20 +24,35 @@
   };
 
   outputs = inputs: {
-    nixosConfigurations = {
+    nixosConfigurations = let
+      defaultModules = [
+        ./modules
+
+        inputs.impermanence.nixosModules.impermanence
+        inputs.home-manager.nixosModules.home-manager
+        inputs.agenix.nixosModules.default
+      ];
+      specialArgs = {inherit inputs;};
+    in {
       matebook = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
         system = "x86_64-linux";
-        modules = [
-          inputs.nixos-hardware.nixosModules.common-cpu-intel
-          inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
-          ./machines/matebook/configuration.nix
-          inputs.impermanence.nixosModules.impermanence
-          inputs.home-manager.nixosModules.home-manager
-          inputs.agenix.nixosModules.default
-        ];
-        specialArgs = {
-          inherit inputs;
-        };
+        modules =
+          defaultModules
+          ++ [
+            inputs.nixos-hardware.nixosModules.common-cpu-intel
+            inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
+            ./machines/matebook/configuration.nix
+          ];
+      };
+      pc = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules =
+          defaultModules
+          ++ [
+            ./machines/pc/configuration.nix
+          ];
       };
     };
 

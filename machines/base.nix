@@ -7,33 +7,11 @@
   lib,
   ...
 }: {
-  imports = [
-    ../modules
-  ];
   # TODO: put this somewhere else
   modules = {
     nix.enable = true;
-
-    filesystem = {
-      enable = true;
-      enableImpermanence = true;
-    };
-
     user.enable = true;
   };
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  # Linux kernel configuration
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
-
-  networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
