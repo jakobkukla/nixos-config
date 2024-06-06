@@ -8,6 +8,9 @@
   lib,
   ...
 }: {
+  imports = [
+    ../modules
+  ];
   # TODO: put this somewhere else
   modules = {
     nix.enable = true;

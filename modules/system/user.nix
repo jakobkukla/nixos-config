@@ -43,6 +43,8 @@ in {
           enable = true;
           createDirectories = true;
         };
+
+        mimeApps.enable = true;
       };
 
       # This value determines the Home Manager release that your

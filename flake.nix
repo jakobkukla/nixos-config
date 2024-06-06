@@ -33,7 +33,6 @@
           ./machines/matebook/configuration.nix
           inputs.impermanence.nixosModules.impermanence
           inputs.home-manager.nixosModules.home-manager
-          (import ./home/matebook.nix)
           inputs.agenix.nixosModules.default
         ];
         specialArgs = {
