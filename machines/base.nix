@@ -2,7 +2,6 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -74,17 +73,6 @@
 
   programs.gnupg.agent.enable = true;
 
-  # Secrets
-  age = {
-    secrets.root.file = ../secrets/root.age;
-    secrets.jakob.file = ../secrets/jakob.age;
-    secrets.netrc-attic.file = ../secrets/netrc-attic.age;
-    secrets.spotify = {
-      file = ../secrets/spotify.age;
-      owner = "jakob";
-    };
-  };
-
   # Enable sound.
   security.rtkit.enable = true;
   services.pipewire = {
@@ -101,8 +89,6 @@
   environment.systemPackages = with pkgs; [
     python3
     docker-compose
-
-    inputs.agenix.packages.x86_64-linux.default
 
     libarchive
     wget

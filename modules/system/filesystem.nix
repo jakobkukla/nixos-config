@@ -48,12 +48,7 @@ in {
         neededForBoot = true;
       };
 
-      # /etc/ssh needs to be mounted in stage 1 for agenix to work
-      fileSystems."/etc/ssh" = {
-        depends = ["/persist"];
-        neededForBoot = true;
-      };
-
+    (lib.mkIf cfg.enableImpermanence {
       environment.persistence."/persist" = {
         hideMounts = true;
         directories = [

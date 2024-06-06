@@ -1,6 +1,7 @@
 {
   imports = [
     ./user.nix
+    ./secrets.nix
     ./nix.nix
     ./filesystem.nix
     ./virtualisation.nix
