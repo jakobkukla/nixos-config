@@ -26,6 +26,9 @@ in {
           hashedPasswordFile = config.age.secrets.${cfg.user}.path;
           home = "/home/${cfg.user}";
           extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
+          openssh.authorizedKeys.keys = [
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob.kukla@gmail.com"
+          ];
         };
       };
     };
