@@ -14,7 +14,7 @@
   profiles = {
     core.enable = true;
     chat.enable = true;
-    gui.enable = true;
+    desktop.enable = true;
     laptop.enable = true;
     media.enable = true;
     work.enable = true;

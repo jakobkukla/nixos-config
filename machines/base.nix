@@ -23,8 +23,6 @@
       enable = true;
       user = "jakob";
     };
-
-    printer.enable = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -50,11 +48,6 @@
   i18n.defaultLocale = "de_AT.UTF-8";
   console.keyMap = "de";
 
-  fonts.packages = with pkgs; [
-    source-code-pro
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
-  ];
-
   programs.zsh = {
     enable = true;
     autosuggestions.enable = true;
@@ -72,14 +65,6 @@
   };
 
   programs.gnupg.agent.enable = true;
-
-  # Enable sound.
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-  };
 
   # Enable Docker
   virtualisation.docker.enable = true;
