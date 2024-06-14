@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home-manager.users.jakob = {
+    home-manager.users.${config.modules.user.name} = {
       modules.home = {
         shell.enable = true;
         neovim.enable = true;

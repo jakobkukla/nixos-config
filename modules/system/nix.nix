@@ -50,7 +50,7 @@ in {
       nixpkgs.overlays = import ../../pkgs;
       nixpkgs.config.allowUnfree = true;
 
-      home-manager.users.jakob = {
+      home-manager.users.${config.modules.user.name} = {
         # FIXME: can't I change this in nixos globally?
         nixpkgs.overlays = import ../../pkgs;
         nixpkgs.config.allowUnfree = true;

@@ -25,7 +25,7 @@ in {
       defaultSession = "sway";
       autoLogin = {
         enable = true;
-        user = "jakob";
+        user = config.modules.user.name;
       };
     };
 
@@ -68,7 +68,7 @@ in {
       };
     };
 
-    home-manager.users.jakob = {
+    home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         wl-clipboard
         grim

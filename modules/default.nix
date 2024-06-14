@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   imports = [
     # system modules
     ./system
@@ -8,7 +12,7 @@
   ];
 
   # FIXME: this is stupid
-  home-manager.users.jakob = {
+  home-manager.users.${config.modules.user.name} = {
     imports = [
       # home modules
       ./home

@@ -8,8 +8,14 @@
 in {
   options.modules.user = with lib; {
     enable = mkEnableOption "user module";
-    user = mkOption {
+    enableXdgUser =
+      mkEnableOption "XDG user directories and mime app list creation"
+      // {
+        default = true;
+      };
+    name = mkOption {
       type = types.str;
+      default = "jakob";
     };
   };
 
@@ -21,10 +27,10 @@ in {
       users = {
         root.hashedPasswordFile = config.age.secrets.root.path;
 
-        ${cfg.user} = {
+        ${cfg.name} = {
           isNormalUser = true;
-          hashedPasswordFile = config.age.secrets.${cfg.user}.path;
-          home = "/home/${cfg.user}";
+          hashedPasswordFile = config.age.secrets.${cfg.name}.path;
+          home = "/home/${cfg.name}";
           extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
           openssh.authorizedKeys.keys = [
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob.kukla@gmail.com"
@@ -33,21 +39,21 @@ in {
       };
     };
 
-    home-manager.users.${cfg.user} = {
+    home-manager.users.${cfg.name} = {
       # Home Manager needs a bit of information about you and the
       # paths it should manage.
-      home.username = cfg.user;
-      home.homeDirectory = "/home/${cfg.user}";
+      home.username = cfg.name;
+      home.homeDirectory = "/home/${cfg.name}";
 
       xdg = {
         enable = true;
 
         userDirs = {
-          enable = true;
-          createDirectories = true;
+          enable = cfg.enableXdgUser;
+          createDirectories = cfg.enableXdgUser;
         };
 
-        mimeApps.enable = true;
+        mimeApps.enable = cfg.enableXdgUser;
       };
 
       # This value determines the Home Manager release that your

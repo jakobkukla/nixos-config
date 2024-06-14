@@ -35,16 +35,17 @@ in {
       # Secrets
       secrets = {
         root.file = ../../secrets/root.age;
-        jakob.file = ../../secrets/jakob.age;
+        # TODO: use ${config.modules.user.name} here instead.
+        ${config.modules.user.name}.file = ../../secrets/jakob.age;
         netrc-attic.file = ../../secrets/netrc-attic.age;
         spotify = {
           file = ../../secrets/spotify.age;
-          owner = "jakob";
+          owner = config.modules.user.name;
         };
       };
     };
 
-    home-manager.users.jakob = {
+    home-manager.users.${config.modules.user.name} = {
       home.shellAliases = {
         # FIXME: \sudo (might not work in other shells) and remove EDITOR variable. fix sudo in general.
         "agenix" = "\sudo EDITOR=${config.environment.variables."EDITOR"} agenix -i /etc/ssh/ssh_host_ed25519_key";

@@ -19,10 +19,7 @@
       enableImpermanence = true;
     };
 
-    user = {
-      enable = true;
-      user = "jakob";
-    };
+    user.enable = true;
   };
 
   # Use the systemd-boot EFI boot loader.

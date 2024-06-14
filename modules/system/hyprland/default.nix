@@ -15,7 +15,7 @@ in {
     # FIXME: This is needed to source home.sessionVariables in Hyprland.
     # Keep track of https://github.com/nix-community/home-manager/issues/2659 for a cleaner solution.
     hyprlandWrapper = pkgs.writeShellScript "hyprland_wrapper" ''
-      source "/home/jakob/.nix-profile/etc/profile.d/hm-session-vars.sh"
+      source "/home/${config.modules.user.name}/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
       exec ${lib.getExe config.programs.hyprland.package} $@
     '';
@@ -31,12 +31,12 @@ in {
       modules.greetd = {
         enable = true;
         command = hyprlandWrapper.outPath;
-        user = "jakob";
+        user = config.modules.user.name;
       };
 
       programs.hyprland.enable = true;
 
-      home-manager.users.jakob = {
+      home-manager.users.${config.modules.user.name} = {
         imports = [
           ./binds.nix
           ./settings.nix
@@ -64,8 +64,8 @@ in {
         gtk.enable = true;
 
         xdg.configFile."hypr/hyprpaper.conf".text = ''
-          preload = /home/jakob/Pictures/wp.jpg
-          wallpaper = , /home/jakob/Pictures/wp.jpg
+          preload = /home/${config.modules.user.name}/Pictures/wp.jpg
+          wallpaper = , /home/${config.modules.user.name}/Pictures/wp.jpg
         '';
 
         systemd.user.services.hyprpaper = {
