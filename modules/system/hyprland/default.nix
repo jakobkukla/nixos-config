@@ -7,8 +7,14 @@
 }: let
   cfg = config.modules.hyprland;
 in {
+  imports = [
+    ./binds.nix
+    ./settings.nix
+  ];
+
   options.modules.hyprland = with lib; {
     enable = mkEnableOption "Hyprland window manager";
+    enableNaturalScroll = mkEnableOption "natural scrolling";
   };
 
   config = let
@@ -37,11 +43,6 @@ in {
       programs.hyprland.enable = true;
 
       home-manager.users.${config.modules.user.name} = {
-        imports = [
-          ./binds.nix
-          ./settings.nix
-        ];
-
         home.packages = [
           pkgs.wl-clipboard
           # hyprland screenshot utility
