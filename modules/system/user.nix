@@ -33,7 +33,8 @@ in {
           home = "/home/${cfg.name}";
           extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
           openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob.kukla@gmail.com"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob@nixos-matebook"
+            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLDuYz2CQUZOtvP2qOKsdHqd5TdleLn95uHVxVTAod6 jakob@nixos-pc"
           ];
         };
       };
