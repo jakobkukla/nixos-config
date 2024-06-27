@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
@@ -9,9 +8,6 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
       wayland.windowManager.hyprland.settings = {
-        "$terminal" = "${pkgs.alacritty}/bin/alacritty";
-        "$menu" = "${pkgs.rofi-wayland}/bin/rofi -m 1 -show drun";
-
         misc.disable_hyprland_logo = "true";
 
         input = {

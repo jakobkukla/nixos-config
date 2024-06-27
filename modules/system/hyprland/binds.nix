@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -23,6 +24,10 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
       wayland.windowManager.hyprland.settings = {
+        "$terminal" = "${pkgs.alacritty}/bin/alacritty";
+        "$menu" = "${pkgs.rofi-wayland}/bin/rofi -m 1 -show drun";
+        "$bitwarden" = "${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
+
         "$mod" = "SUPER";
 
         # Home row direction keys
@@ -63,6 +68,8 @@ in {
             "$mod, D, exec, $menu"
             "$mod, F, fullscreen,"
             "$mod SHIFT, Q, killactive,"
+
+            "$mod SHIFT, B, exec, $bitwarden"
           ]
           ++ workspaces;
       };

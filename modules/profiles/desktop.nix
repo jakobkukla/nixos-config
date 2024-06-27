@@ -38,6 +38,7 @@ in {
       modules.home = {
         firefox.enable = true;
         alacritty.enable = true;
+        bitwarden.enable = true;
       };
 
       services.dunst.enable = true;

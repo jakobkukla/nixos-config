@@ -150,13 +150,18 @@ in {
             inner = 15;
           };
 
-          keybindings = lib.mkOptionDefault {
-            "XF86MonBrightnessUp" = "exec light -A 10";
-            "XF86MonBrightnessDown" = "exec light -U 10";
-            "XF86AudioRaiseVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+";
-            "XF86AudioLowerVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-";
-            "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          };
+          keybindings = let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+          in
+            lib.mkOptionDefault {
+              "${modifier}+Shift+b" = "exec ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
+
+              "XF86MonBrightnessUp" = "exec light -A 10";
+              "XF86MonBrightnessDown" = "exec light -U 10";
+              "XF86AudioRaiseVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+";
+              "XF86AudioLowerVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-";
+              "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+            };
         };
       };
     };

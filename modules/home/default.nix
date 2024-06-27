@@ -9,5 +9,6 @@
     ./vscode.nix
     ./firefox.nix
     ./spotify.nix
+    ./bitwarden.nix
   ];
 }
