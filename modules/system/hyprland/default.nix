@@ -15,6 +15,19 @@ in {
   options.modules.hyprland = with lib; {
     enable = mkEnableOption "Hyprland window manager";
     enableNaturalScroll = mkEnableOption "natural scrolling";
+    enableTearing = mkEnableOption "tearing support (for cs2)";
+    monitors = mkOption {
+      type = types.listOf types.str;
+      default = [];
+      example = literalExpression ''
+        [
+          "DP-1,2560x1440@144,0x0,1"
+        ]
+      '';
+      description = ''
+        List of hyprland monitor configurations.
+      '';
+    };
   };
 
   config = let
