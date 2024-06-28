@@ -23,6 +23,10 @@
       fsType = "btrfs";
       enableImpermanence = true;
     };
+
+    hyprland.wallpapers = [
+      ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
+    ];
   };
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)

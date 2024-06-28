@@ -26,10 +26,17 @@
       enableImpermanence = true;
     };
 
-    hyprland.monitors = [
-      "DP-1,2560x1440@144,0x0,1"
-      "DP-2,3840x2160@60,2560x0,1.5"
-    ];
+    hyprland = {
+      monitors = [
+        "DP-1,2560x1440@144,0x0,1"
+        "DP-2,3840x2160@60,2560x0,1.5"
+      ];
+
+      wallpapers = [
+        "DP-1,${config.modules.user.homeDirectory}/Pictures/wallpaper0.jpg"
+        "DP-2,${config.modules.user.homeDirectory}/Pictures/wallpaper1.jpg"
+      ];
+    };
   };
 
   # Use the systemd-boot EFI boot loader.

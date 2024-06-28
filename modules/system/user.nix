@@ -17,6 +17,10 @@ in {
       type = types.str;
       default = "jakob";
     };
+    homeDirectory = mkOption {
+      type = types.str;
+      default = "/home/${cfg.name}";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -44,7 +48,7 @@ in {
       # Home Manager needs a bit of information about you and the
       # paths it should manage.
       home.username = cfg.name;
-      home.homeDirectory = "/home/${cfg.name}";
+      home.homeDirectory = cfg.homeDirectory;
 
       xdg = {
         enable = true;

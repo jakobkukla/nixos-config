@@ -10,12 +10,14 @@ in {
   imports = [
     ./binds.nix
     ./settings.nix
+    ./hyprpaper.nix
   ];
 
   options.modules.hyprland = with lib; {
     enable = mkEnableOption "Hyprland window manager";
     enableNaturalScroll = mkEnableOption "natural scrolling";
     enableTearing = mkEnableOption "tearing support (for cs2)";
+
     monitors = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -28,13 +30,27 @@ in {
         List of hyprland monitor configurations.
       '';
     };
+
+    wallpapers = mkOption {
+      type = types.listOf types.str;
+      default = [];
+      example = literalExpression ''
+        [
+          "DP-1,/path/to/wallpaper1.png"
+          "DP-2,/path/to/wallpaper2.png"
+        ]
+      '';
+      description = ''
+        List of hyprpaper wallpaper configurations.
+      '';
+    };
   };
 
   config = let
     # FIXME: This is needed to source home.sessionVariables in Hyprland.
     # Keep track of https://github.com/nix-community/home-manager/issues/2659 for a cleaner solution.
     hyprlandWrapper = pkgs.writeShellScript "hyprland_wrapper" ''
-      source "/home/${config.modules.user.name}/.nix-profile/etc/profile.d/hm-session-vars.sh"
+      source "${config.modules.user.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
       exec ${lib.getExe config.programs.hyprland.package} $@
     '';
@@ -76,23 +92,6 @@ in {
         };
 
         gtk.enable = true;
-
-        xdg.configFile."hypr/hyprpaper.conf".text = ''
-          preload = /home/${config.modules.user.name}/Pictures/wp.jpg
-          wallpaper = , /home/${config.modules.user.name}/Pictures/wp.jpg
-        '';
-
-        systemd.user.services.hyprpaper = {
-          Unit = {
-            Description = "Hyprland wallpaper daemon";
-            PartOf = ["graphical-session.target"];
-          };
-          Service = {
-            ExecStart = "${lib.getExe inputs.hyprpaper.packages.${pkgs.system}.default}";
-            Restart = "on-failure";
-          };
-          Install.WantedBy = ["graphical-session.target"];
-        };
 
         services.swayidle = {
           enable = true;
