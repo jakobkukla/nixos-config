@@ -59,10 +59,6 @@
   # Automatic SSD TRIM
   services.fstrim.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-  };
-
   services.xserver = {
     enable = true;
     dpi = 192;
