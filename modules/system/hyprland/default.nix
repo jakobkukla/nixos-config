@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  inputs,
   config,
   ...
 }: let
@@ -72,10 +71,10 @@ in {
       programs.hyprland.enable = true;
 
       home-manager.users.${config.modules.user.name} = {
-        home.packages = [
-          pkgs.wl-clipboard
+        home.packages = with pkgs; [
+          wl-clipboard
           # hyprland screenshot utility
-          inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
+          grimblast
         ];
 
         home.sessionVariables = {
