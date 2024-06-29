@@ -46,5 +46,5 @@ jobs:
       - name: Push system to private cache on success
         if: steps.build.outcome == 'success'
         run: |
-          nix run github:zhaofengli/attic#default login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
-          nix run github:zhaofengli/attic#default push system result -j 2
+          nix run nixpkgs#attic-client login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
+          nix run nixpkgs#attic-client push system result -j 2
