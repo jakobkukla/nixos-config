@@ -33,9 +33,7 @@ jobs:
           trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:7gMaV5t8G5VkXhIOs8yV/divVtfZ90aXu4Wo0bYpIG8= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE=
     - uses: DeterminateSystems/magic-nix-cache-action@main
     - name: Build system
-      # FIXME: nix-fast-build hangs indefinitely while copying some sources
-      # run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
-      run: nix build ".#nixosConfigurations.matebook.config.system.build.toplevel"
+      run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
     - name: Push system to private cache
       run: |
         nix run nixpkgs#attic-client login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
