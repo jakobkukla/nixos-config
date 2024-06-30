@@ -42,7 +42,8 @@ jobs:
           commit_message: 'base: update packages'
           file_pattern: 'flake.lock'
       - name: Push system to private cache on success
-        if: steps.build.outcome == 'success'
+        # push only if there are build results
+        if: steps.build.outcome == 'success' && ${{ hashFiles('result/') != '' }}
         run: |
           nix run nixpkgs#attic-client login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
           nix run nixpkgs#attic-client push system result -j 2

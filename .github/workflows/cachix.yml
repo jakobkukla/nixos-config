@@ -35,6 +35,8 @@ jobs:
     - name: Build system
       run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
     - name: Push system to private cache
+      # push only if there are build results
+      if: ${{ hashFiles('result/') != '' }}
       run: |
         nix run nixpkgs#attic-client login mediaserver https://attic.jakobkukla.xyz ${{ secrets.ATTIC_TOKEN }}
         nix run nixpkgs#attic-client push system result -j 2
