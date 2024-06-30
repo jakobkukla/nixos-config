@@ -57,7 +57,7 @@ in {
       };
 
       boot.initrd.postDeviceCommands = lib.mkAfter ''
-        zfs rollback -r rpool/local/root@blank
+        zfs rollback -r rpool/nixos/root@blank
       '';
     })
 
