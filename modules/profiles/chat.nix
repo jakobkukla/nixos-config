@@ -16,7 +16,6 @@ in {
         discord
         signal-desktop
         element-desktop
-        gomuks
       ];
     };
   };
