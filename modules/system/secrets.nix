@@ -42,6 +42,11 @@ in {
           file = ../../secrets/spotify.age;
           owner = config.modules.user.name;
         };
+        eduroam = {
+          file = ../../secrets/eduroam.age;
+          owner = "root";
+          group = "root";
+        };
       };
     };
 

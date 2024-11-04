@@ -11,4 +11,5 @@ in {
   "jakob.age".publicKeys = users ++ systems;
   "netrc-attic.age".publicKeys = users ++ systems;
   "spotify.age".publicKeys = users ++ systems;
+  "eduroam.age".publicKeys = users ++ systems;
 }

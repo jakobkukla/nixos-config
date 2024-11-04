@@ -9,5 +9,6 @@
     ./sway.nix
     ./hyprland
     ./printer.nix
+    ./eduroam.nix
   ];
 }

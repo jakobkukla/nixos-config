@@ -18,6 +18,9 @@ in {
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
+    # Add eduroam configuration
+    modules.eduroam.enable = true;
+
     # FIXME: Does this make sense here?
     modules.printer.enable = true;
 
