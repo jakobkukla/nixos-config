@@ -14,6 +14,7 @@
     desktop.enable = true;
     laptop.enable = true;
     media.enable = true;
+    gaming.enable = true;
     work.enable = true;
   };
 
