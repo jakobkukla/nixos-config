@@ -64,8 +64,14 @@
               alejandra
             ];
 
+            languages.nix.enable = true;
+
             pre-commit.hooks = {
+              actionlint.enable = true;
               alejandra.enable = true;
+              check-merge-conflicts.enable = true;
+              commitizen.enable = true;
+              deadnix.enable = true;
               markdownlint.enable = true;
             };
           }
