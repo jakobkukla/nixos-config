@@ -1,6 +1,6 @@
 # nixos-config
 
-![cachix](https://github.com/jakobkukla/nixos-config/actions/workflows/cachix.yml/badge.svg)
+![build](https://github.com/jakobkukla/nixos-config/actions/workflows/build.yml/badge.svg)
 ![update](https://github.com/jakobkukla/nixos-config/actions/workflows/update.yml/badge.svg)
 
 ## Setup
