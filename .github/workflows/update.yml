@@ -1,6 +1,4 @@
-# See https://lgug2z.com/articles/building-and-privately-caching-x86-and-aarch64-nixos-systems-on-github-actions/
-
-name: "Update"
+name: "update"
 
 on:
   workflow_dispatch: # allows manual triggering
@@ -8,35 +6,12 @@ on:
     - cron: '30 04 * * MON' # runs weekly on Monday at 04:30
 
 jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Prepare build environment
-        uses: ./.github/actions/prepare-build-environment
-        with:
-          attic_token: ${{ secrets.ATTIC_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update flake.lock and build
-        id: build
-        run: |
-          nix flake update
-          # FIXME: nix-fast-build hangs indefinitely while copying some sources
-          # nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
-          nix build ".#nixosConfigurations.matebook.config.system.build.toplevel"
-
-      - name: Commit flake.lock on success
-        if: steps.build.outcome == 'success'
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'base: update packages'
-          file_pattern: 'flake.lock'
-
-      - name: Push system to private cache on success
-        if: steps.build.outcome == 'success'
-        uses: ./.github/actions/push-to-cache
-        with:
-          attic_token: ${{ secrets.ATTIC_TOKEN }}
+  build:
+    strategy:
+      matrix:
+        machine: [ matebook, pc ]
+    uses: ./.github/workflows/build-and-push.yml
+    with:
+      machine: ${{ matrix.machine }}
+      update: true
 
