@@ -17,6 +17,8 @@ jobs:
     steps:
     - name: Free Disk Space (Ubuntu)
       uses: jlumbroso/free-disk-space@main
+      with:
+        tool-cache: true
     - uses: actions/checkout@v4
     - name: Create netrc file for private cache authentication
       run: |
