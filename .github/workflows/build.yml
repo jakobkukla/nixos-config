@@ -19,4 +19,5 @@ jobs:
     with:
       machine: ${{ matrix.machine }}
       update: false
+    secrets: inherit
 
