@@ -1,0 +1,17 @@
+name: "Push system to cache"
+description: "Use attic to push system to private cache"
+
+inputs:
+  attic_token:
+    description: "The attic authentication token"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Push system to private cache
+      shell: bash
+      run: |
+        nix run nixpkgs#attic-client login mediaserver https://attic.jakobkukla.xyz ${{ inputs.attic_token }}
+        nix run nixpkgs#attic-client push system result -j 2
+
