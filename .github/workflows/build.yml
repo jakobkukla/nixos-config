@@ -1,4 +1,4 @@
-name: "build"
+name: "Build machines"
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         machine: [ matebook, pc ]
-    uses: ./.github/workflows/build-and-push.yml
+    uses: ./.github/workflows/reusable-base.yml
     with:
       machine: ${{ matrix.machine }}
       update: false
