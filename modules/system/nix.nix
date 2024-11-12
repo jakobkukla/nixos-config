@@ -53,6 +53,12 @@ in {
       nixpkgs.config.allowUnfree = true;
 
       home-manager.users.${config.modules.user.name} = {
+        # FIXME: home-manager profiles don't get gc'ed otherwise due to https://github.com/NixOS/nix/issues/8508
+        nix.gc = {
+          automatic = true;
+          options = "--delete-older-than 5d";
+        };
+
         # FIXME: can't I change this in nixos globally?
         nixpkgs.overlays = import ../../pkgs;
         nixpkgs.config.allowUnfree = true;
