@@ -107,6 +107,13 @@ in {
 
         modules.home.rofi.enable = true;
 
+        services.gammastep = {
+          enable = true;
+          # provider = "geoclue2";
+          latitude = 52.5200;
+          longitude = 13.4050;
+        };
+
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.variables = ["--all"];
