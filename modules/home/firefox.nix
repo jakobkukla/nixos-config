@@ -32,6 +32,9 @@ in {
 
           # Enable vaapi video acceleration
           "media.ffmpeg.vaapi.enabled" = true;
+
+          # Decouple regional formats (dates, time, etc.) from display language
+          "intl.regional_prefs.use_os_locales" = true;
         }
 
         (lib.mkIf cfg.enableSelfHostedSync {
