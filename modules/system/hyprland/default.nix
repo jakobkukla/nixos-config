@@ -70,6 +70,12 @@ in {
 
       programs.hyprland.enable = true;
 
+      # FIXME: Shouldn't be needed. See https://discourse.nixos.org/t/unable-to-add-new-library-folder-to-steam/38923/10
+      xdg.portal = {
+        enable = true;
+        extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+      };
+
       home-manager.users.${config.modules.user.name} = {
         home.packages = with pkgs; [
           wl-clipboard
