@@ -15,7 +15,7 @@ in {
 
     fonts.packages = with pkgs; [
       source-code-pro
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+      nerd-fonts.symbols-only
     ];
 
     # Add eduroam configuration
