@@ -23,21 +23,16 @@ jobs:
           attic_token: ${{ secrets.ATTIC_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update flake.lock
+      - name: Download flake.lock artifact
         if: inputs.update == true
-        run: nix flake update
+        uses: actions/download-artifact@v4
+        with:
+          name: flake_lock
 
       - name: Build system
         # FIXME: nix-fast-build hangs indefinitely while copying some sources
         # run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.matebook.config.system.build.toplevel"
         run: nix build ".#nixosConfigurations.${{ inputs.machine }}.config.system.build.toplevel"
-
-      - name: Commit flake.lock
-        if: inputs.update == true
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 'base: update packages'
-          file_pattern: 'flake.lock'
 
       - name: Push system to private cache
         uses: ./.github/actions/push-to-cache

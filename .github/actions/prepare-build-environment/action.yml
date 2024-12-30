@@ -17,9 +17,6 @@ runs:
       with:
         tool-cache: true
 
-    - name: Checkout repository
-      uses: actions/checkout@v4
-
     - name: Create netrc file for private cache authentication
       shell: bash
       run: |
@@ -27,15 +24,9 @@ runs:
         echo "machine attic.jakobkukla.xyz password ${{ inputs.attic_token }}" | sudo tee /etc/nix/netrc > /dev/null
 
     - name: Install Nix
-      uses: DeterminateSystems/nix-installer-action@main
+      uses: ./.github/actions/install-nix
       with:
         github-token: ${{ inputs.github_token }}
-        extra-conf: |
-          fallback = true
-          http-connections = 128
-          max-substitution-jobs = 128
-          substituters = https://attic.jakobkukla.xyz/system?priority=43 https://nix-community.cachix.org?priority=41 https://numtide.cachix.org?priority=42 https://cache.nixos.org/
-          trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= system:7gMaV5t8G5VkXhIOs8yV/divVtfZ90aXu4Wo0bYpIG8= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs= numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE=
 
     - uses: DeterminateSystems/magic-nix-cache-action@main
 

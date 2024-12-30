@@ -7,6 +7,26 @@ on:
 
 jobs:
   update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: ./.github/actions/install-nix
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update flake.lock
+        run: nix flake update
+
+      - name: Upload flake.lock artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: flake_lock
+          path: flake.lock
+
+  build:
+    needs: update
     strategy:
       matrix:
         machine: [ matebook, pc ]
@@ -15,4 +35,21 @@ jobs:
       machine: ${{ matrix.machine }}
       update: true
     secrets: inherit
+
+  commit:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download flake.lock artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: flake_lock
+
+      - name: Commit flake.lock
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'base: update packages'
+          file_pattern: 'flake.lock'
 
