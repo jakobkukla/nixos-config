@@ -10,5 +10,6 @@
     ./hyprland
     ./printer.nix
     ./eduroam.nix
+    ./games
   ];
 }

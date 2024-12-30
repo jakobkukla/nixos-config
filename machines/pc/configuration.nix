@@ -32,6 +32,14 @@
         "DP-2,${config.modules.user.homeDirectory}/Pictures/wallpaper1.jpg"
       ];
     };
+
+    games.servers.satisfactory.enable = true;
+  };
+
+  fileSystems."/mnt/d" = {
+    device = "/dev/disk/by-uuid/f7e4a9c9-0e0f-4bae-8540-ca874a05a797";
+    fsType = "btrfs";
+    options = ["compress=zstd" "noatime"];
   };
 
   # Use the systemd-boot EFI boot loader.

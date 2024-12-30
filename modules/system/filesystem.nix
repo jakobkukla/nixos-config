@@ -103,6 +103,12 @@ in {
           "/var/lib/iwd"
           # Save host ssh keys
           "/etc/ssh"
+          # Satisfactory server
+          {
+            directory = "/var/lib/satisfactory";
+            user = "satisfactory";
+            group = "satisfactory";
+          }
         ];
         files = [
           "/etc/machine-id"
