@@ -15,7 +15,10 @@ in {
         general.allow_tearing = lib.mkIf cfg.enableTearing "true";
         windowrulev2 = lib.mkIf cfg.enableTearing "immediate, class:^(cs2)$";
 
-        misc.disable_hyprland_logo = "true";
+        misc = {
+          disable_hyprland_logo = "true";
+          vrr = "1";
+        };
 
         input = {
           kb_layout = "de";
