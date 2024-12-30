@@ -117,6 +117,9 @@ in {
         wayland.windowManager.hyprland = {
           enable = true;
           systemd.variables = ["--all"];
+          plugins = with pkgs.hyprlandPlugins; [
+            csgo-vulkan-fix
+          ];
         };
       };
     };

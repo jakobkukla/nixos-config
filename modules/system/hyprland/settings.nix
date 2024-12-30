@@ -39,6 +39,15 @@ in {
         };
 
         animation = "global, 0,,";
+
+        plugin = {
+          csgo-vulkan-fix = {
+            res_w = "1920";
+            res_h = "1440";
+            class = "cs2";
+            fix_mouse = true;
+          };
+        };
       };
     };
   };
