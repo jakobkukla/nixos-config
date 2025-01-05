@@ -7,6 +7,9 @@
     # system modules
     ./system
 
+    # hardware modules
+    ./hardware
+
     # profiles
     ./profiles
   ];
