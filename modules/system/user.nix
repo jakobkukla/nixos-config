@@ -5,6 +5,11 @@
   ...
 }: let
   cfg = config.modules.user;
+
+  sshAuthorizedKeys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob@nixos-matebook"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLDuYz2CQUZOtvP2qOKsdHqd5TdleLn95uHVxVTAod6 jakob@nixos-pc"
+  ];
 in {
   options.modules.user = with lib; {
     enable = mkEnableOption "user module";
@@ -29,17 +34,17 @@ in {
       defaultUserShell = pkgs.zsh;
 
       users = {
-        root.hashedPasswordFile = config.age.secrets.root.path;
+        root = {
+          hashedPasswordFile = config.age.secrets.root.path;
+          openssh.authorizedKeys.keys = sshAuthorizedKeys;
+        };
 
         ${cfg.name} = {
           isNormalUser = true;
           hashedPasswordFile = config.age.secrets.${cfg.name}.path;
           home = "/home/${cfg.name}";
           extraGroups = ["wheel" "networkmanager" "video" "docker" "scanner" "lp"]; # Enable ‘sudo’ for the user.
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHWojtiUPbNshRKobtKSdt2Cp0HdHPn4qqpSzALSZ1rv jakob@nixos-matebook"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLDuYz2CQUZOtvP2qOKsdHqd5TdleLn95uHVxVTAod6 jakob@nixos-pc"
-          ];
+          openssh.authorizedKeys.keys = sshAuthorizedKeys;
         };
       };
     };
