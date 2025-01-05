@@ -11,5 +11,6 @@
     ./printer.nix
     ./eduroam.nix
     ./games
+    ./librespot.nix
   ];
 }
