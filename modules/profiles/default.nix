@@ -7,5 +7,6 @@
     ./media.nix
     ./gaming.nix
     ./work.nix
+    ./hifiberry.nix
   ];
 }
