@@ -49,6 +49,16 @@
             ./machines/pc/configuration.nix
           ];
       };
+      hifiberry = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "aarch64-linux";
+        modules =
+          defaultModules
+          ++ [
+            inputs.nixos-hardware.nixosModules.raspberry-pi-4
+            ./machines/hifiberry/configuration.nix
+          ];
+      };
     };
 
     devShells.x86_64-linux.default = let
