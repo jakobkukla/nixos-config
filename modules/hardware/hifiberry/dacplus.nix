@@ -10,12 +10,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    # FIXME: these options are rpi4 specific. make this model agnostic.
-    hardware.raspberry-pi."4".apply-overlays-dtmerge.enable = true;
-
-    hardware.deviceTree.enable = true;
-    hardware.deviceTree.filter = "bcm2711-rpi-4*.dtb";
-
     hardware.deviceTree = {
       overlays = [
         # Equivalent to: https://github.com/raspberrypi/linux/blob/rpi-6.1.y/arch/arm/boot/dts/overlays/hifiberry-dacplus-overlay.dts
