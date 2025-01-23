@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.modules.filesystem;
@@ -14,6 +15,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable (lib.mkMerge [
+    {
+      # Define latestZfsCompatibleKernel argument
+      # NOTE: Update this according to https://github.com/openzfs/zfs/releases
+      _module.args.latestZfsCompatibleKernel = pkgs.linuxPackages_6_12;
+    }
+
     (lib.mkIf (cfg.fsType == "btrfs") {
       fileSystems."/home" = {
         device = "/dev/mapper/enc";

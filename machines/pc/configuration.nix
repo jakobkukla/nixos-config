@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  latestZfsCompatibleKernel,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../base.nix
@@ -50,7 +54,7 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   # Linux kernel configuration
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = latestZfsCompatibleKernel;
 
   networking.hostName = "nixos-pc";
   networking.hostId = "4090d928";
