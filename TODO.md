@@ -19,3 +19,7 @@
   - subkey / main key?
   - goldwarden?
 - treefmt-nix
+- server:
+  - swap in zfs?
+- matebook:
+  - migrate to zfs
