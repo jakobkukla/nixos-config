@@ -46,11 +46,15 @@
     programs.git = {
       enable = true;
       lfs.enable = true;
+
       userName = "jakobkukla";
       userEmail = "jakob.kukla@gmail.com";
+
       extraConfig = {
         init.defaultBranch = "main";
       };
+
+      difftastic.enable = true;
     };
   };
 }
