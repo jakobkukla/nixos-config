@@ -50,6 +50,6 @@ jobs:
       - name: Commit flake.lock
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: 'base: update packages'
+          commit_message: 'build(deps): update packages'
           file_pattern: 'flake.lock'
 
