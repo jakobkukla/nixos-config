@@ -23,6 +23,12 @@
     };
   };
 
+  # Disable 3.5 jack audio device and disable power management for DAC
+  boot.extraModprobeConfig = ''
+    blacklist snd_bcm2835
+    options snd_soc_core pmdown_time=-1
+  '';
+
   # Enable HiFiBerry Dac+ overlay
   hardware.hifiberry.dacplus.enable = true;
 
