@@ -14,7 +14,8 @@ jobs:
   build:
     strategy:
       matrix:
-        machine: [ matebook, pc, server, hifiberry ]
+        # FIXME: add hifiberry after fixing cross-compilation
+        machine: [ matebook, pc, server ]
     uses: ./.github/workflows/reusable-base.yml
     with:
       machine: ${{ matrix.machine }}
