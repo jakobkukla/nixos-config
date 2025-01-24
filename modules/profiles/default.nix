@@ -2,6 +2,7 @@
   imports = [
     ./chat.nix
     ./core.nix
+    ./server.nix
     ./desktop.nix
     ./laptop.nix
     ./media.nix
