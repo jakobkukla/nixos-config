@@ -95,31 +95,36 @@ in {
     (lib.mkIf cfg.enableImpermanence {
       environment.persistence."/persist" = {
         hideMounts = true;
-        directories = [
-          "/var/log"
-          "/var/lib/bluetooth"
-          "/var/lib/nixos"
-          "/var/lib/systemd/coredump"
-          # Save docker images and containers
-          "/var/lib/docker"
-          # Don't prompt sudo lecture on every reboot
-          "/var/db/sudo/lectured"
-          # Save NetworkManager connections
-          "/etc/NetworkManager/system-connections"
-          # Needed to keep 802.1X (eduroam) iwd provisioning files
-          "/var/lib/iwd"
-          # Save host ssh keys
-          "/etc/ssh"
-          # Satisfactory server
-          {
-            directory = "/var/lib/satisfactory";
-            user = "satisfactory";
-            group = "satisfactory";
-          }
-        ];
+
         files = [
           "/etc/machine-id"
         ];
+
+        directories =
+          [
+            "/var/log"
+            "/var/lib/bluetooth"
+            "/var/lib/nixos"
+            "/var/lib/systemd/coredump"
+            # Save docker images and containers
+            "/var/lib/docker"
+            # Don't prompt sudo lecture on every reboot
+            "/var/db/sudo/lectured"
+            # Save NetworkManager connections
+            "/etc/NetworkManager/system-connections"
+            # Needed to keep 802.1X (eduroam) iwd provisioning files
+            "/var/lib/iwd"
+            # Save host ssh keys
+            "/etc/ssh"
+          ]
+          ++ (lib.optionals config.modules.games.servers.satisfactory.enable [
+            # Satisfactory server
+            {
+              directory = "/var/lib/satisfactory";
+              user = "satisfactory";
+              group = "satisfactory";
+            }
+          ]);
       };
     })
   ]);
