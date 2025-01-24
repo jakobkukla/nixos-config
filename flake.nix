@@ -49,6 +49,15 @@
             ./machines/pc/configuration.nix
           ];
       };
+      server = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules =
+          defaultModules
+          ++ [
+            ./machines/server/configuration.nix
+          ];
+      };
       hifiberry = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         system = "aarch64-linux";
