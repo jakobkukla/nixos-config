@@ -150,3 +150,9 @@ reboot
 mkdir -p /persist/etc/secrets/initrd
 ssh-keygen -t ed25519 -N "" -f /persist/etc/secrets/initrd/ssh_host_ed25519_key
 ```
+
+## Unlock encrypted zpools remotely
+
+```bash
+ssh -p 2222 root@<ip-address> -t "zpool import -a; zfs load-key -a && killall zfs"
+```
