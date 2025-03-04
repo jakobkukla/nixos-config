@@ -15,6 +15,11 @@ in {
         general.allow_tearing = lib.mkIf cfg.enableTearing "true";
         windowrulev2 = lib.mkIf cfg.enableTearing "immediate, class:^(cs2)$";
 
+        ecosystem = {
+          no_update_news = "true";
+          no_donation_nag = "true";
+        };
+
         misc = {
           disable_hyprland_logo = "true";
           vrr = "1";
