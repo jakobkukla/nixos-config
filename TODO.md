@@ -21,5 +21,6 @@
 - treefmt-nix
 - server:
   - swap in zfs?
+  - migrate attic from docker to nixos
 - matebook:
   - migrate to zfs
