@@ -39,8 +39,12 @@ in {
       ];
 
       modules.home = {
+        defaultApplications.enable = true;
         firefox.enable = true;
-        zen-browser.enable = true;
+        zen-browser = {
+          enable = true;
+          setDefaultBrowser = true;
+        };
         alacritty.enable = true;
         bitwarden.enable = true;
       };

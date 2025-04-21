@@ -1,6 +1,7 @@
 {
   imports = [
     ./shell.nix
+    ./default-applications.nix
     ./alacritty.nix
     ./rofi.nix
     ./languages
