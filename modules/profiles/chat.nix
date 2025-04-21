@@ -14,7 +14,7 @@ in {
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         discord
-        signal-desktop
+        signal-desktop-bin
         element-desktop
       ];
     };
