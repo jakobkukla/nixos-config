@@ -26,7 +26,7 @@ runs:
     - name: Install Nix
       uses: ./.github/actions/install-nix
       with:
-        github-token: ${{ inputs.github_token }}
+        github_token: ${{ inputs.github_token }}
 
     - uses: DeterminateSystems/magic-nix-cache-action@main
 
