@@ -41,33 +41,35 @@ in {
       enable = true;
       package = pkgs.vscode.fhs;
 
-      extensions = with pkgs.vscode-extensions;
-        [
-          vscodevim.vim
-          ms-azuretools.vscode-docker
-          bbenoist.nix # nix language support
-          mkhl.direnv
-        ]
-        ++ lib.optionals cfg.enableServer [
-          ms-vscode-remote.remote-ssh
-        ]
-        ++ lib.optionals cfg.enableOcaml [
-          ocamllabs.ocaml-platform
-        ]
-        ++ lib.optionals cfg.enableLatex [
-          james-yu.latex-workshop
-          valentjn.vscode-ltex # Latex spell checking
+      profiles.default = {
+        extensions = with pkgs.vscode-extensions;
+          [
+            vscodevim.vim
+            ms-azuretools.vscode-docker
+            bbenoist.nix # nix language support
+            mkhl.direnv
+          ]
+          ++ lib.optionals cfg.enableServer [
+            ms-vscode-remote.remote-ssh
+          ]
+          ++ lib.optionals cfg.enableOcaml [
+            ocamllabs.ocaml-platform
+          ]
+          ++ lib.optionals cfg.enableLatex [
+            james-yu.latex-workshop
+            valentjn.vscode-ltex # Latex spell checking
+          ];
+
+        userSettings = lib.mkMerge [
+          {
+            "window.menuBarVisibility" = "toggle";
+          }
+
+          (lib.mkIf cfg.enableLatex {
+            "ltex.language" = "en-US";
+          })
         ];
-
-      userSettings = lib.mkMerge [
-        {
-          "window.menuBarVisibility" = "toggle";
-        }
-
-        (lib.mkIf cfg.enableLatex {
-          "ltex.language" = "en-US";
-        })
-      ];
+      };
     };
 
     services.vscode-server.enable = cfg.enableServer;
