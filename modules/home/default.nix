@@ -1,11 +1,9 @@
 {
   imports = [
-    ./shell.nix
     ./default-applications.nix
     ./alacritty.nix
     ./rofi.nix
     ./languages
-    ./neovim.nix
     ./helix.nix
     ./vscode.nix
     ./firefox.nix

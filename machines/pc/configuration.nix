@@ -63,4 +63,7 @@
   networking.networkmanager.wifi.backend = "iwd";
 
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
+
+  # Enable docker
+  virtualisation.docker.enable = true;
 }

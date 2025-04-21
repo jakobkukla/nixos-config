@@ -10,10 +10,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    modules = {
+      nix.enable = true;
+      user.enable = true;
+      shell.enable = true;
+      neovim.enable = true;
+    };
+
     home-manager.users.${config.modules.user.name} = {
       modules.home = {
-        shell.enable = true;
-        neovim.enable = true;
         helix.enable = true;
       };
     };

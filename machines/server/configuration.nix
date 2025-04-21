@@ -61,6 +61,9 @@
   # probably desired for a server anyways. Otherwise try this https://github.com/NixOS/nixpkgs/issues/63941#issuecomment-2081126437
   networking.networkmanager.enable = false;
 
+  # Enable docker
+  virtualisation.docker.enable = true;
+
   # Stage 1 sshd to unlock zfs pools
   boot.kernelParams = ["ip=dhcp"];
   boot = {

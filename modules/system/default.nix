@@ -1,11 +1,13 @@
 {
   imports = [
     ./user.nix
+    ./shell.nix
     ./secrets.nix
     ./nix.nix
     ./filesystem.nix
-    ./virtualisation.nix
+    ./build-vm.nix
     ./greetd.nix
+    ./neovim.nix
     ./sway.nix
     ./hyprland
     ./printer.nix

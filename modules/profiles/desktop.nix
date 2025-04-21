@@ -34,6 +34,7 @@ in {
 
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
+        pavucontrol
         scrcpy # TODO: remove this?
         xpra
       ];

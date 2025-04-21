@@ -52,6 +52,9 @@
     powerOnBoot = true;
   };
 
+  # Enable docker
+  virtualisation.docker.enable = true;
+
   # Power management and performance scaling
   powerManagement.enable = true;
   services.auto-cpufreq.enable = true;
