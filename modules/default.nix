@@ -22,6 +22,7 @@
 
       # other
       inputs.vscode-server.nixosModules.home
+      inputs.zen-browser.homeModules.beta
     ];
   };
 }

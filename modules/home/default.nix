@@ -8,6 +8,7 @@
     ./helix.nix
     ./vscode.nix
     ./firefox.nix
+    ./zen-browser.nix
     ./spotify.nix
     ./bitwarden.nix
   ];

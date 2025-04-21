@@ -40,6 +40,7 @@ in {
 
       modules.home = {
         firefox.enable = true;
+        zen-browser.enable = true;
         alacritty.enable = true;
         bitwarden.enable = true;
       };
