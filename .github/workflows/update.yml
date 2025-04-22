@@ -17,6 +17,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update flake.lock
+        # FIXME: this fails because input selfhosted is private
         run: nix flake update
 
       - name: Upload flake.lock artifact
