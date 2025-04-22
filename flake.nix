@@ -20,6 +20,13 @@
 
     devenv.url = "github:cachix/devenv/latest";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    # NOTE: This is a private repo. Keep using git+ssh to ensure it's using
+    # ssh to fetch the repo and avoid access through GitHub Actions.
+    # FIXME: update workflow fails as it cannot pin the input
+    selfhosted.url = "git+ssh://git@github.com/jakobkukla/selfhosted";
+    selfhosted.inputs.nixpkgs.follows = "nixpkgs";
+    selfhosted.inputs.devenv.follows = "devenv";
   };
 
   outputs = inputs: {
@@ -60,7 +67,20 @@
           defaultModules
           ++ [
             ./machines/server/configuration.nix
-          ];
+          ]
+          ++ (
+            # NOTE: omit selfhosted module in CI as repo is private
+            if builtins.getEnv "CI" != "true"
+            then [
+              inputs.selfhosted.nixosModules.default
+
+              {
+                selfhosted.enable = true;
+                selfhosted.appdataDir = "/mnt/user/appdata";
+              }
+            ]
+            else []
+          );
       };
       hifiberry = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
