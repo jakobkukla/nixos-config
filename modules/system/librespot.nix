@@ -12,9 +12,11 @@
       LIBRESPOT_DEVICE_TYPE = cfg.settings.deviceType;
       LIBRESPOT_BITRATE = toString cfg.settings.bitrate;
       LIBRESPOT_BACKEND = cfg.settings.backend;
-      LIBRESPOT_DEVICE = lib.optionalString (cfg.settings.device != null) cfg.settings.device;
       LIBRESPOT_MIXER = cfg.settings.mixer;
     }
+    (lib.mkIf (cfg.settings.device != null) {
+      LIBRESPOT_DEVICE = cfg.settings.device;
+    })
     (lib.mkIf cfg.settings.enableVolumeNormalisation {
       LIBRESPOT_ENABLE_VOLUME_NORMALISATION = "1";
       LIBRESPOT_NORMALISATION_PREGAIN = toString cfg.settings.normalisationPregain;
@@ -23,6 +25,7 @@
 in {
   options.modules.librespot = with lib; {
     enable = mkEnableOption "librespot Open Source Spotify client library";
+    package = mkPackageOption pkgs "librespot" {};
 
     settings = mkOption {
       description = "librespot settings";
@@ -50,6 +53,7 @@ in {
 
           device = mkOption {
             type = types.nullOr types.str;
+            default = null;
           };
 
           mixer = mkOption {
@@ -82,7 +86,7 @@ in {
         librespotEnvironment
       ];
       serviceConfig = {
-        ExecStart = "${pkgs.librespot}/bin/librespot --cache /var/cache/librespot";
+        ExecStart = "${lib.getExe cfg.package} --cache /var/cache/librespot";
         Restart = "always";
         RestartSec = 12;
         DynamicUser = true;

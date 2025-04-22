@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -15,6 +16,8 @@ in {
   config = lib.mkIf cfg.enable {
     modules.librespot = {
       enable = true;
+      # FIXME: remove once https://github.com/NixOS/nixpkgs/pull/396637 is merged
+      package = pkgs.librespot.overrideAttrs {buildFeatures = pkgs.librespot.buildFeatures ++ ["with-libmdns"];};
 
       settings = {
         name = deviceName;
