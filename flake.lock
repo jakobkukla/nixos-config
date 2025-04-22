@@ -138,7 +138,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_2"
+        "systems": "systems_3"
       },
       "locked": {
         "lastModified": 1681202837,
@@ -378,8 +378,33 @@
         "impermanence": "impermanence",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "selfhosted": "selfhosted",
         "vscode-server": "vscode-server",
         "zen-browser": "zen-browser"
+      }
+    },
+    "selfhosted": {
+      "inputs": {
+        "devenv": [
+          "devenv"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1745336967,
+        "narHash": "sha256-XWFFLbwKJuP93tQtFQF6lKr0MiTbm6DgjwqyOBysF34=",
+        "ref": "refs/heads/main",
+        "rev": "fb6cc8a50a19f802a3321dbefa6334dceccbe0a6",
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/jakobkukla/selfhosted"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/jakobkukla/selfhosted"
       }
     },
     "systems": {
@@ -398,6 +423,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
