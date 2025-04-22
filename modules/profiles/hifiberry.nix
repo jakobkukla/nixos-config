@@ -17,7 +17,7 @@ in {
     modules.librespot = {
       enable = true;
       # FIXME: remove once https://github.com/NixOS/nixpkgs/pull/396637 is merged
-      package = pkgs.librespot.overrideAttrs {buildFeatures = pkgs.librespot.buildFeatures ++ ["with-libmdns"];};
+      package = pkgs.librespot.override {withAvahi = true;};
 
       settings = {
         name = deviceName;
