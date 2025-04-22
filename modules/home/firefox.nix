@@ -43,6 +43,9 @@ in {
 
             # Decouple regional formats (dates, time, etc.) from display language
             "intl.regional_prefs.use_os_locales" = true;
+
+            # Disable saving passwords
+            "signon.rememberSignons" = false;
           }
 
           (lib.mkIf cfg.enableSelfHostedSync {
