@@ -72,6 +72,16 @@
             ./machines/hifiberry/configuration.nix
           ];
       };
+      triton = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        system = "x86_64-linux";
+        modules =
+          defaultModules
+          ++ [
+            inputs.nixos-hardware.nixosModules.common-cpu-intel
+            ./machines/triton/configuration.nix
+          ];
+      };
     };
 
     devShells.x86_64-linux.default = let
