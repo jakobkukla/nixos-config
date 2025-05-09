@@ -13,6 +13,7 @@ Setup instructions for specific machines can be found in `machines/<machine>`.
 | pc        | [README](machines/pc)        |
 | server    | [README](machines/server)    |
 | hifiberry | [README](machines/hifiberry) |
+| triton    | [README](machines/triton)    |
 
 ## Test in VM
 
