@@ -63,7 +63,7 @@ in {
         neededForBoot = true;
       };
 
-      boot.initrd.postDeviceCommands = lib.mkAfter ''
+      boot.initrd.postResumeCommands = lib.mkAfter ''
         zfs rollback -r rpool/nixos/root@blank
       '';
     })
