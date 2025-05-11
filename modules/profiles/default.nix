@@ -7,7 +7,7 @@
     ./laptop.nix
     ./media.nix
     ./gaming.nix
-    ./work.nix
+    ./development.nix
     ./hifiberry.nix
   ];
 }
