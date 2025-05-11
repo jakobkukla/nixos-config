@@ -4,10 +4,10 @@
   config,
   ...
 }: let
-  cfg = config.profiles.work;
+  cfg = config.profiles.development;
 in {
-  options.profiles.work = with lib; {
-    enable = mkEnableOption "work profile";
+  options.profiles.development = with lib; {
+    enable = mkEnableOption "development profile";
   };
 
   config = lib.mkIf cfg.enable {
