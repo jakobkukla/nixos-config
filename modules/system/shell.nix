@@ -32,11 +32,11 @@
           # rescan wireless APs and open nmtui
           nmrt = "nmcli device wifi rescan; nmtui";
         };
-        initExtra = ''
-          source ${pkgs.zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-          bindkey "$terminfo[kcuu1]" history-substring-search-up
-          bindkey "$terminfo[kcud1]" history-substring-search-down
-        '';
+        historySubstringSearch = {
+          enable = true;
+          searchUpKey = "$terminfo[kcuu1]";
+          searchDownKey = "$terminfo[kcud1]";
+        };
       };
 
       programs.starship = {
