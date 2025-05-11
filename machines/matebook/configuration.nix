@@ -47,38 +47,13 @@
 
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-
   # Enable docker
   virtualisation.docker.enable = true;
 
-  # Power management and performance scaling
-  powerManagement.enable = true;
-  services.auto-cpufreq.enable = true;
-  services.thermald.enable = true;
-
-  # Automatic SSD TRIM
-  services.fstrim.enable = true;
-
+  # FIXME: not sure if this is needed?
   services.xserver = {
     enable = true;
     dpi = 192;
     xkb.layout = "de";
   };
-
-  services.libinput = {
-    enable = true;
-    touchpad = {
-      accelSpeed = "0.4";
-      tapping = false;
-      clickMethod = "clickfinger";
-      disableWhileTyping = true;
-      naturalScrolling = true;
-    };
-  };
-
-  programs.light.enable = true;
 }
