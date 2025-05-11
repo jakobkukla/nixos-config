@@ -107,7 +107,7 @@ git ...
 Create ssh host keys and save them on new machine.
 
 ```bash
-sudo mkdir /mnt/root/persist/etc
+sudo mkdir -p /mnt/root/persist/etc/ssh
 
 sudo ssh-keygen \
   -t rsa -b 4096 \
@@ -124,7 +124,7 @@ Install once to create `/etc/ssh` and copy to `/persist`.
 
 ```bash
 sudo nixos-install --no-root-password --root /mnt/root --flake github:jakobkukla/nixos-config#server
-cp /mnt/root/etc/ssh /mnt/root/persist/etc
+cp -r /mnt/root/etc/ssh /mnt/root/persist/etc
 ```
 
 Add new pub host key to secrets.nix and rekey on an existing machine.
