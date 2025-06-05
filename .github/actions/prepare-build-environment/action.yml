@@ -28,5 +28,3 @@ runs:
       with:
         github_token: ${{ inputs.github_token }}
 
-    - uses: DeterminateSystems/magic-nix-cache-action@main
-
