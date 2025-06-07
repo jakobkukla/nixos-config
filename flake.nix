@@ -77,6 +77,7 @@
               {
                 selfhosted.enable = true;
                 selfhosted.appdataDir = "/mnt/user/appdata";
+                selfhosted.dataDir = "/mnt/user/data";
               }
             ]
             else []
