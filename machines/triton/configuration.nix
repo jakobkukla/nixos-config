@@ -44,4 +44,6 @@
 
   # FIXME: investigate if this can be turned on
   networking.firewall.enable = false;
+
+  services.hardware.bolt.enable = true;
 }
