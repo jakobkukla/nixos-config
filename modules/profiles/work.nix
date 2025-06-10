@@ -42,6 +42,7 @@ in {
         userEmail = lib.mkForce "jakob@moxzcomm.com";
       };
 
+      # TODO: install firefox plugin with nixos
       programs.keepassxc = {
         enable = true;
         settings = {
