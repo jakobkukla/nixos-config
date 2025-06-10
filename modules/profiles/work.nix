@@ -60,9 +60,13 @@ in {
         containers.ubuntu = {
           image = "ubuntu:22.04";
 
+          # Packages:
+          # locales ... see below
+          # udev ... for radio libuhd support
+          # clangd ... for helix lsp
+          additional_packages = "locales udev clangd";
           # Configure system locales needed for tab completion
           # See https://github.com/starship/starship/issues/2176
-          additional_packages = "locales";
           init_hooks = [
             "locale-gen ${config.i18n.defaultLocale}"
             "update-locale"
