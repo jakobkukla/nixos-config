@@ -18,6 +18,11 @@ in {
       enable = true;
     };
 
+    environment.systemPackages = [
+      # Install perf corresponding to kernel
+      config.boot.kernelPackages.perf
+    ];
+
     # Mount dev NFS drive
     fileSystems."${config.modules.user.homeDirectory}/Documents/yocto" = {
       device = "${moxzNXPBuilderIP}:${moxzNXPBuilderDevDrive}";
