@@ -10,9 +10,18 @@ in {
     enable = mkEnableOption "work profile";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable (let
+    moxzNXPBuilderIP = "10.8.2.54";
+    moxzNXPBuilderDevDrive = "/home/moxz/yocto";
+  in {
     virtualisation.podman = {
       enable = true;
+    };
+
+    # Mount dev NFS drive
+    fileSystems."${config.modules.user.homeDirectory}/Documents/yocto" = {
+      device = "${moxzNXPBuilderIP}:${moxzNXPBuilderDevDrive}";
+      fsType = "nfs";
     };
 
     home-manager.users.${config.modules.user.name} = {
@@ -53,5 +62,5 @@ in {
         };
       };
     };
-  };
+  });
 }
