@@ -32,6 +32,9 @@ in {
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         mattermost-desktop
+
+        # Flash .bmap files (Yocto)
+        bmap-tools
       ];
 
       programs.git = {
