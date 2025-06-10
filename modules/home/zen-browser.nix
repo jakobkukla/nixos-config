@@ -31,6 +31,14 @@ in {
             # This fixes the go-back-on-right-click bug
             "ui.context_menus.after_mouseup" = true;
 
+            # Disable default browser check
+            "browser.shell.checkDefaultBrowser" = false;
+
+            # Set locale and search language
+            "browser.search.region" = "AT";
+            "general.useragent.locale" = "en-US";
+            "distribution.searchplugins.defaultLocale" = "en-US";
+
             # Enable vaapi video acceleration
             "media.ffmpeg.vaapi.enabled" = true;
 
