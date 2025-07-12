@@ -21,9 +21,6 @@ in {
 
         # IDEs
         android-studio
-        jetbrains.rider
-        jetbrains.clion
-        jetbrains.idea-community
 
         # ADB
         android-tools
