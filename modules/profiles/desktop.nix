@@ -51,6 +51,8 @@ in {
       };
 
       services.dunst.enable = true;
+
+      programs.sioyek.enable = true;
     };
   };
 }

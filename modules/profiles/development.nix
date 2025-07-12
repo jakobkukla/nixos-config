@@ -39,8 +39,6 @@ in {
           enable = true;
         };
       };
-
-      programs.zathura.enable = true;
     };
   };
 }
