@@ -3,7 +3,7 @@ name: "Build machines"
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**/README.md'
       - 'TODO.md'
