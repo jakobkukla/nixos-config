@@ -13,8 +13,8 @@
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ehci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
   boot.initrd.kernelModules = [];
-  boot.kernelModules = ["wl"];
-  boot.extraModulePackages = [config.boot.kernelPackages.broadcom_sta];
+  boot.kernelModules = [];
+  boot.extraModulePackages = [];
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/9EC9-2436";
