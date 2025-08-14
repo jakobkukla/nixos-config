@@ -72,6 +72,8 @@ sudo zfs create -o mountpoint=legacy rpool/nixos/persist
 
 # AppData
 sudo zfs create -o mountpoint=legacy rpool/appdata
+# Legacy AppData (Docker)
+sudo zfs create -o mountpoint=legacy rpool/appdata-legacy
 ```
 
 Format the EFI partition and mount partitions and datasets.

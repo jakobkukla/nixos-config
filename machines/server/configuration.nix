@@ -35,8 +35,13 @@
     fsType = "zfs";
   };
 
-  fileSystems."/mnt/user/appdata" = {
+  fileSystems."/var/lib/selfhosted" = {
     device = "rpool/appdata";
+    fsType = "zfs";
+  };
+
+  fileSystems."/mnt/user/appdata" = {
+    device = "rpool/appdata-legacy";
     fsType = "zfs";
   };
 
