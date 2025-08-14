@@ -28,6 +28,10 @@
     };
   };
 
+  # FIXME: selfhosted: disable impermanence for /var/lib as it stores the appdata for some migrated services
+  # TODO: migrate these services to /var/lib/selfhosted and remove this
+  environment.persistence."/persist".directories = ["/var/lib"];
+
   # TODO: where to put this? change path to /mnt/data instead?
   # probably best if data is not a single dataset?
   fileSystems."/mnt/user/data" = {
