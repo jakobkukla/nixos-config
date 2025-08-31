@@ -40,14 +40,19 @@ in {
   };
 
   config = let
+    sharedPolicies = {
+      # Disable default browser check
+      DontCheckDefaultBrowser = true;
+
+      # Disable Firefox telemetry
+      DisableTelemetry = true;
+
+      # Disable password saving prompt
+      OfferToSaveLogins = false;
+    };
+
     sharedSettings = lib.mkMerge [
       {
-        # This fixes the go-back-on-right-click bug
-        "ui.context_menus.after_mouseup" = true;
-
-        # Disable default browser check
-        "browser.shell.checkDefaultBrowser" = false;
-
         # Set locale and search language
         "browser.search.region" = "AT";
         "general.useragent.locale" = "en-US";
@@ -61,9 +66,6 @@ in {
 
         # Enable vaapi video acceleration
         "media.ffmpeg.vaapi.enabled" = true;
-
-        # Disable saving passwords
-        "signon.rememberSignons" = false;
       }
 
       (lib.mkIf cfg.enableSelfHostedSync {
@@ -76,20 +78,24 @@ in {
       (lib.mkIf cfg.firefox.enable {
         programs.firefox = {
           enable = true;
-          profiles.main.settings = lib.recursiveUpdate sharedSettings {
+          policies = lib.recursiveUpdate sharedPolicies {
             # Disable ads on start page
-            "browser.newtabpage.activity-stream.showSponsored" = false;
-            "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
+            FirefoxHome = {
+              SponsoredTopSites = false;
+              SponsoredPocket = false;
+            };
 
             # Disable pocket
-            "extensions.pocket.enabled" = false;
+            DisablePocket = true;
           };
+          profiles.main.settings = sharedSettings;
         };
       })
 
       (lib.mkIf cfg.zen-browser.enable {
         programs.zen-browser = {
           enable = true;
+          policies = sharedPolicies;
           profiles.main.settings = sharedSettings;
         };
       })
