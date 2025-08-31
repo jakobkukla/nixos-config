@@ -99,7 +99,7 @@
 
             languages.nix.enable = true;
 
-            pre-commit.hooks = {
+            git-hooks.hooks = {
               actionlint.enable = true;
               alejandra.enable = true;
               check-merge-conflicts.enable = true;
