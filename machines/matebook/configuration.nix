@@ -45,7 +45,7 @@
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";
 
-  networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
+  networking.firewall.enable = true;
 
   # Enable nftables
   networking.nftables.enable = true;
