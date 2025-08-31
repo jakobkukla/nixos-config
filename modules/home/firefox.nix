@@ -39,6 +39,9 @@ in {
             "general.useragent.locale" = "en-US";
             "distribution.searchplugins.defaultLocale" = "en-US";
 
+            # Disable translation popup
+            "browser.translations.automaticallyPopup" = false;
+
             # Disable ads on start page
             "browser.newtabpage.activity-stream.showSponsored" = false;
             "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;

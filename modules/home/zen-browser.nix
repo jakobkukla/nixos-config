@@ -39,6 +39,9 @@ in {
             "general.useragent.locale" = "en-US";
             "distribution.searchplugins.defaultLocale" = "en-US";
 
+            # Disable translation popup
+            "browser.translations.automaticallyPopup" = false;
+
             # Enable vaapi video acceleration
             "media.ffmpeg.vaapi.enabled" = true;
 
