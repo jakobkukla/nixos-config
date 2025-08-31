@@ -47,8 +47,11 @@
 
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
 
-  # Enable docker
-  virtualisation.docker.enable = true;
+  # Enable nftables
+  networking.nftables.enable = true;
+
+  # Enable podman
+  virtualisation.podman.enable = true;
 
   # FIXME: not sure if this is needed?
   services.xserver = {
