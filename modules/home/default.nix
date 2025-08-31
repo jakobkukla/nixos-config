@@ -6,8 +6,7 @@
     ./languages
     ./helix.nix
     ./vscode.nix
-    ./firefox.nix
-    ./zen-browser.nix
+    ./browsers
     ./spotify.nix
     ./bitwarden.nix
   ];
