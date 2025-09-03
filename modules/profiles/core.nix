@@ -17,6 +17,8 @@ in {
       neovim.enable = true;
     };
 
+    security.polkit.enable = true;
+
     home-manager.users.${config.modules.user.name} = {
       modules.home = {
         helix.enable = true;
