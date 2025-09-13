@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
@@ -12,10 +11,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
-      home.packages = with pkgs; [
-        jellyfin-media-player
-      ];
-
       modules.home.spotify.enable = true;
 
       programs.mpv.enable = true;
