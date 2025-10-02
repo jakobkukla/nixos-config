@@ -11,7 +11,13 @@ in {
 
   config = lib.mkIf cfg.enable {
     modules = {
-      hyprland.enableNaturalScroll = true;
+      hyprland = {
+        enableNaturalScroll = true;
+
+        # Automatically choose highest resolution for unknown monitors
+        monitors = [", highres, auto, auto"];
+      };
+
       sway.enableNaturalScroll = true;
     };
 
