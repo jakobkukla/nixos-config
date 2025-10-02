@@ -56,6 +56,11 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="3923", ATTRS{idProduct}=="7814", MODE:="0666"
     '';
 
+    # FIXME: Workaround for distrobox failing.
+    # Remove once resolved on unstable.
+    # See: https://github.com/NixOS/nixpkgs/issues/414135
+    security.lsm = lib.mkForce [];
+
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         mattermost-desktop
