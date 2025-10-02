@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable (let
     moxzNXPBuilderIP = "10.8.2.54";
-    moxzNXPBuilderDevDrive = "/home/moxz/yocto";
+    moxzNXPBuilderDevDrive = "/home/moxz";
   in {
     virtualisation.podman = {
       enable = true;
