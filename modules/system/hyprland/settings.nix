@@ -26,8 +26,9 @@ in {
         };
 
         input = {
-          kb_layout = "de";
-          kb_variant = "nodeadkeys";
+          kb_layout = "de,us";
+          kb_variant = "nodeadkeys,";
+          kb_options = "grp:ctrls_toggle";
 
           natural_scroll =
             if cfg.enableNaturalScroll
