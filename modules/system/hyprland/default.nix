@@ -18,15 +18,48 @@ in {
     enableTearing = mkEnableOption "tearing support (for cs2)";
 
     monitors = mkOption {
-      type = types.listOf types.str;
-      default = [];
+      type = types.attrsOf (types.submodule {
+        options = {
+          resolution = mkOption {
+            type = types.str;
+          };
+          position = mkOption {
+            type = types.str;
+          };
+          scale = mkOption {
+            type = types.str;
+          };
+          isInternal = mkOption {
+            type = types.bool;
+            default = false;
+            example = true;
+            description = ''
+              Wheter this is an internal monitor (e.g. a laptop display).
+            '';
+          };
+        };
+      });
+      default = {};
       example = literalExpression ''
-        [
-          "DP-1,2560x1440@144,0x0,1"
-        ]
+        {
+          "DP-1" = {
+            resolution = "2560x1440@144";
+            position = "0x0";
+            scale = "1";
+          };
+
+          # Define a fallback rule (equivalent to ", preferred, auto, auto")
+          "" = {
+            resolution = "preferred";
+            position = "auto";
+            scale = "auto";
+          };
+        }
       '';
       description = ''
-        List of hyprland monitor configurations.
+        Attribute set mapping to Hyprland monitor configurations.
+
+        See <https://wiki.hypr.land/Configuring/Monitors/>
       '';
     };
 

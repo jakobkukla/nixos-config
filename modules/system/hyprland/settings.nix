@@ -7,9 +7,16 @@
 in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
-      wayland.windowManager.hyprland.settings = {
+      wayland.windowManager.hyprland.settings = let
+        # Map monitor attribute set to Hyprland config strings
+        buildMonitorConfigurations = monitors:
+          lib.mapAttrsToList (
+            monitor: cfg: "${monitor},${cfg.resolution},${cfg.position},${cfg.scale}"
+          )
+          monitors;
+      in {
         # monitors
-        monitor = cfg.monitors;
+        monitor = buildMonitorConfigurations cfg.monitors;
 
         # tearing
         general.allow_tearing = lib.mkIf cfg.enableTearing "true";

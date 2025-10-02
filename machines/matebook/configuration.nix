@@ -28,6 +28,9 @@
     hyprland.wallpapers = [
       ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
     ];
+
+    # TODO: hyprland monitor config for internal monitor.
+    # Needed for lid switch display toggle.
   };
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)

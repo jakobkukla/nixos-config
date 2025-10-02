@@ -18,9 +18,11 @@
       enableImpermanence = true;
     };
 
-    hyprland.monitors = [
-      "eDP-1,1920x1080,0x0,1.25"
-    ];
+    hyprland.monitors."eDP-1" = {
+      resolution = "1920x1080";
+      position = "0x0";
+      scale = "1.25";
+    };
   };
 
   boot.loader.systemd-boot = {

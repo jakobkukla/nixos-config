@@ -26,10 +26,18 @@
     };
 
     hyprland = {
-      monitors = [
-        "DP-1,2560x1440@144,0x0,1"
-        "DP-2,3840x2160@60,2560x0,1.5"
-      ];
+      monitors = {
+        "DP-1" = {
+          resolution = "2560x1440@144";
+          position = "0x0";
+          scale = "1";
+        };
+        "DP-2" = {
+          resolution = "3840x2160@60";
+          position = "2560x0";
+          scale = "1.5";
+        };
+      };
 
       wallpapers = [
         "DP-1,${config.modules.user.homeDirectory}/Pictures/wallpaper0.jpg"

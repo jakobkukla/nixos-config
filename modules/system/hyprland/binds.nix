@@ -36,11 +36,31 @@ in {
         "$up" = "K";
         "$right" = "L";
 
-        bindl = [
-          # volume
-          ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-        ];
+        bindl =
+          [
+            # volume
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+
+            ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
+            ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,1920x1080,0x0,1.25'"
+          ]
+          ++ (
+            let
+              internalMonitors = lib.filterAttrs (_: cfg: cfg.isInternal) cfg.monitors;
+            in
+              # disable/enable monitor on lid switch
+              lib.concatLists (lib.mapAttrsToList (
+                  monitor: cfg: let
+                    monitorConfigString = "${monitor},${cfg.resolution},${cfg.position},${cfg.scale}";
+                  in [
+                    # FIXME: get lid switch name programmatically
+                    ", switch:on:Lid Switch, exec, hyprctl keyword monitor '${monitor}, disable'"
+                    ", switch:off:Lid Switch, exec, hyprctl keyword monitor '${monitorConfigString}'"
+                  ]
+                )
+                internalMonitors)
+          );
 
         bindle = [
           # volume

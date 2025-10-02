@@ -14,8 +14,12 @@ in {
       hyprland = {
         enableNaturalScroll = true;
 
-        # Automatically choose highest resolution for unknown monitors
-        monitors = [", highres, auto, auto"];
+        # Automatically choose highest resolution for unknown monitors ("" is wildcard)
+        monitors."" = {
+          resolution = "highres";
+          position = "auto";
+          scale = "auto";
+        };
       };
 
       sway.enableNaturalScroll = true;
