@@ -19,17 +19,16 @@ in {
       userEmail = "jakob@moxzcomm.com";
     };
 
+    environment.systemPackages = with pkgs; [
+      perf
+    ];
+
     virtualisation.podman = {
       enable = true;
     };
 
     networking.networkmanager.plugins = with pkgs; [
       networkmanager-openvpn
-    ];
-
-    environment.systemPackages = [
-      # Install perf corresponding to kernel
-      config.boot.kernelPackages.perf
     ];
 
     # Mount dev NFS drive
