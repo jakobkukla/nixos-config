@@ -65,10 +65,11 @@ in {
           # locales ... see below
           # udev ... for radio libuhd support
           # clangd ... for helix lsp
-          additional_packages = "locales udev clangd";
-          # Configure system locales needed for tab completion
-          # See https://github.com/starship/starship/issues/2176
+          # python3-requests ... for uhd_images_downloader
+          additional_packages = "locales udev clangd python3-requests";
           init_hooks = [
+            # Configure system locales needed for tab completion
+            # See https://github.com/starship/starship/issues/2176
             "locale-gen ${config.i18n.defaultLocale}"
             "update-locale"
           ];
