@@ -14,6 +14,11 @@ in {
     moxzNXPBuilderIP = "10.8.2.54";
     moxzNXPBuilderDevDrive = "/home/moxz";
   in {
+    modules.vcs = {
+      userName = "Jakob Kukla";
+      userEmail = "jakob@moxzcomm.com";
+    };
+
     virtualisation.podman = {
       enable = true;
     };
@@ -68,11 +73,6 @@ in {
         # Flash .bmap files (Yocto)
         bmap-tools
       ];
-
-      programs.git = {
-        userName = lib.mkForce "Jakob Kukla";
-        userEmail = lib.mkForce "jakob@moxzcomm.com";
-      };
 
       # TODO: install firefox plugin with nixos
       programs.keepassxc = {

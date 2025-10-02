@@ -14,5 +14,6 @@
     ./eduroam.nix
     ./games
     ./librespot.nix
+    ./vcs.nix
   ];
 }

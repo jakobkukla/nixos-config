@@ -14,6 +14,7 @@ in {
       nix.enable = true;
       user.enable = true;
       shell.enable = true;
+      vcs.enable = true;
       neovim.enable = true;
     };
 
