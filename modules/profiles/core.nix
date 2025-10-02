@@ -19,6 +19,8 @@ in {
 
     security.polkit.enable = true;
 
+    services.fwupd.enable = true;
+
     home-manager.users.${config.modules.user.name} = {
       modules.home = {
         helix.enable = true;
