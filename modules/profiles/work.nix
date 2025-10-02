@@ -18,6 +18,10 @@ in {
       enable = true;
     };
 
+    networking.networkmanager.plugins = with pkgs; [
+      networkmanager-openvpn
+    ];
+
     environment.systemPackages = [
       # Install perf corresponding to kernel
       config.boot.kernelPackages.perf
