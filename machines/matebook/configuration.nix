@@ -29,8 +29,11 @@
       ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
     ];
 
-    # TODO: hyprland monitor config for internal monitor.
-    # Needed for lid switch display toggle.
+    hyprland.monitors."eDP-1" = {
+      resolution = "3000x2000@60";
+      position = "0x0";
+      scale = "2";
+    };
   };
 
   # Enable crypt kernel modules early for cryptsetup to be faster (FIXME: Not sure if this is doing anything)
