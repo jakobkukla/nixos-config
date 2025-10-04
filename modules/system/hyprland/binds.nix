@@ -44,7 +44,7 @@ in {
           ]
           ++ (
             let
-              internalMonitors = lib.filterAttrs (_: cfg: cfg.isInternal) cfg.monitors;
+              internalMonitors = lib.filterAttrs (_: cfg: cfg.disableOnLidSwitch) cfg.monitors;
             in
               # disable/enable monitor on lid switch
               lib.concatLists (lib.mapAttrsToList (

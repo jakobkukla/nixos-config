@@ -29,12 +29,12 @@ in {
           scale = mkOption {
             type = types.str;
           };
-          isInternal = mkOption {
+          disableOnLidSwitch = mkOption {
             type = types.bool;
             default = false;
             example = true;
             description = ''
-              Wheter this is an internal monitor (e.g. a laptop display).
+              Whether to disable this is monitor when the laptop lid is closed.
             '';
           };
         };
