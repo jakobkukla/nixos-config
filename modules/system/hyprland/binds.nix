@@ -41,9 +41,6 @@ in {
             # volume
             ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
-            ", switch:on:Lid Switch, exec, hyprctl keyword monitor 'eDP-1, disable'"
-            ", switch:off:Lid Switch, exec, hyprctl keyword monitor 'eDP-1,1920x1080,0x0,1.25'"
           ]
           ++ (
             let
