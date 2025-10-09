@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -17,6 +18,8 @@ in {
   config = lib.mkIf cfg.enable (lib.mkMerge [
     {
       nix = {
+        package = pkgs.lixPackageSets.latest.lix;
+
         gc = {
           automatic = true;
           dates = "weekly";
@@ -40,7 +43,7 @@ in {
             "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
             "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
             "jakobkukla.cachix.org-1:Wk6Y2/s1YlTwsZKCs46v9uYejYUnVdzXTXzbJbYv+1s="
-            "system:7gMaV5t8G5VkXhIOs8yV/divVtfZ90aXu4Wo0bYpIG8="
+            "system:nVcKbJl9QpDnXrVPUGItRzmFvyHYf+64JBSaKkKoZGc="
           ];
 
           # Netrc file for private cache authentication
