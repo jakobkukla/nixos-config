@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
@@ -16,9 +15,6 @@ in {
   config = lib.mkIf cfg.enable {
     modules.librespot = {
       enable = true;
-      # FIXME: remove once https://github.com/NixOS/nixpkgs/pull/396637 is merged
-      package = pkgs.librespot.override {withAvahi = true;};
-
       settings = {
         name = deviceName;
         bitrate = 320;
