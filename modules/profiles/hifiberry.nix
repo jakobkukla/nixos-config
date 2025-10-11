@@ -21,7 +21,6 @@ in {
 
       settings = {
         name = deviceName;
-        device = alsaDeviceName;
         bitrate = 320;
         enableVolumeNormalisation = true;
       };
