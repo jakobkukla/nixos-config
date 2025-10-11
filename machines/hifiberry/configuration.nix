@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../base.nix
@@ -33,7 +33,8 @@
   hardware.raspberry-pi."4".apply-overlays-dtmerge.enable = true;
   hardware.deviceTree.enable = true;
   hardware.deviceTree.filter = "bcm2711-rpi-4*.dtb";
-  hardware.hifiberry.dacplus.enable = true;
+  hardware.deviceTree.overlays = ["${pkgs.device-tree_rpi.overlays}/hifiberry-dacplusadc.dtbo"];
+  # hardware.hifiberry.dacplus.enable = true;
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
