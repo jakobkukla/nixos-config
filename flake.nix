@@ -76,6 +76,7 @@
 
               {
                 selfhosted.enable = true;
+                selfhosted.media.enable = true;
                 selfhosted.appdataDir = "/var/lib/selfhosted";
                 selfhosted.appdataLegacyDir = "/mnt/user/appdata";
                 selfhosted.dataDir = "/mnt/user/data";
