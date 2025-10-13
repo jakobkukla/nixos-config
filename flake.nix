@@ -75,11 +75,24 @@
               inputs.selfhosted.nixosModules.default
 
               {
-                selfhosted.enable = true;
-                selfhosted.media.enable = true;
-                selfhosted.appdataDir = "/var/lib/selfhosted";
-                selfhosted.appdataLegacyDir = "/mnt/user/appdata";
-                selfhosted.dataDir = "/mnt/user/data";
+                selfhosted = {
+                  enable = true;
+
+                  # Options
+                  appdataDir = "/var/lib/selfhosted";
+                  appdataLegacyDir = "/mnt/user/appdata";
+                  dataDir = "/mnt/user/data";
+
+                  # Modules
+                  attic.enable = true;
+                  authelia.enable = true;
+                  caddy.enable = true;
+                  garage.enable = true;
+                  media.enable = true;
+                  scrutiny.enable = true;
+                  uptime-kuma.enable = true;
+                  vaultwarden.enable = true;
+                };
               }
             ]
             else []

@@ -355,11 +355,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1760393583,
-        "narHash": "sha256-Tp6JnvVKfXk4SOXtMgKpKTCFt49xQfhER4Il8TisDpE=",
+        "lastModified": 1760394406,
+        "narHash": "sha256-UMY5U2g1KU5hG5ZP029zlOcJzgXhvKIlwXLnnK8aD5w=",
         "ref": "feature/modules/media",
-        "rev": "083247622d54bdc326d07e9f0d1076ddcef50be3",
-        "revCount": 28,
+        "rev": "afb8a9e48766c8a1ef8ceb305fb5298d502b6497",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git@github.com/jakobkukla/selfhosted"
       },
