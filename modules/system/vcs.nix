@@ -35,16 +35,19 @@ in {
     home-manager.users.${config.modules.user.name} = {
       programs.git = {
         enable = true;
-        lfs.enable = true;
 
-        userName = cfg.userName;
-        userEmail = cfg.userEmail;
-
-        extraConfig = {
+        settings = {
+          user = {
+            name = cfg.userName;
+            email = cfg.userEmail;
+          };
           init.defaultBranch = "main";
         };
+      };
 
-        difftastic.enable = true;
+      programs.difftastic = {
+        enable = true;
+        git.enable = true;
       };
 
       programs.jujutsu = {
