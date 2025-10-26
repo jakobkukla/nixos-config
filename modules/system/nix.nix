@@ -20,6 +20,9 @@ in {
       nix = {
         package = pkgs.lixPackageSets.latest.lix;
 
+        # Disabel legacy nix channels
+        channel.enable = false;
+
         gc = {
           automatic = true;
           dates = "weekly";
@@ -29,6 +32,9 @@ in {
         settings = {
           # Enable flakes
           experimental-features = ["nix-command" "flakes"];
+
+          # Disable the global registry
+          flake-registry = "";
 
           substituters = [
             "https://cache.nixos.org?priority=40"
