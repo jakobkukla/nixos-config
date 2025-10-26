@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   cfg = config.modules.nix;
@@ -20,6 +21,11 @@ in {
       nix = {
         package = pkgs.lixPackageSets.latest.lix;
 
+        registry = {
+          # Make nix3 commands use the flake's nixpkgs
+          nixpkgs.flake = inputs.nixpkgs;
+        };
+
         gc = {
           automatic = true;
           dates = "weekly";
@@ -29,6 +35,9 @@ in {
         settings = {
           # Enable flakes
           experimental-features = ["nix-command" "flakes"];
+
+          # Disable the global registry
+          flake-registry = "";
 
           substituters = [
             "https://cache.nixos.org?priority=40"
