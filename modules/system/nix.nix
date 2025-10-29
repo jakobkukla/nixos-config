@@ -20,6 +20,9 @@ in {
       nix = {
         package = pkgs.lixPackageSets.latest.lix;
 
+        # Disabel legacy nix channels
+        channel.enable = false;
+
         gc = {
           automatic = true;
           dates = "weekly";
