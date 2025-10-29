@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   cfg = config.modules.nix;
@@ -20,11 +19,6 @@ in {
     {
       nix = {
         package = pkgs.lixPackageSets.latest.lix;
-
-        registry = {
-          # Make nix3 commands use the flake's nixpkgs
-          nixpkgs.flake = inputs.nixpkgs;
-        };
 
         gc = {
           automatic = true;
