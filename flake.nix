@@ -35,7 +35,6 @@
     in {
       matebook = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
           defaultModules
           ++ [
@@ -46,7 +45,6 @@
       };
       pc = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
           defaultModules
           ++ [
@@ -55,7 +53,6 @@
       };
       server = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
           defaultModules
           ++ [
@@ -64,7 +61,6 @@
       };
       hifiberry = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "aarch64-linux";
         modules =
           defaultModules
           ++ [
@@ -74,7 +70,6 @@
       };
       triton = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
-        system = "x86_64-linux";
         modules =
           defaultModules
           ++ [
