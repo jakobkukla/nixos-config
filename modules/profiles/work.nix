@@ -70,7 +70,7 @@ in {
         mattermost-desktop
 
         # Flash .bmap files (Yocto)
-        bmap-tools
+        bmaptool
       ];
 
       # TODO: install firefox plugin with nixos
