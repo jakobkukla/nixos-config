@@ -35,9 +35,6 @@ in {
     services.auto-cpufreq.enable = true;
     services.thermald.enable = true;
 
-    # Automatic SSD TRIM
-    services.fstrim.enable = true;
-
     # Touchpad configuration
     services.libinput = {
       enable = true;
