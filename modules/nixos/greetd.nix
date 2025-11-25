@@ -16,16 +16,16 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    services.greetd = {
-      enable = true;
-      settings = rec {
-        initial_session = {
-          command = cfg.command;
-          user = cfg.user;
-        };
-        default_session = initial_session;
-      };
-    };
+    # services.greetd = {
+    #   enable = true;
+    #   settings = rec {
+    #     default_session = {
+    #       command = cfg.command;
+    #       user = cfg.user;
+    #     };
+    #     initial_session = default_session;
+    #   };
+    # };
 
     # unlock GPG keyring on login
     security.pam.services.greetd.enableGnomeKeyring = true;

@@ -32,8 +32,9 @@ in {
 
     # Power management and performance scaling
     powerManagement.enable = true;
-    services.auto-cpufreq.enable = true;
     services.thermald.enable = true;
+    services.upower.enable = true;
+    services.power-profiles-daemon.enable = true;
 
     # Backlight brightness control
     programs.light.enable = true;

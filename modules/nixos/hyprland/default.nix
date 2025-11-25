@@ -78,88 +78,51 @@ in {
     };
   };
 
-  config = let
-    # FIXME: This is needed to source home.sessionVariables in Hyprland.
-    # Keep track of https://github.com/nix-community/home-manager/issues/2659 for a cleaner solution.
-    hyprlandWrapper = pkgs.writeShellScript "hyprland_wrapper" ''
-      source "${config.modules.user.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  config = lib.mkIf cfg.enable {
+    programs.hyprland.enable = true;
 
-      exec ${lib.getExe config.programs.hyprland.package} $@
-    '';
-  in
-    lib.mkIf cfg.enable {
-      assertions = [
-        {
-          assertion = !config.modules.sway.enable;
-          message = "`sway` and `hyprland` modules must not be enabled at the same time";
-        }
+    # FIXME: Shouldn't be needed. See https://discourse.nixos.org/t/unable-to-add-new-library-folder-to-steam/38923/10
+    xdg.portal = {
+      enable = true;
+      extraPortals = with pkgs; [xdg-desktop-portal-gtk];
+    };
+
+    home-manager.users.${config.modules.user.name} = {
+      home.packages = with pkgs; [
+        wl-clipboard
+        # hyprland screenshot utility
+        grimblast
       ];
 
-      modules.greetd = {
+      services.swayidle = {
         enable = true;
-        command = hyprlandWrapper.outPath;
-        user = config.modules.user.name;
-      };
-
-      programs.hyprland.enable = true;
-
-      # FIXME: Shouldn't be needed. See https://discourse.nixos.org/t/unable-to-add-new-library-folder-to-steam/38923/10
-      xdg.portal = {
-        enable = true;
-        extraPortals = with pkgs; [xdg-desktop-portal-gtk];
-      };
-
-      home-manager.users.${config.modules.user.name} = {
-        home.packages = with pkgs; [
-          wl-clipboard
-          # hyprland screenshot utility
-          grimblast
+        timeouts = [
+          {
+            timeout = 1200;
+            command = "${pkgs.systemd}/bin/systemctl suspend";
+          }
         ];
+      };
 
-        home.sessionVariables = {
-          NIXOS_OZONE_WL = "1";
-          _JAVA_AWT_WM_NONREPARENTING = "1"; # Fix java non-parenting issues
-        };
+      # start swayidle as part of hyprland, not sway
+      systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 
-        home.pointerCursor = {
-          package = pkgs.adwaita-icon-theme;
-          name = "Adwaita";
+      modules.home.rofi.enable = true;
 
-          gtk.enable = true;
-          size = 24;
-        };
+      services.gammastep = {
+        enable = true;
+        # provider = "geoclue2";
+        latitude = 52.5200;
+        longitude = 13.4050;
+      };
 
-        gtk.enable = true;
-
-        services.swayidle = {
-          enable = true;
-          timeouts = [
-            {
-              timeout = 1200;
-              command = "${pkgs.systemd}/bin/systemctl suspend";
-            }
-          ];
-        };
-
-        # start swayidle as part of hyprland, not sway
-        systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
-
-        modules.home.rofi.enable = true;
-
-        services.gammastep = {
-          enable = true;
-          # provider = "geoclue2";
-          latitude = 52.5200;
-          longitude = 13.4050;
-        };
-
-        wayland.windowManager.hyprland = {
-          enable = true;
-          systemd.variables = ["--all"];
-          plugins = with pkgs.hyprlandPlugins; [
-            csgo-vulkan-fix
-          ];
-        };
+      wayland.windowManager.hyprland = {
+        enable = true;
+        systemd.variables = ["--all"];
+        plugins = with pkgs.hyprlandPlugins; [
+          csgo-vulkan-fix
+        ];
       };
     };
+  };
 }

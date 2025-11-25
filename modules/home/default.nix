@@ -10,5 +10,6 @@
     ./spotify.nix
     ./bitwarden.nix
     ./senpai.nix
+    ./dms.nix
   ];
 }

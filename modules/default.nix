@@ -32,6 +32,7 @@
         inputs.impermanence.nixosModules.impermanence
         inputs.home-manager.nixosModules.home-manager
         inputs.agenix.nixosModules.default
+        inputs.niri.nixosModules.niri
       ];
     };
 
@@ -42,6 +43,8 @@
 
         # FIXME: preferably these would live right where they are used
         # other
+        inputs.dms.homeModules.default
+        inputs.dms.homeModules.niri
         inputs.vscode-server.nixosModules.home
         inputs.zen-browser.homeModules.beta
       ];
