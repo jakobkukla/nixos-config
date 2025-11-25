@@ -21,6 +21,8 @@
       ./home
 
       # other
+      inputs.dms.homeModules.dankMaterialShell.default
+      inputs.dms.homeModules.dankMaterialShell.niri
       inputs.vscode-server.nixosModules.home
       inputs.zen-browser.homeModules.beta
     ];

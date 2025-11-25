@@ -18,6 +18,11 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
 
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
+    dms.url = "github:AvengeMedia/DankMaterialShell";
+    dms.inputs.nixpkgs.follows = "nixpkgs";
+
     devenv.url = "github:cachix/devenv/latest";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -30,6 +35,8 @@
         inputs.impermanence.nixosModules.impermanence
         inputs.home-manager.nixosModules.home-manager
         inputs.agenix.nixosModules.default
+        inputs.niri.nixosModules.niri
+        inputs.dms.nixosModules.greeter
       ];
       specialArgs = {inherit inputs;};
     in {

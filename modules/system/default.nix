@@ -8,8 +8,10 @@
     ./build-vm.nix
     ./greetd.nix
     ./neovim.nix
+    ./window-managers
     ./sway.nix
     ./hyprland
+    ./niri
     ./printer.nix
     ./eduroam.nix
     ./games
