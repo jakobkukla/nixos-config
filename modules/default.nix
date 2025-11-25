@@ -21,6 +21,8 @@
       ./home
 
       # other
+      inputs.dms.homeModules.default
+      inputs.dms.homeModules.niri
       inputs.vscode-server.nixosModules.home
       inputs.zen-browser.homeModules.beta
     ];

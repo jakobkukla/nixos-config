@@ -11,7 +11,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    modules.hyprland.enable = true;
+    # modules.hyprland.enable = true;
+    # modules.niri.enable = true;
+    # API could be better, how about window-managers.niri.enable?
+    modules.windowManager = {
+      enable = true;
+      variant = "niri";
+    };
 
     fonts.packages = with pkgs; [
       source-code-pro
@@ -41,6 +47,8 @@ in {
 
       modules.home = {
         defaultApplications.enable = true;
+
+        dms.enable = true;
 
         browsers = {
           defaultBrowser = "zen-browser";

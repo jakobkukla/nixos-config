@@ -24,3 +24,6 @@
   - migrate attic from docker to nixos
 - matebook:
   - migrate to zfs
+- home-manager:
+  - investigate home.preferXdgDirectories
+- vacuumtube
