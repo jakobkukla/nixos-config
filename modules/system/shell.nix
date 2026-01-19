@@ -18,7 +18,7 @@
       };
     };
 
-    home-manager.users.${config.modules.user.name} = {
+    home-manager.users.${config.modules.user.name} = hmArgs: {
       home.packages = with pkgs; [
         nitch
         onefetch
@@ -26,6 +26,8 @@
 
       programs.zsh = {
         enable = true;
+        # Enable new dotDir behaviour (default as of home.stateVersion >= 26.05)
+        dotDir = "${hmArgs.config.xdg.configHome}/zsh";
         shellAliases = {
           cat = "bat";
           ip = "ip --color";
