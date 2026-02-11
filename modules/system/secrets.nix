@@ -48,6 +48,10 @@ in {
           owner = "root";
           group = "root";
         };
+        soju = {
+          file = ../../secrets/soju.age;
+          owner = config.modules.user.name;
+        };
       };
     };
 

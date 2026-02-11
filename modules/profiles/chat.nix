@@ -12,6 +12,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
+      modules.home.senpai.enable = true;
+
       home.packages = with pkgs; [
         discord
         signal-desktop-bin
