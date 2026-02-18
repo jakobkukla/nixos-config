@@ -5,7 +5,7 @@
 }: {
   imports = [
     # system modules
-    ./system
+    ./nixos
 
     # hardware modules
     ./hardware
