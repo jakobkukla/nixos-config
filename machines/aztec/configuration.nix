@@ -46,7 +46,7 @@
   # Linux kernel configuration
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos-matebook";
+  networking.hostName = "aztec";
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";

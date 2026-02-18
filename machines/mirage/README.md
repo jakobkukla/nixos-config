@@ -1,4 +1,4 @@
-# pc
+# mirage (Gaming PC)
 
 ## Partition layout
 
@@ -70,9 +70,9 @@ nixos-generate-config --root /mnt
 ```
 
 Compare the generated hardware-configuration.nix with
-machines/pc/hardware-configuration.nix, adjust and push to GitHub if needed.
+machines/mirage/hardware-configuration.nix, adjust and push to GitHub if needed.
 
-## Copy pc ssh key to home directory
+## Copy mirage ssh key to home directory
 
 ```bash
 mkdir -p /mnt/home/jakob/.ssh
@@ -82,7 +82,7 @@ cp /path/to/.ssh/id_ed25519* /mnt/home/jakob/.ssh
 ## Install and reboot
 
 ```bash
-nixos-install --no-root-password --flake github:jakobkukla/nixos-config#pc
+nixos-install --no-root-password --flake github:jakobkukla/nixos-config#mirage
 reboot
 ```
 

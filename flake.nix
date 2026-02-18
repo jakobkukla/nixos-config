@@ -33,39 +33,39 @@
       ];
       specialArgs = {inherit inputs;};
     in {
-      matebook = inputs.nixpkgs.lib.nixosSystem {
+      aztec = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules =
           defaultModules
           ++ [
             inputs.nixos-hardware.nixosModules.common-cpu-intel
             inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
-            ./machines/matebook/configuration.nix
+            ./machines/aztec/configuration.nix
           ];
       };
-      pc = inputs.nixpkgs.lib.nixosSystem {
+      cache = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules =
           defaultModules
           ++ [
-            ./machines/pc/configuration.nix
+            ./machines/cache/configuration.nix
           ];
       };
-      server = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            ./machines/server/configuration.nix
-          ];
-      };
-      hifiberry = inputs.nixpkgs.lib.nixosSystem {
+      inferno = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules =
           defaultModules
           ++ [
             inputs.nixos-hardware.nixosModules.raspberry-pi-4
-            ./machines/hifiberry/configuration.nix
+            ./machines/inferno/configuration.nix
+          ];
+      };
+      mirage = inputs.nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
+        modules =
+          defaultModules
+          ++ [
+            ./machines/mirage/configuration.nix
           ];
       };
       triton = inputs.nixpkgs.lib.nixosSystem {

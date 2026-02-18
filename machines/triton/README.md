@@ -1,4 +1,4 @@
-# triton
+# triton (Work Machine)
 
 ## New installation
 
@@ -95,7 +95,7 @@ sudo ssh-keygen \
 Install once to create `/etc/ssh` and copy to `/persist`.
 
 ```bash
-sudo nixos-install --no-root-password --root /mnt/root --flake github:jakobkukla/nixos-config#server
+sudo nixos-install --no-root-password --root /mnt/root --flake github:jakobkukla/nixos-config#$MACHINE
 cp -r /mnt/root/etc/ssh /mnt/root/persist/etc
 ```
 
@@ -112,6 +112,6 @@ git ...
 ### Install
 
 ```bash
-sudo nixos-install --no-root-password --root /mnt/root --flake github:jakobkukla/nixos-config#server
+sudo nixos-install --no-root-password --root /mnt/root --flake github:jakobkukla/nixos-config#$MACHINE
 reboot
 ```

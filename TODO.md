@@ -19,8 +19,8 @@
   - subkey / main key?
   - goldwarden?
 - treefmt-nix
-- server:
+- cache:
   - swap in zfs?
   - migrate attic from docker to nixos
-- matebook:
+- aztec:
   - migrate to zfs

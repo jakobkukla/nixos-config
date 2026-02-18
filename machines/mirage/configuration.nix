@@ -64,7 +64,7 @@
   # Linux kernel configuration
   boot.kernelPackages = latestZfsCompatibleKernel;
 
-  networking.hostName = "nixos-pc";
+  networking.hostName = "mirage";
   networking.hostId = "4090d928";
 
   networking.networkmanager.enable = true;

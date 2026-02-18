@@ -1,4 +1,4 @@
-# hifiberry
+# inferno (Sound System)
 
 ## New Installation
 
@@ -31,7 +31,7 @@ agenix -r
 
 ```bash
 nixos-rebuild switch \
-  --flake github:jakobkukla/nixos-config#hifiberry \
+  --flake github:jakobkukla/nixos-config#inferno \
   --target-host root@<ip-address>
 ```
 
@@ -51,6 +51,6 @@ The local machine needs a working cross-compilation environment (if applicable).
 
 ```bash
 nixos-rebuild switch \
-  --flake github:jakobkukla/nixos-config#hifiberry \
+  --flake github:jakobkukla/nixos-config#inferno \
   --target-host root@<ip-address>
 ```

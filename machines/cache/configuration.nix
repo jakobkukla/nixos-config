@@ -47,7 +47,7 @@
   # Linux kernel configuration
   boot.kernelPackages = latestZfsCompatibleKernel;
 
-  networking.hostName = "nixos-server";
+  networking.hostName = "cache";
   networking.hostId = "1266a027";
 
   # NOTE: Docker is overwriting these. See https://github.com/NixOS/nixpkgs/issues/111852

@@ -1,4 +1,4 @@
-# matebook
+# aztec (Matebook X Pro)
 
 ## Partition layout
 
@@ -51,10 +51,10 @@ mount -o subvol=persist,compress=zstd,noatime /dev/mapper/enc /mnt/persist
 nixos-generate-config --root /mnt
 ```
 
-Compare the generated hardware-configuration.nix with machines/matebook/hardware-configuration.nix,
+Compare the generated hardware-configuration.nix with machines/aztec/hardware-configuration.nix,
 adjust and push to GitHub if needed.
 
-## Copy matebook ssh key to home directory
+## Copy aztec ssh key to home directory
 
 ```bash
 mkdir -p /mnt/home/jakob/.ssh
@@ -64,7 +64,7 @@ cp /path/to/.ssh/id_ed25519* /mnt/home/jakob/.ssh
 ## Install and reboot
 
 ```bash
-nixos-install --flake github:jakobkukla/nixos-config#matebook
+nixos-install --flake github:jakobkukla/nixos-config#aztec
 reboot
 ```
 

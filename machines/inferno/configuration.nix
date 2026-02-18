@@ -40,7 +40,7 @@
   # Enables the generation of /boot/extlinux/extlinux.conf
   boot.loader.generic-extlinux-compatible.enable = true;
 
-  networking.hostName = "nixos-hifiberry";
+  networking.hostName = "inferno";
 
   networking.networkmanager.enable = true;
   networking.networkmanager.wifi.backend = "iwd";

@@ -7,13 +7,13 @@
 
 Setup instructions for specific machines can be found in `machines/<machine>`.
 
-| Machine   | Setup Instructions           |
-|-----------|------------------------------|
-| matebook  | [README](machines/matebook)  |
-| pc        | [README](machines/pc)        |
-| server    | [README](machines/server)    |
-| hifiberry | [README](machines/hifiberry) |
-| triton    | [README](machines/triton)    |
+| Machine | Description    | Setup Instructions         |
+|---------|----------------|----------------------------|
+| aztec   | Matebook X Pro | [README](machines/aztec)   |
+| cache   | Homelab        | [README](machines/cache)   |
+| inferno | Sound System   | [README](machines/inferno) |
+| mirage  | Gaming PC      | [README](machines/mirage)  |
+| triton  | Work Machine   | [README](machines/triton)  |
 
 ## Test in VM
 
