@@ -24,14 +24,24 @@
   };
 
   outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+    flake-parts.lib.mkFlake {inherit inputs;} (let
+      # These will be exported.
+      flakeModules = {
+        devshell = ./flake/devshell.nix;
+        formatter = ./flake/formatter.nix;
+      };
+    in {
       imports = [
+        inputs.flake-parts.flakeModules.flakeModules
+
+        flakeModules.devshell
+        flakeModules.formatter
+
         ./machines
         ./modules
-
-        ./flake/devshell.nix
-        ./flake/formatter.nix
       ];
+
+      flake = {inherit flakeModules;};
       systems = ["x86_64-linux" "aarch64-linux"];
-    };
+    });
 }
