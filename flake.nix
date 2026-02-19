@@ -2,6 +2,8 @@
   description = "NixOS system config";
 
   inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,88 +24,15 @@
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs: {
-    nixosConfigurations = let
-      defaultModules = [
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./machines
         ./modules
 
-        inputs.impermanence.nixosModules.impermanence
-        inputs.home-manager.nixosModules.home-manager
-        inputs.agenix.nixosModules.default
+        ./flake/devshell.nix
+        ./flake/formatter.nix
       ];
-      specialArgs = {inherit inputs;};
-    in {
-      aztec = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            inputs.nixos-hardware.nixosModules.common-cpu-intel
-            inputs.nixos-hardware.nixosModules.common-gpu-nvidia-disable
-            ./machines/aztec/configuration.nix
-          ];
-      };
-      cache = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            ./machines/cache/configuration.nix
-          ];
-      };
-      inferno = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            inputs.nixos-hardware.nixosModules.raspberry-pi-4
-            ./machines/inferno/configuration.nix
-          ];
-      };
-      mirage = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            ./machines/mirage/configuration.nix
-          ];
-      };
-      triton = inputs.nixpkgs.lib.nixosSystem {
-        inherit specialArgs;
-        modules =
-          defaultModules
-          ++ [
-            inputs.nixos-hardware.nixosModules.common-cpu-intel
-            ./machines/triton/configuration.nix
-          ];
-      };
+      systems = ["x86_64-linux" "aarch64-linux"];
     };
-
-    devShells.x86_64-linux.default = let
-      pkgs = import inputs.nixpkgs {
-        system = "x86_64-linux";
-      };
-    in
-      inputs.devenv.lib.mkShell {
-        inherit inputs pkgs;
-        modules = [
-          {
-            packages = with pkgs; [
-              alejandra
-            ];
-
-            languages.nix.enable = true;
-
-            git-hooks.hooks = {
-              actionlint.enable = true;
-              alejandra.enable = true;
-              check-merge-conflicts.enable = true;
-              commitizen.enable = true;
-              deadnix.enable = true;
-              markdownlint.enable = true;
-            };
-          }
-        ];
-      };
-  };
 }
