@@ -11,7 +11,7 @@ Use existing efi partition as /boot. Ignore ubuntu's /boot partition.
 
 ##### Partition layout
 
-```
+```text
 | Partition       | Type           | Size    |
 |-----------------|----------------|---------|
 |  p1             | /boot          | 1 GiB   |
