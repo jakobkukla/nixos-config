@@ -20,8 +20,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
 
-    devenv.url = "github:cachix/devenv/latest";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
   outputs = inputs @ {flake-parts, ...}:
