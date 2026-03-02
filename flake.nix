@@ -28,6 +28,8 @@
     niri.inputs.nixpkgs.follows = "nixpkgs";
     dms.url = "github:AvengeMedia/DankMaterialShell/stable";
     dms.inputs.nixpkgs.follows = "nixpkgs";
+    dms-plugin-registry.url = "github:AvengeMedia/dms-plugin-registry";
+    dms-plugin-registry.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-modules.url = "github:jakobkukla/flake-modules";
     flake-modules.inputs.flake-parts.follows = "flake-parts";
