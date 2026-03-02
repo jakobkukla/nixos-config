@@ -19,26 +19,29 @@
         # profiles
         ./profiles
 
-        # FIXME: this is stupid, again...
         # home modules
-        {
-          home-manager = {
-            sharedModules = [
-              config.flake.homeModules.default
-            ];
+        config.flake.nixosModules.homeManagerConfiguration
+      ];
+    };
 
-            # Only needed, if we want to access `inputs` from pure hm modules
-            # (not flake or nixos modules).
-            extraSpecialArgs = {
-              inherit inputs;
-            };
-          };
-        }
-
-        # FIXME: preferably these would live right where they are used
-        # other
+    nixosModules.homeManagerConfiguration = {
+      imports = [
         inputs.home-manager.nixosModules.home-manager
       ];
+
+      config = {
+        home-manager = {
+          sharedModules = [
+            config.flake.homeModules.default
+          ];
+
+          # Only needed, if we want to access `inputs` from pure hm modules
+          # (not flake or nixos modules).
+          extraSpecialArgs = {
+            inherit inputs;
+          };
+        };
+      };
     };
 
     homeModules.default = {
