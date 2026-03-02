@@ -9,6 +9,7 @@ in {
   imports = [
     inputs.dms.homeModules.default
     inputs.dms.homeModules.niri
+    inputs.dms-plugin-registry.modules.default
   ];
 
   options.modules.home.dms = with lib; {
@@ -30,6 +31,8 @@ in {
         # Auto-location for weather and time
         useAutoLocation = true;
       };
+
+      managePluginSettings = true;
     };
   };
 }
