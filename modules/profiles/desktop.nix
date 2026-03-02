@@ -31,6 +31,9 @@ in {
     # FIXME: Does this make sense here?
     modules.printer.enable = true;
 
+    # Enable KDE Connect phone companion.
+    modules.kde-connect.enable = true;
+
     # Enable sound.
     security.rtkit.enable = true;
     services.pipewire = {

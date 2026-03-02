@@ -33,6 +33,11 @@ in {
       };
 
       managePluginSettings = true;
+      plugins = {
+        # TODO: Can I move this to the kde-connect module and enable it
+        # conditionally?
+        dankKDEConnect.enable = true;
+      };
     };
   };
 }
