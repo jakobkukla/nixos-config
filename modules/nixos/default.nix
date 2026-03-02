@@ -13,5 +13,6 @@
     ./games
     ./librespot.nix
     ./vcs.nix
+    ./kde-connect.nix
   ];
 }
