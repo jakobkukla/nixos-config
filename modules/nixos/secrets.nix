@@ -7,6 +7,10 @@
 }: let
   cfg = config.modules.secrets;
 in {
+  imports = [
+    inputs.agenix.nixosModules.default
+  ];
+
   options.modules.secrets = with lib; {
     enable =
       mkEnableOption "secrets module"

@@ -2,10 +2,15 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   cfg = config.modules.home.vscode;
 in {
+  imports = [
+    inputs.vscode-server.nixosModules.home
+  ];
+
   options.modules.home.vscode = with lib; {
     enable = mkEnableOption "Visual Studio Code";
     enableServer =

@@ -2,10 +2,15 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }: let
   cfg = config.modules.filesystem;
 in {
+  imports = [
+    inputs.impermanence.nixosModules.impermanence
+  ];
+
   options.modules.filesystem = with lib; {
     enable = mkEnableOption "filesystem module";
     enableImpermanence = mkEnableOption "ephemeral root";

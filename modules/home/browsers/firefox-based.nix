@@ -1,10 +1,15 @@
 {
   lib,
   config,
+  inputs,
   ...
 }: let
   cfg = config.modules.home.browsers.firefox-based;
 in {
+  imports = [
+    inputs.zen-browser.homeModules.beta
+  ];
+
   options.modules.home.browsers.firefox-based = with lib; {
     enableSelfHostedSync =
       mkEnableOption "self-hosted Firefox Sync server."

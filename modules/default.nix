@@ -22,16 +22,22 @@
         # FIXME: this is stupid, again...
         # home modules
         {
-          home-manager.sharedModules = [
-            config.flake.homeModules.default
-          ];
+          home-manager = {
+            sharedModules = [
+              config.flake.homeModules.default
+            ];
+
+            # Only needed, if we want to access `inputs` from pure hm modules
+            # (not flake or nixos modules).
+            extraSpecialArgs = {
+              inherit inputs;
+            };
+          };
         }
 
         # FIXME: preferably these would live right where they are used
         # other
-        inputs.impermanence.nixosModules.impermanence
         inputs.home-manager.nixosModules.home-manager
-        inputs.agenix.nixosModules.default
       ];
     };
 
@@ -39,11 +45,6 @@
       imports = [
         # local modules
         ./home
-
-        # FIXME: preferably these would live right where they are used
-        # other
-        inputs.vscode-server.nixosModules.home
-        inputs.zen-browser.homeModules.beta
       ];
     };
   };
