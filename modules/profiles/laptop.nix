@@ -44,7 +44,7 @@ in {
 
     home-manager.users.${config.modules.user.name} = {
       # Battery notification daemon
-      services.batsignal.enable = true;
+      # services.batsignal.enable = true;
     };
   };
 }

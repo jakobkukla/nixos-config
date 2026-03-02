@@ -34,6 +34,9 @@ in {
 
       managePluginSettings = true;
       plugins = {
+        # TODO: Can I enable this for all machines or do I need to restrict it
+        # to laptops?
+        dankBatteryAlerts.enable = true;
         # TODO: Can I move this to the kde-connect module and enable it
         # conditionally?
         dankKDEConnect.enable = true;
