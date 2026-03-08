@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bare-metal.nix
     ./chat.nix
     ./core.nix
     ./server.nix
