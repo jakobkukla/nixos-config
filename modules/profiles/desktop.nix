@@ -32,6 +32,9 @@ in {
       alsa.enable = true;
     };
 
+    # location (needed for gammastep)
+    location.provider = "geoclue2";
+
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         pavucontrol

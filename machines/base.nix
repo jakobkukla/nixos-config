@@ -5,16 +5,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  # location (needed for gammastep)
-  location.provider = "geoclue2";
-
-  # FIXME: workaround for MLS shutdown. See: https://github.com/NixOS/nixpkgs/issues/321121
-  services.geoclue2 = {
-    geoProviderUrl = "https://beacondb.net/v1/geolocate";
-    # submitData = true;
-    # submissionUrl = "https://beacondb.net/v2/geosubmit";
-  };
-
   # Select internationalisation properties.
   i18n.defaultLocale = "de_AT.UTF-8";
   console.keyMap = "de";
