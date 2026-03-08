@@ -7,7 +7,8 @@ let
   inferno = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPS0BKlAHc/ev1+oNpPsfp046IPWwijHXf9J9NoLNQ6I root@inferno";
   mirage = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFUTEU+53xE6W+LQKsb0/L0Sn4A7c5lQynNF6yCn2I9I root@mirage";
   triton = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ9RUHt1rxIADSQJkrjzbKwdNLZKbzBZDkCwi7x00frB root@moxz-triton";
-  systems = [aztec cache inferno mirage triton];
+  vertigo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN0BzYBPoY0W/5TGOND9RswvJZ2b5Bkf7H1Bd8AFeTN0 root@vertigo";
+  systems = [aztec cache inferno mirage triton vertigo];
 in {
   "root.age".publicKeys = users ++ systems;
   "jakob.age".publicKeys = users ++ systems;

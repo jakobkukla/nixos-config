@@ -5,5 +5,6 @@
     ./inferno
     ./mirage
     ./triton
+    ./vertigo
   ];
 }

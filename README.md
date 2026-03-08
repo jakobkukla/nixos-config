@@ -14,6 +14,7 @@ Setup instructions for specific machines can be found in `machines/<machine>`.
 | inferno | Sound System   | [README](machines/inferno) |
 | mirage  | Gaming PC      | [README](machines/mirage)  |
 | triton  | Work Machine   | [README](machines/triton)  |
+| vertigo | Hetzner VPS    | [README](machines/vertigo) |
 
 ## Test in VM
 
