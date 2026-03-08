@@ -13,9 +13,6 @@
       enable = true;
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
-      shellAliases = {
-        sudo = "sudo -E -s ";
-      };
     };
 
     home-manager.users.${config.modules.user.name} = hmArgs: {
