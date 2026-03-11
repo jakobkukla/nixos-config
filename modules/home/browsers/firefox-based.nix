@@ -100,7 +100,6 @@ in {
       (lib.mkIf cfg.zen-browser.enable {
         programs.zen-browser = {
           enable = true;
-          suppressXdgMigrationWarning = true;
 
           policies = sharedPolicies;
           profiles.main.settings = sharedSettings;
