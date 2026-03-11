@@ -22,28 +22,22 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
 
-    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    flake-modules.url = "github:jakobkukla/flake-modules";
+    flake-modules.inputs.flake-parts.follows = "flake-parts";
+    flake-modules.inputs.nixpkgs.follows = "nixpkgs";
+    git-hooks-nix.follows = "flake-modules/git-hooks-nix";
   };
 
   outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} (let
-      # These will be exported.
-      flakeModules = {
-        devshell = ./flake/devshell.nix;
-        formatter = ./flake/formatter.nix;
-      };
-    in {
+    flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.flake-parts.flakeModules.flakeModules
-
-        flakeModules.devshell
-        flakeModules.formatter
+        inputs.flake-modules.modules.flake.devshell
+        inputs.flake-modules.modules.flake.formatter
 
         ./machines
         ./modules
       ];
 
-      flake = {inherit flakeModules;};
       systems = ["x86_64-linux" "aarch64-linux"];
-    });
+    };
 }
