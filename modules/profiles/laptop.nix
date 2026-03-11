@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   ...
 }: let
@@ -35,8 +36,10 @@ in {
     services.auto-cpufreq.enable = true;
     services.thermald.enable = true;
 
-    # Backlight brightness control
-    programs.light.enable = true;
+    environment.systemPackages = with pkgs; [
+      # Backlight brightness control
+      brighntessctl
+    ];
 
     home-manager.users.${config.modules.user.name} = {
       # Battery notification daemon
