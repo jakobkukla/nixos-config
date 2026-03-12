@@ -4,31 +4,18 @@
   config,
   ...
 }: let
-  cfg = config.modules.sway;
+  cfg = config.modules.windowManager.sway;
 in {
-  options.modules.sway = with lib; {
+  options.modules.windowManager.sway = with lib; {
     enable = mkEnableOption "Sway window manager";
     enableNaturalScroll = mkEnableOption "natural scrolling";
   };
 
   config = lib.mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = !config.modules.hyprland.enable;
-        message = "`sway` and `hyprland` modules must not be enabled at the same time";
-      }
-    ];
+    modules.windowManager.enable = true;
 
     # Sway config is managed by home-manager. This is needed for the DM and xdg-desktop-portal.
     programs.sway.enable = true;
-
-    services.displayManager = {
-      defaultSession = "sway";
-      autoLogin = {
-        enable = true;
-        user = config.modules.user.name;
-      };
-    };
 
     # Enable xdg-desktop-portal
     services.dbus.enable = true;
@@ -71,25 +58,8 @@ in {
 
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
-        wl-clipboard
         grim
       ];
-
-      home.sessionVariables = {
-        NIXOS_OZONE_WL = "1";
-        _JAVA_AWT_WM_NONREPARENTING = "1"; # Fix java non-parenting issues
-      };
-
-      # FIXME: This is needed to source home.sessionVariables in LightDM (and probably most other DMs).
-      # Keep track of https://github.com/nix-community/home-manager/issues/2659 for a cleaner solution.
-      xsession.enable = true;
-
-      home.pointerCursor = {
-        package = pkgs.adwaita-icon-theme;
-        name = "Adwaita";
-
-        gtk.enable = true;
-      };
 
       services.swayidle = {
         enable = true;
