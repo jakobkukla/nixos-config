@@ -11,7 +11,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    modules = {
+    modules.windowManager = {
       hyprland = {
         enableNaturalScroll = true;
 
