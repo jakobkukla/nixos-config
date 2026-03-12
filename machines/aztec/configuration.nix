@@ -25,14 +25,16 @@
       enableImpermanence = true;
     };
 
-    hyprland.wallpapers = [
-      ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
-    ];
+    windowManager.hyprland = {
+      wallpapers = [
+        ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
+      ];
 
-    hyprland.monitors."eDP-1" = {
-      resolution = "3000x2000@60";
-      position = "0x0";
-      scale = "2";
+      monitors."eDP-1" = {
+        resolution = "3000x2000@60";
+        position = "0x0";
+        scale = "2";
+      };
     };
   };
 

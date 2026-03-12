@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  cfg = config.modules.hyprland;
+  cfg = config.modules.windowManager.hyprland;
 in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {

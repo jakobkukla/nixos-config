@@ -11,7 +11,12 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    modules.hyprland.enable = true;
+    modules.windowManager = {
+      enable = true;
+      default = "hyprland";
+
+      hyprland.enable = true;
+    };
 
     fonts.packages = with pkgs; [
       source-code-pro
