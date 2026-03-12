@@ -95,8 +95,6 @@ in {
         grimblast
       ];
 
-      gtk.enable = true;
-
       services.swayidle = {
         enable = true;
         timeouts = [
