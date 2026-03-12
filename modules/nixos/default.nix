@@ -9,8 +9,7 @@
       ./build-vm.nix
       ./greetd.nix
       ./neovim.nix
-      ./sway.nix
-      ./hyprland
+      ./window-managers
       ./printer.nix
       ./eduroam.nix
       ./games
