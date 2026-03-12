@@ -16,7 +16,7 @@ in {
 
       home.packages = with pkgs; [
         discord
-        signal-desktop-bin
+        signal-desktop
         element-desktop
       ];
     };
