@@ -6,7 +6,6 @@
     ./nix.nix
     ./filesystem.nix
     ./build-vm.nix
-    ./greetd.nix
     ./neovim.nix
     ./window-managers
     ./printer.nix
