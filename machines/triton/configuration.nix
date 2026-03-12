@@ -18,7 +18,7 @@
       enableImpermanence = true;
     };
 
-    hyprland.monitors."eDP-1" = {
+    windowManager.hyprland.monitors."eDP-1" = {
       resolution = "1920x1080";
       position = "0x0";
       scale = "1.25";
