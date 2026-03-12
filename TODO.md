@@ -26,3 +26,8 @@
   - migrate attic from docker to nixos
 - aztec:
   - migrate to zfs
+- home-manager:
+  - investigate home.preferXdgDirectories
+- vacuumtube
+- dms:
+  - disable dunst which conflicts dms notifications
