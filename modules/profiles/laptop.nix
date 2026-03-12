@@ -38,7 +38,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       # Backlight brightness control
-      brighntessctl
+      brightnessctl
     ];
 
     home-manager.users.${config.modules.user.name} = {
