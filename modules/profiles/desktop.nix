@@ -16,6 +16,7 @@ in {
       default = "hyprland";
 
       hyprland.enable = true;
+      sway.enable = true;
     };
 
     fonts.packages = with pkgs; [
