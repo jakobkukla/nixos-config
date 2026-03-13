@@ -1,4 +1,4 @@
-{latestZfsCompatibleKernel, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ../base.nix
@@ -52,9 +52,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false; # Firmware issue on this mainboard. See https://github.com/NixOS/nixpkgs/issues/75457
-
-  # Linux kernel configuration
-  boot.kernelPackages = latestZfsCompatibleKernel;
 
   networking.hostName = "cache";
   networking.hostId = "1266a027";

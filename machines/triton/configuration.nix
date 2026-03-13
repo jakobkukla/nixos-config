@@ -1,4 +1,4 @@
-{latestZfsCompatibleKernel, ...}: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ../base.nix
@@ -35,9 +35,6 @@
     '';
   };
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Linux kernel configuration
-  boot.kernelPackages = latestZfsCompatibleKernel;
 
   networking.hostName = "moxz-triton";
   networking.hostId = "73e775f3";

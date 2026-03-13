@@ -1,8 +1,4 @@
-{
-  config,
-  latestZfsCompatibleKernel,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../base.nix
@@ -60,9 +56,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = false;
-
-  # Linux kernel configuration
-  boot.kernelPackages = latestZfsCompatibleKernel;
 
   networking.hostName = "mirage";
   networking.hostId = "4090d928";
