@@ -38,7 +38,7 @@ in {
       }
     ];
 
-    home-manager.users.${config.modules.user.name} = {
+    home-manager.users.${config.modules.user.name} = hmArgs: {
       home.packages = with pkgs; [
         grim
       ];
@@ -103,7 +103,7 @@ in {
           };
 
           keybindings = let
-            modifier = config.wayland.windowManager.sway.config.modifier;
+            modifier = hmArgs.config.wayland.windowManager.sway.config.modifier;
           in
             lib.mkOptionDefault {
               "${modifier}+Shift+b" = "exec ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
