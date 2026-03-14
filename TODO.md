@@ -1,9 +1,6 @@
 # TODO
 
 - nix-index / command-not-found:
-  - nix-index: fix slow (use prefix matching when building index:
-    `nix-index --filter-prefix /bin/`)
-  - nix-index: fix imperative init
   - command-not-found: fix old nix commands
 - docs:
   - install dev man pages with `documentation.dev.enable`
