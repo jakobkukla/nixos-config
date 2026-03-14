@@ -5,8 +5,13 @@
     `nix-index --filter-prefix /bin/`)
   - nix-index: fix imperative init
   - command-not-found: fix old nix commands
-- nordvpn:
-  - fix module and maybe upstream it
+- docs:
+  - install dev man pages with `documentation.dev.enable`
+    - no need for `man-pages` and `man-pages-posix`?
+  - custom modules:
+    - fix missing doc fields (description, ...)
+    - add to configuration.nix (`documentation.nixos.includeAllModules`)
+    - add to home-configuration.nix
 - wm:
   - eww: new bar
   - lightdm: customize
