@@ -2,6 +2,7 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }: {
   options.modules.shell = with lib; {
@@ -16,6 +17,10 @@
     };
 
     home-manager.users.${config.modules.user.name} = hmArgs: {
+      imports = [
+        inputs.nix-index-database.homeModules.default
+      ];
+
       home.packages = with pkgs; [
         nitch
         onefetch
@@ -40,6 +45,16 @@
 
       programs.starship = {
         enable = true;
+      };
+
+      programs.nix-index = {
+        enable = true;
+
+        # Use small db for better performance.
+        package = let
+          system = pkgs.stdenv.hostPlatform.system;
+        in
+          inputs.nix-index-database.packages.${system}.nix-index-with-small-db;
       };
 
       programs.direnv = {
