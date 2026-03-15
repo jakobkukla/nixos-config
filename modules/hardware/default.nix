@@ -1,5 +1,7 @@
 {
-  imports = [
-    ./hifiberry
-  ];
+  flake.nixosModules.hardware = {
+    imports = [
+      ./hifiberry
+    ];
+  };
 }
