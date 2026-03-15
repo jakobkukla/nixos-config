@@ -66,10 +66,6 @@ in {
           options = "--delete-older-than 5d";
         };
 
-        # FIXME: can't I change this in nixos globally?
-        nixpkgs.overlays = import ../../pkgs;
-        nixpkgs.config.allowUnfree = true;
-
         # TODO: think about replacing nix.gc with nh's clean service
         programs.nh.enable = true;
       };
