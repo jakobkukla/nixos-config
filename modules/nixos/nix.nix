@@ -20,7 +20,7 @@ in {
       nix = {
         package = pkgs.lixPackageSets.latest.lix;
 
-        # Disabel legacy nix channels
+        # Disable legacy nix channels
         channel.enable = false;
 
         gc = {
