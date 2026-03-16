@@ -13,9 +13,10 @@ in {
   config = lib.mkIf cfg.enable {
     modules.windowManager = {
       enable = true;
-      default = "hyprland";
+      default = "niri";
 
       hyprland.enable = true;
+      niri.enable = true;
       sway.enable = true;
     };
 
