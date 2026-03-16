@@ -27,20 +27,20 @@ in {
               action.spawn-sh = "${lib.getExe pkgs.rofi} -m 1 -show drun";
             };
 
-            # Volume Keys
-            XF86AudioRaiseVolume = {
+            # Volume Keys (overridable for DMS)
+            XF86AudioRaiseVolume = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 6%+ -l '1.0'";
             };
-            XF86AudioLowerVolume = {
+            XF86AudioLowerVolume = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 6%-";
             };
-            XF86AudioMute = {
+            XF86AudioMute = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
             };
-            XF86AudioMicMute = {
+            XF86AudioMicMute = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
             };
@@ -63,12 +63,12 @@ in {
               action.spawn-sh = "${lib.getExe pkgs.playerctl} playerctl next";
             };
 
-            # Backlight Brightness Keys
-            XF86MonBrightnessUp = {
+            # Backlight Brightness Keys (overridable for DMS)
+            XF86MonBrightnessUp = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe pkgs.brightnessctl} set +10%";
             };
-            XF86MonBrightnessDown = {
+            XF86MonBrightnessDown = lib.mkDefault {
               allow-when-locked = true;
               action.spawn-sh = "${lib.getExe pkgs.brightnessctl} set 10%-";
             };
