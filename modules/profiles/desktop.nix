@@ -52,6 +52,8 @@ in {
       modules.home = {
         defaultApplications.enable = true;
 
+        dms.enable = true;
+
         browsers = {
           defaultBrowser = "zen-browser";
 

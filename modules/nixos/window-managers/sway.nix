@@ -87,11 +87,12 @@ in {
             lib.mkOptionDefault {
               "${modifier}+Shift+b" = "exec ${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
 
-              "XF86MonBrightnessUp" = "exec brightnessctl set +10%";
-              "XF86MonBrightnessDown" = "exec brightnessctl set 10%-";
-              "XF86AudioRaiseVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+";
-              "XF86AudioLowerVolume" = "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-";
-              "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+              # Make these overridable for DMS
+              "XF86MonBrightnessUp" = lib.mkDefault "exec brightnessctl set +10%";
+              "XF86MonBrightnessDown" = lib.mkDefault "exec brightnessctl set 10%-";
+              "XF86AudioRaiseVolume" = lib.mkDefault "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+";
+              "XF86AudioLowerVolume" = lib.mkDefault "exec wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-";
+              "XF86AudioMute" = lib.mkDefault "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
             };
         };
       };
