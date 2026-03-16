@@ -26,6 +26,8 @@
 
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
+    dms.url = "github:AvengeMedia/DankMaterialShell/stable";
+    dms.inputs.nixpkgs.follows = "nixpkgs";
 
     flake-modules.url = "github:jakobkukla/flake-modules";
     flake-modules.inputs.flake-parts.follows = "flake-parts";
