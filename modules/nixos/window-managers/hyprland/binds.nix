@@ -22,7 +22,7 @@
     10);
 in {
   config = lib.mkIf cfg.enable {
-    home-manager.users.${config.modules.user.name} = {
+    home-manager.users.${config.modules.user.name} = hmArgs: {
       wayland.windowManager.hyprland.settings = {
         "$terminal" = "${pkgs.alacritty}/bin/alacritty";
         "$menu" = "${pkgs.rofi}/bin/rofi -m 1 -show drun";
@@ -37,11 +37,12 @@ in {
         "$right" = "L";
 
         bindl =
-          [
+          # Make these overridable for DMS
+          (lib.optionals (!hmArgs.config.modules.home.dms.enable) [
             # volume
             ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-          ]
+          ])
           ++ (
             let
               internalMonitors = lib.filterAttrs (_: cfg: cfg.disableOnLidSwitch) cfg.monitors;
@@ -59,7 +60,8 @@ in {
                 internalMonitors)
           );
 
-        bindle = [
+        # Make these overridable for DMS
+        bindle = lib.optionals (!hmArgs.config.modules.home.dms.enable) [
           # volume
           ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
