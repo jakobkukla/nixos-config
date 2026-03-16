@@ -20,7 +20,9 @@ in {
 
         # tearing
         general.allow_tearing = lib.mkIf cfg.enableTearing "true";
-        windowrulev2 = lib.mkIf cfg.enableTearing "immediate, class:^(cs2)$";
+        windowrule = lib.mkIf cfg.enableTearing [
+          "match:class ^(cs2)$, immediate on"
+        ];
 
         ecosystem = {
           no_update_news = "true";
