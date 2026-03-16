@@ -8,6 +8,7 @@
 in {
   imports = [
     ./hyprland
+    ./niri
     ./sway.nix
   ];
 
@@ -15,7 +16,7 @@ in {
     enable = mkEnableOption "Wayland window manager configuration";
 
     default = mkOption {
-      type = types.enum ["hyprland" "sway"];
+      type = types.enum ["hyprland" "niri" "sway"];
       example = "hyprland";
       description = ''
         The default window manager variant to use.
