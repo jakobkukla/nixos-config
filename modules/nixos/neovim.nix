@@ -8,11 +8,6 @@
 in {
   options.modules.neovim = with lib; {
     enable = mkEnableOption "Neovim text editor";
-
-    defaultEditor = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -26,8 +21,6 @@ in {
     home-manager.users.${config.modules.user.name} = {
       programs.neovim = {
         enable = true;
-
-        defaultEditor = cfg.defaultEditor;
 
         viAlias = true;
         vimAlias = true;

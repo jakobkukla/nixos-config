@@ -11,6 +11,7 @@
   config = lib.mkIf config.modules.home.helix.enable {
     programs.helix = {
       enable = true;
+      defaultEditor = true;
 
       settings = {
         theme = "catppuccin_mocha";
