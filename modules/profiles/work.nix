@@ -66,6 +66,10 @@ in {
     security.lsm = lib.mkForce [];
 
     home-manager.users.${config.modules.user.name} = {
+      modules.home.vscode = {
+        enable = true;
+      };
+
       home.packages = with pkgs; [
         mattermost-desktop
 
