@@ -18,7 +18,7 @@ in {
   config = lib.mkIf cfg.enable (lib.mkMerge [
     {
       nix = {
-        package = pkgs.lixPackageSets.latest.lix;
+        package = pkgs.lixPackageSets.git.lix;
 
         # Disable legacy nix channels
         channel.enable = false;
@@ -30,8 +30,14 @@ in {
         };
 
         settings = {
-          # Enable flakes
-          experimental-features = ["nix-command" "flakes"];
+          experimental-features = [
+            # Enable flakes
+            "nix-command"
+            "flakes"
+
+            # Enable flake self attribute (Lix)
+            "flake-self-attrs"
+          ];
 
           # Disable the global registry
           flake-registry = "";
