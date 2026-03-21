@@ -23,6 +23,15 @@
 - treefmt-nix
 - cache:
   - swap in zfs?
-  - migrate attic from docker to nixos
 - aztec:
   - migrate to zfs
+- stateVersion:
+  - should be per machine?
+  - how to easily spot breaking changes? (nixos-config-tui?)
+- autoUpgrade:
+  - some machines could benefit from that (inferno, ...)
+  - setup `stable` branch
+    - CI pushes to `stable` iff `main` passes
+  - rollback would be nice
+  - also health ping (to uptime-kuma)
+  - nixos integration tests?
