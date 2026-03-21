@@ -23,6 +23,5 @@
 - treefmt-nix
 - cache:
   - swap in zfs?
-  - migrate attic from docker to nixos
 - aztec:
   - migrate to zfs
