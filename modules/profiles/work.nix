@@ -77,6 +77,8 @@ in {
         bmaptool
       ];
 
+      programs.nushell.enable = true;
+
       # TODO: install firefox plugin with nixos
       programs.keepassxc = {
         enable = true;
