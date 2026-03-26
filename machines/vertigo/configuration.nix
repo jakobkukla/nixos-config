@@ -8,6 +8,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
 
     ./disk-config.nix
+    ./networking.nix
     ../base.nix
   ];
 
@@ -39,6 +40,14 @@
     efiInstallAsRemovable = true;
   };
 
-  networking.hostName = "vertigo";
-  networking.firewall.enable = true;
+  machines.vertigo.networking = {
+    ipv4 = {
+      address = "138.201.189.162";
+      prefixLength = 32;
+    };
+    ipv6 = {
+      address = "2a01:4f8:c013:b50a::1";
+      prefixLength = 64;
+    };
+  };
 }
