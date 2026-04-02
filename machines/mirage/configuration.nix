@@ -44,6 +44,39 @@
     games.servers.satisfactory.enable = true;
   };
 
+  # Specify niri outputs manually for now
+  # TODO: should be shared config in windowManager with kanshi
+  home-manager.users.${config.modules.user.name} = {
+    programs.niri.settings.outputs = {
+      "DP-1" = {
+        mode = {
+          width = 2560;
+          height = 1440;
+          refresh = 143.964;
+        };
+        position = {
+          x = 0;
+          y = 0;
+        };
+        scale = 1.0;
+      };
+
+      "DP-2" = {
+        mode = {
+          width = 3840;
+          height = 2160;
+          # FIXME: needs exact value
+          refresh = 60.0;
+        };
+        position = {
+          x = 2560;
+          y = 0;
+        };
+        scale = 1.5;
+      };
+    };
+  };
+
   fileSystems."/mnt/d" = {
     device = "/dev/disk/by-uuid/f7e4a9c9-0e0f-4bae-8540-ca874a05a797";
     fsType = "btrfs";
