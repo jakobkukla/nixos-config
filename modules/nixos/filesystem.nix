@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   inputs,
   ...
@@ -61,9 +62,21 @@ in {
         neededForBoot = true;
       };
 
-      boot.initrd.postResumeCommands = lib.mkAfter ''
-        zfs rollback -r rpool/nixos/root@blank
-      '';
+      boot.initrd.systemd.services.impermanence-zfs-rollback = {
+        description = "Rollback ZFS root dataset to blank snapshot";
+
+        wantedBy = ["initrd.target"];
+        before = ["sysroot.mount"];
+        after = ["zfs-import-rpool.service"];
+
+        unitConfig.DefaultDependencies = false;
+        serviceConfig.Type = "oneshot";
+
+        path = with pkgs; [zfs];
+        script = ''
+          zfs rollback -r rpool/nixos/root@blank
+        '';
+      };
     })
 
     (lib.mkIf (cfg.fsType == "btrfs" && !cfg.enableImpermanence) {
