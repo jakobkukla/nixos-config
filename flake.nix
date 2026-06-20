@@ -12,6 +12,10 @@
     nixos-hardware.inputs.nixpkgs.follows = "nixpkgs";
 
     impermanence.url = "github:nix-community/impermanence";
+    # Only needed for impermanence internal development.
+    impermanence.inputs.nixpkgs.follows = "";
+    impermanence.inputs.home-manager.follows = "";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko/latest";
