@@ -2,22 +2,12 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   cfg = config.modules.home.vscode;
 in {
-  imports = [
-    inputs.vscode-server.nixosModules.home
-  ];
-
   options.modules.home.vscode = with lib; {
     enable = mkEnableOption "Visual Studio Code";
-    enableServer =
-      mkEnableOption "VSCode server and remote ssh"
-      // {
-        default = true;
-      };
     enableOcaml =
       mkEnableOption "OCaml integration"
       // {
@@ -54,9 +44,6 @@ in {
             bbenoist.nix # nix language support
             mkhl.direnv
           ]
-          ++ lib.optionals cfg.enableServer [
-            ms-vscode-remote.remote-ssh
-          ]
           ++ lib.optionals cfg.enableOcaml [
             ocamllabs.ocaml-platform
           ]
@@ -76,7 +63,5 @@ in {
         ];
       };
     };
-
-    services.vscode-server.enable = cfg.enableServer;
   };
 }

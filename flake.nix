@@ -20,8 +20,6 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
-    vscode-server.url = "github:msteen/nixos-vscode-server";
-    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
