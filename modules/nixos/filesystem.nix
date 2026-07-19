@@ -36,6 +36,8 @@ in {
 
     (lib.mkIf (cfg.fsType == "zfs") {
       boot.supportedFilesystems = ["zfs"];
+      # Don't force zfs imports (default as of system.stateVersion >= 26.11)
+      boot.zfs.forceImportRoot = false;
       systemd.services.zfs-mount.enable = false;
 
       fileSystems."/" = {

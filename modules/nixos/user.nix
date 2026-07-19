@@ -61,6 +61,8 @@ in {
         userDirs = {
           enable = cfg.enableXdgUser;
           createDirectories = cfg.enableXdgUser;
+          # Don't set environment variables (default as of home.stateVersion >= 26.05)
+          setSessionVariables = false;
         };
 
         mimeApps.enable = cfg.enableXdgUser;

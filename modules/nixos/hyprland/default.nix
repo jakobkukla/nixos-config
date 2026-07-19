@@ -155,6 +155,8 @@ in {
 
         wayland.windowManager.hyprland = {
           enable = true;
+          # Enable lua as config language (default as of home.stateVersion >= 26.05)
+          configType = "lua";
           systemd.variables = ["--all"];
           plugins = with pkgs.hyprlandPlugins; [
             csgo-vulkan-fix

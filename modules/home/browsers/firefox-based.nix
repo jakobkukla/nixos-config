@@ -83,6 +83,8 @@ in {
       (lib.mkIf cfg.firefox.enable {
         programs.firefox = {
           enable = true;
+          # Use XDG config dir (default as of home.stateVersion >= 26.05)
+          configPath = "${config.xdg.configHome}/mozilla/firefox";
           policies = lib.recursiveUpdate sharedPolicies {
             # Disable ads on start page
             FirefoxHome = {

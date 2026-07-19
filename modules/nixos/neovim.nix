@@ -36,6 +36,11 @@ in {
         plugins = with pkgs.vimPlugins; [
           vim-nix
         ];
+
+        # Disable ruby plugin provider (default as of home.stateVersion >= 26.05)
+        withRuby = false;
+        # Disable python3 plugin provider (default as of home.stateVersion >= 26.05)
+        withPython3 = false;
       };
     };
   };
