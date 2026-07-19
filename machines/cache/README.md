@@ -155,6 +155,9 @@ ssh-keygen -t ed25519 -N "" -f /persist/etc/secrets/initrd/ssh_host_ed25519_key
 
 ## Unlock encrypted zpools remotely
 
+Wait a few minutes until the machine could import the pools. The pools can then
+be unlocked by running the command below.
+
 ```bash
-ssh -p 2222 root@<ip-address> -t "zpool import -a; zfs load-key -a && killall zfs"
+ssh -p 2222 root@<ip-address> -t "systemd-tty-ask-password-agent"
 ```
