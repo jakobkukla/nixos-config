@@ -37,6 +37,8 @@
   fileSystems."/mnt/user/data" = {
     device = "tank/data";
     fsType = "zfs";
+    # Make sure tank is unlocked in initrd.
+    neededForBoot = true;
   };
 
   fileSystems."/var/lib/selfhosted" = {
