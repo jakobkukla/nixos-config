@@ -93,6 +93,8 @@ in {
         };
       };
 
+      programs.claude-code.enable = true;
+
       programs.distrobox = {
         enable = true;
         containers.ubuntu = {
