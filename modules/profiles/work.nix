@@ -65,6 +65,12 @@ in {
     # See: https://github.com/NixOS/nixpkgs/issues/414135
     security.lsm = lib.mkForce [];
 
+    programs.wireshark = {
+      enable = true;
+      package = pkgs.wireshark;
+    };
+    users.users.${config.modules.user.name}.extraGroups = ["wireshark"];
+
     home-manager.users.${config.modules.user.name} = {
       modules.home.vscode = {
         enable = true;
