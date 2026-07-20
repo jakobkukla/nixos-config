@@ -57,6 +57,10 @@ in {
           _JAVA_AWT_WM_NONREPARENTING = "1";
         };
 
+        # Workaround for broken XDG portals
+        # TODO: remove once https://github.com/nix-community/home-manager/issues/7124 is closed.
+        xdg.portal.extraPortals = lib.mkForce config.xdg.portal.extraPortals;
+
         home.pointerCursor = {
           enable = true;
           package = pkgs.adwaita-icon-theme;
