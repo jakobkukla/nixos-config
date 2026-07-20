@@ -11,8 +11,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable (let
-    moxzNXPBuilderIP = "10.8.2.54";
-    moxzNXPBuilderDevDrive = "/home/moxz";
+    moxzImageBuilderIP = "10.8.2.54";
+    moxzImageBuilderDevDrive = "/home/moxz";
   in {
     modules.vcs = {
       userName = "Jakob Kukla";
@@ -32,8 +32,8 @@ in {
     ];
 
     # Mount dev NFS drive
-    fileSystems."${config.modules.user.homeDirectory}/Documents/yocto" = {
-      device = "${moxzNXPBuilderIP}:${moxzNXPBuilderDevDrive}";
+    fileSystems."${config.modules.user.homeDirectory}/Documents/server" = {
+      device = "${moxzImageBuilderIP}:${moxzImageBuilderDevDrive}";
       fsType = "nfs";
     };
 
