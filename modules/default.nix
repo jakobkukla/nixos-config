@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./darwin
     ./hardware
     ./home
     ./nixos
@@ -28,6 +29,19 @@
 
         # profiles
         config.flake.nixosModules.profiles
+      ];
+    };
+
+    darwinModules.default = {
+      imports = [
+        # home-manager module
+        inputs.home-manager.darwinModules.home-manager
+
+        # shared modules
+        config.flake.sharedModules.system
+
+        # system modules
+        config.flake.darwinModules.system
       ];
     };
   };
