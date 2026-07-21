@@ -9,6 +9,7 @@ Setup instructions for specific machines can be found in `machines/<machine>`.
 
 | Machine | Description    | Setup Instructions         |
 |---------|----------------|----------------------------|
+| agency  | MacBook Air    | [README](machines/agency)  |
 | aztec   | Matebook X Pro | [README](machines/aztec)   |
 | cache   | Homelab        | [README](machines/cache)   |
 | inferno | Sound System   | [README](machines/inferno) |
