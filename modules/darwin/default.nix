@@ -7,6 +7,7 @@
 
   flake.darwinModules.system = {
     imports = [
+      ./user.nix
     ];
 
     config = {
