@@ -1,5 +1,6 @@
 {
   imports = [
+    ./agency
     ./aztec
     ./cache
     ./inferno
