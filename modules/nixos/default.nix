@@ -1,4 +1,4 @@
-{config, ...}: {
+{...}: {
   flake.nixosModules.system = {
     imports = [
       ./user.nix
@@ -17,13 +17,5 @@
       ./librespot.nix
       ./vcs.nix
     ];
-
-    config = {
-      # Overlays
-      nixpkgs.overlays = [config.flake.overlays.default];
-
-      # Allow proprietary packages
-      nixpkgs.config.allowUnfree = true;
-    };
   };
 }
