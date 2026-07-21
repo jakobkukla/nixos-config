@@ -3,6 +3,7 @@
     imports = [
       ./home-manager.nix
       ./nixpkgs.nix
+      ./user.nix
     ];
   };
 }
