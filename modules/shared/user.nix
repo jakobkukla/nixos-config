@@ -7,8 +7,6 @@
   cfg = config.modules.user;
 in {
   options.modules.user = with lib; {
-    enable = mkEnableOption "user module";
-
     name = mkOption {
       type = types.str;
       default = "jakob";
@@ -23,7 +21,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     home-manager.users.${cfg.name} = {
       # Home Manager needs a bit of information about you and the
       # paths it should manage.

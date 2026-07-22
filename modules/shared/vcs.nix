@@ -7,8 +7,6 @@
   cfg = config.modules.vcs;
 in {
   options.modules.vcs = with lib; {
-    enable = mkEnableOption "Version Control Systems module";
-
     userName = mkOption {
       type = types.str;
       default = "jakobkukla";
@@ -26,7 +24,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = {
     environment.systemPackages = with pkgs; [
       git
       jujutsu

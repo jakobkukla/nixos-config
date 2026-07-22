@@ -1,29 +1,17 @@
 {
-  lib,
   pkgs,
   config,
   inputs,
   ...
-}: let
-  cfg = config.modules.secrets;
-in {
+}: {
   imports = [
     # `nixosModules.default` and `darwinModules.default` point to the same
     # platform-aware module, so this works on nix-darwin too.
     inputs.agenix.nixosModules.default
   ];
 
-  options.modules.secrets = with lib; {
-    enable =
-      mkEnableOption "secrets module"
-      // {
-        default = true;
-      };
-
-    # TODO: disable secrets, e.g. spotify, if corresponding module is not used
-  };
-
-  config = lib.mkIf cfg.enable {
+  # TODO: disable secrets, e.g. spotify, if corresponding module is not used
+  config = {
     environment.systemPackages = [
       inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

@@ -17,7 +17,6 @@
 
   modules = {
     user = {
-      enable = true;
       name = "pi";
       enableXdgUser = false;
     };
