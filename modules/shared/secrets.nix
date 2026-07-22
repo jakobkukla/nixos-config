@@ -8,6 +8,8 @@
   cfg = config.modules.secrets;
 in {
   imports = [
+    # `nixosModules.default` and `darwinModules.default` point to the same
+    # platform-aware module, so this works on nix-darwin too.
     inputs.agenix.nixosModules.default
   ];
 
@@ -29,7 +31,7 @@ in {
     age = {
       # Use real key file on ephemeral root systems
       identityPaths =
-        if config.modules.filesystem.enableImpermanence
+        if pkgs.stdenv.hostPlatform.isLinux && config.modules.filesystem.enableImpermanence
         then [
           "/persist/etc/ssh/ssh_host_ed25519_key"
         ]
