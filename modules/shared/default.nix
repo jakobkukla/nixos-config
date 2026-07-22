@@ -4,6 +4,7 @@
       ./home-manager.nix
       ./nixpkgs.nix
       ./user.nix
+      ./vcs.nix
     ];
   };
 }
