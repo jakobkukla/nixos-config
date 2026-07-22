@@ -1,14 +1,6 @@
 # Borrowed from fufexan (https://github.com/fufexan/dotfiles/blob/main/home/editors/helix/default.nix)
-{
-  lib,
-  config,
-  ...
-}: {
-  options.modules.home.helix = with lib; {
-    enable = mkEnableOption "Helix text editor";
-  };
-
-  config = lib.mkIf config.modules.home.helix.enable {
+{...}: {
+  config = {
     programs.helix = {
       enable = true;
       defaultEditor = true;
