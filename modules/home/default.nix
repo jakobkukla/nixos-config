@@ -10,6 +10,7 @@
       ./rofi.nix
       ./languages
       ./helix.nix
+      ./neovim.nix
       ./vscode.nix
       ./browsers
       ./spotify.nix
