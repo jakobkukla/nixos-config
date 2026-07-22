@@ -5,7 +5,6 @@
       ./filesystem.nix
       ./build-vm.nix
       ./greetd.nix
-      ./neovim.nix
       ./sway.nix
       ./hyprland
       ./printer.nix
