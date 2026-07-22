@@ -1,16 +1,9 @@
 {
-  lib,
   pkgs,
   config,
   ...
-}: let
-  cfg = config.modules.nix;
-in {
-  options.modules.nix = with lib; {
-    enable = mkEnableOption "Nix configuration";
-  };
-
-  config = lib.mkIf cfg.enable {
+}: {
+  config = {
     nix = {
       package = pkgs.lixPackageSets.git.lix;
 
