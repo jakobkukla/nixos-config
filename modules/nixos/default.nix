@@ -2,7 +2,6 @@
   flake.nixosModules.system = {
     imports = [
       ./user.nix
-      ./nix.nix
       ./filesystem.nix
       ./build-vm.nix
       ./greetd.nix
