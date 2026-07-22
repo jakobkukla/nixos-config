@@ -1,11 +1,7 @@
-{
-  lib,
-  config,
-  ...
-}: let
+{config, ...}: let
   cfg = config.modules.user;
 in {
-  config = lib.mkIf cfg.enable {
+  config = {
     users.users.${cfg.name}.home = cfg.homeDirectory;
   };
 }

@@ -16,7 +16,6 @@
 
   modules = {
     user = {
-      enable = true;
       name = "nas";
       enableXdgUser = false;
     };

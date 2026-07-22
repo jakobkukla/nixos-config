@@ -1,16 +1,5 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: let
-  cfg = config.modules.home.neovim;
-in {
-  options.modules.home.neovim = with lib; {
-    enable = mkEnableOption "Neovim text editor";
-  };
-
-  config = lib.mkIf cfg.enable {
+{pkgs, ...}: {
+  config = {
     programs.neovim = {
       enable = true;
 

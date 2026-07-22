@@ -25,7 +25,6 @@
 
   modules = {
     user = {
-      enable = true;
       name = "vps";
       enableXdgUser = false;
     };

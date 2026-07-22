@@ -5,11 +5,7 @@
   inputs,
   ...
 }: {
-  options.modules.shell = with lib; {
-    enable = mkEnableOption "custom shell configuration";
-  };
-
-  config = lib.mkIf config.modules.shell.enable {
+  config = {
     programs.zsh.enable = true;
 
     home-manager.users.${config.modules.user.name} = hmArgs: {
