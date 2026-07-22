@@ -67,15 +67,3 @@ cp /path/to/.ssh/id_ed25519* /mnt/home/jakob/.ssh
 nixos-install --flake github:jakobkukla/nixos-config#aztec
 reboot
 ```
-
-## Switch to root user and update nix channels to fix the command-not-found script
-
----
-**TODO:** Replace command-not-found.pl with nix-index and find
-a way to circumvent building the index manually.
-
----
-
-```bash
-nix-channel --update
-```
