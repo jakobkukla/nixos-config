@@ -21,6 +21,4 @@
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
   };
-
-  security.polkit.enable = true;
 }
