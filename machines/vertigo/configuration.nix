@@ -9,7 +9,6 @@
 
     ./disk-config.nix
     ./networking.nix
-    ../base.nix
   ];
 
   profiles = {
