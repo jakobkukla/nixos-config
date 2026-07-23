@@ -5,5 +5,8 @@
       man-pages
       man-pages-posix
     ];
+
+    # Development man pages.
+    documentation.dev.enable = true;
   };
 }
