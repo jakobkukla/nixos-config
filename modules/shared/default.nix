@@ -1,6 +1,7 @@
 {...}: {
   flake.sharedModules.system = {
     imports = [
+      ./gnupg.nix
       ./home-manager.nix
       ./locale.nix
       ./nix.nix
