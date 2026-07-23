@@ -8,11 +8,6 @@
 in {
   options.modules.home.vscode = with lib; {
     enable = mkEnableOption "Visual Studio Code";
-    enableOcaml =
-      mkEnableOption "OCaml integration"
-      // {
-        default = config.modules.home.languages.ocaml.enable;
-      };
     enableLatex =
       mkEnableOption "LaTeX integration"
       // {
@@ -22,10 +17,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     assertions = [
-      {
-        assertion = cfg.enableOcaml -> config.modules.home.languages.ocaml.enable;
-        message = "Option `enableOcaml` requires `modules.home.languages.ocaml.enable` set to true";
-      }
       {
         assertion = cfg.enableLatex -> config.modules.home.languages.latex.enable;
         message = "Option `enableLatex` requires `modules.home.languages.latex.enable` set to true";
@@ -43,9 +34,6 @@ in {
             ms-azuretools.vscode-docker
             bbenoist.nix # nix language support
             mkhl.direnv
-          ]
-          ++ lib.optionals cfg.enableOcaml [
-            ocamllabs.ocaml-platform
           ]
           ++ lib.optionals cfg.enableLatex [
             james-yu.latex-workshop
