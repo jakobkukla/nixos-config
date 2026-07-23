@@ -33,3 +33,8 @@
   - rollback would be nice
   - also health ping (to uptime-kuma)
   - nixos integration tests?
+
+- darwin:
+  - pull out shared config
+  - trim or remove profiles
+  - openssh? shared ssh config?
