@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./darwin
-    ./hardware
     ./home
     ./nixos
     ./profiles
@@ -23,9 +22,6 @@
 
         # system modules
         config.flake.nixosModules.system
-
-        # hardware modules
-        config.flake.nixosModules.hardware
 
         # profiles
         config.flake.nixosModules.profiles
