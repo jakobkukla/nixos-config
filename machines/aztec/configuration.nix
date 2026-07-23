@@ -11,7 +11,6 @@
     desktop.enable = true;
     laptop.enable = true;
     gaming.enable = true;
-    development.enable = true;
   };
 
   modules = {
@@ -35,6 +34,7 @@
   home-manager.users.${config.modules.user.name} = {
     modules.home = {
       chat.enable = true;
+      development.enable = true;
       media.enable = true;
     };
   };
