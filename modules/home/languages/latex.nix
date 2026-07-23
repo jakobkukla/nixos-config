@@ -12,7 +12,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      texlive.combined.scheme-full
+      texliveFull
       # language server
       texlab
       # another language server

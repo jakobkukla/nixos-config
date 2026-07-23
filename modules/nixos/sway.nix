@@ -85,6 +85,7 @@ in {
       xsession.enable = true;
 
       home.pointerCursor = {
+        enable = true;
         package = pkgs.adwaita-icon-theme;
         name = "Adwaita";
 
