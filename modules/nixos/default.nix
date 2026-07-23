@@ -16,6 +16,7 @@
       ./eduroam.nix
       ./games
       ./librespot.nix
+      ./hardware
     ];
 
     config = {
