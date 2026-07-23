@@ -14,7 +14,6 @@
 
   profiles = {
     bare-metal.enable = false;
-    core.enable = true;
     chat.enable = false;
     desktop.enable = false;
     server.enable = true;

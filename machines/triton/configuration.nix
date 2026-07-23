@@ -5,7 +5,6 @@
   ];
 
   profiles = {
-    core.enable = true;
     desktop.enable = true;
     laptop.enable = true;
     work.enable = true;

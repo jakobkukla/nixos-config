@@ -5,7 +5,6 @@
   ];
 
   profiles = {
-    core.enable = true;
     chat.enable = false;
     desktop.enable = false;
     server.enable = true;
