@@ -2,6 +2,7 @@
   flake.nixosModules.system = {
     imports = [
       ./user.nix
+      ./locale.nix
       ./auto-upgrade.nix
       ./filesystem.nix
       ./build-vm.nix

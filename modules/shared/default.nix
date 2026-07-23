@@ -2,6 +2,7 @@
   flake.sharedModules.system = {
     imports = [
       ./home-manager.nix
+      ./locale.nix
       ./nix.nix
       ./nixpkgs.nix
       ./secrets.nix
