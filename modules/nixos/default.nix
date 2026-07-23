@@ -5,6 +5,7 @@
       ./locale.nix
       ./security.nix
       ./documentation.nix
+      ./ssh.nix
       ./auto-upgrade.nix
       ./filesystem.nix
       ./build-vm.nix
