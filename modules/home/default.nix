@@ -16,6 +16,8 @@
       ./spotify.nix
       ./bitwarden.nix
       ./senpai.nix
+      ./chat.nix
+      ./media.nix
     ];
 
     config = {

@@ -8,10 +8,8 @@
   ];
 
   profiles = {
-    chat.enable = true;
     desktop.enable = true;
     laptop.enable = true;
-    media.enable = true;
     gaming.enable = true;
     development.enable = true;
   };
@@ -31,6 +29,13 @@
       resolution = "3000x2000@60";
       position = "0x0";
       scale = "2";
+    };
+  };
+
+  home-manager.users.${config.modules.user.name} = {
+    modules.home = {
+      chat.enable = true;
+      media.enable = true;
     };
   };
 
