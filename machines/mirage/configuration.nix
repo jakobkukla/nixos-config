@@ -5,7 +5,6 @@
   ];
 
   profiles = {
-    core.enable = true;
     chat.enable = true;
     desktop.enable = true;
     laptop.enable = false;
