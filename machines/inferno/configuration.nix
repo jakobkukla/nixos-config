@@ -7,10 +7,8 @@ in {
   ];
 
   profiles = {
-    chat.enable = false;
     desktop.enable = false;
     laptop.enable = false;
-    media.enable = false;
     gaming.enable = false;
     work.enable = false;
   };

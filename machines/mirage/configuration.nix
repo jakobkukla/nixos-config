@@ -4,10 +4,8 @@
   ];
 
   profiles = {
-    chat.enable = true;
     desktop.enable = true;
     laptop.enable = false;
-    media.enable = true;
     gaming.enable = true;
     work.enable = false;
   };
@@ -40,6 +38,13 @@
     };
 
     games.servers.satisfactory.enable = true;
+  };
+
+  home-manager.users.${config.modules.user.name} = {
+    modules.home = {
+      chat.enable = true;
+      media.enable = true;
+    };
   };
 
   fileSystems."/mnt/d" = {
