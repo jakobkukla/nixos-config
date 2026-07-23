@@ -6,6 +6,7 @@
       ./locale.nix
       ./nix.nix
       ./nixpkgs.nix
+      ./packages.nix
       ./secrets.nix
       ./shell.nix
       ./user.nix
