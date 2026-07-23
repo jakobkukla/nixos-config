@@ -1,4 +1,7 @@
-{...}: {
+{...}: let
+  deviceName = "HiFiBerry";
+  alsaDeviceName = "default:CARD=sndrpihifiberry";
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -10,7 +13,6 @@
     media.enable = false;
     gaming.enable = false;
     work.enable = false;
-    hifiberry.enable = true;
   };
 
   modules = {
@@ -31,6 +33,22 @@
   hardware.deviceTree.enable = true;
   hardware.deviceTree.filter = "bcm2711-rpi-4*.dtb";
   hardware.hifiberry.dacplus.enable = true;
+
+  # Spotify Connect
+  modules.librespot = {
+    enable = true;
+    settings = {
+      name = deviceName;
+      bitrate = 320;
+      enableVolumeNormalisation = true;
+    };
+  };
+
+  # AirPlay
+  services.shairport-sync = {
+    enable = true;
+    arguments = "-a ${deviceName} --output=alsa -- -d ${alsaDeviceName}";
+  };
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
