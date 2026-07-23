@@ -27,10 +27,7 @@ in {
       ];
 
       modules.home = {
-        languages = {
-          ocaml.enable = true;
-          latex.enable = true;
-        };
+        languages.latex.enable = true;
 
         vscode = {
           enable = true;
