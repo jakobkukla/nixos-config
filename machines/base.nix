@@ -10,9 +10,6 @@
     libarchive
     wget
     htop
-
-    man-pages
-    man-pages-posix
   ];
 
   # Enable the OpenSSH daemon.
