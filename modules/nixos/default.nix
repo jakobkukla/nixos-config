@@ -3,6 +3,7 @@
     imports = [
       ./user.nix
       ./locale.nix
+      ./security.nix
       ./filesystem.nix
       ./build-vm.nix
       ./greetd.nix
