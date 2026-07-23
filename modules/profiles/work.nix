@@ -37,7 +37,7 @@ in {
       fsType = "nfs";
     };
 
-    # add udev rules to use uhd devices in distrobox
+    # add udev rules to use uhd devices without root
     services.udev.extraRules = ''
       #
       # Copyright 2011,2015 Ettus Research LLC
@@ -59,11 +59,6 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="3923", ATTRS{idProduct}=="7813", MODE:="0666"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="3923", ATTRS{idProduct}=="7814", MODE:="0666"
     '';
-
-    # FIXME: Workaround for distrobox failing.
-    # Remove once resolved on unstable.
-    # See: https://github.com/NixOS/nixpkgs/issues/414135
-    security.lsm = lib.mkForce [];
 
     programs.wireshark = {
       enable = true;
@@ -100,26 +95,6 @@ in {
       };
 
       programs.claude-code.enable = true;
-
-      programs.distrobox = {
-        enable = true;
-        containers.ubuntu = {
-          image = "ubuntu:22.04";
-
-          # Packages:
-          # locales ... see below
-          # udev ... for radio libuhd support
-          # clangd ... for helix lsp
-          # python3-requests ... for uhd_images_downloader
-          additional_packages = "locales udev clangd python3-requests";
-          init_hooks = [
-            # Configure system locales needed for tab completion
-            # See https://github.com/starship/starship/issues/2176
-            "locale-gen ${config.i18n.defaultLocale}"
-            "update-locale"
-          ];
-        };
-      };
     };
   });
 }
