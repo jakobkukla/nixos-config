@@ -28,10 +28,7 @@ in {
 
       modules.home = {
         languages.latex.enable = true;
-
-        vscode = {
-          enable = true;
-        };
+        vscode.enable = true;
       };
     };
   };
