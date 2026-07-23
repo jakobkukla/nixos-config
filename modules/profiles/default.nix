@@ -10,7 +10,6 @@
       ./gaming.nix
       ./development.nix
       ./work.nix
-      ./hifiberry.nix
     ];
   };
 }
