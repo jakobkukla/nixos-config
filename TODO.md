@@ -34,3 +34,8 @@
   - nixos integration tests?
 - hyprland:
   - port config to lua (`wayland.windowManager.hyprland.configType`)
+
+- darwin:
+  - pull out shared config
+  - trim or remove profiles
+  - openssh? shared ssh config?
