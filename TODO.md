@@ -3,8 +3,6 @@
 - nix-index / command-not-found:
   - command-not-found: fix old nix commands
 - docs:
-  - install dev man pages with `documentation.dev.enable`
-    - no need for `man-pages` and `man-pages-posix`?
   - custom modules:
     - fix missing doc fields (description, ...)
     - add to configuration.nix (`documentation.nixos.includeAllModules`)
