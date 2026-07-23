@@ -13,12 +13,6 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
-        gcc
-        gnumake
-        rustup
-        gdb
-        valgrind
-
         # IDEs
         android-studio
 
