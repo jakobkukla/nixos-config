@@ -4,6 +4,7 @@
       ./user.nix
       ./locale.nix
       ./security.nix
+      ./documentation.nix
       ./filesystem.nix
       ./build-vm.nix
       ./greetd.nix
