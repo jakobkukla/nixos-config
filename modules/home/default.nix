@@ -17,6 +17,7 @@
       ./bitwarden.nix
       ./senpai.nix
       ./chat.nix
+      ./development.nix
       ./media.nix
     ];
 
