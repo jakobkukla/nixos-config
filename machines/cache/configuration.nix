@@ -4,11 +4,9 @@
   ];
 
   profiles = {
-    chat.enable = false;
     desktop.enable = false;
     server.enable = true;
     laptop.enable = false;
-    media.enable = false;
     work.enable = false;
   };
 
