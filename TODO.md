@@ -37,5 +37,5 @@
 
 - darwin:
   - pull out shared config
-  - trim or remove profiles
+  - trim or remove profiles (at least move them to nixos/)
   - openssh? shared ssh config?
