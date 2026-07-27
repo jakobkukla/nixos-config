@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   config,
   inputs,
   ...
@@ -68,10 +69,12 @@ in {
 
         # Disable translation popup
         "browser.translations.automaticallyPopup" = false;
+      }
 
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         # Enable vaapi video acceleration
         "media.ffmpeg.vaapi.enabled" = true;
-      }
+      })
 
       (lib.mkIf cfg.enableSelfHostedSync {
         # Use self hosted sync server
@@ -83,8 +86,12 @@ in {
       (lib.mkIf cfg.firefox.enable {
         programs.firefox = {
           enable = true;
+
           # Use XDG config dir (default as of home.stateVersion >= 26.05)
-          configPath = "${config.xdg.configHome}/mozilla/firefox";
+          configPath =
+            lib.mkIf pkgs.stdenv.hostPlatform.isLinux
+            "${config.xdg.configHome}/mozilla/firefox";
+
           policies = lib.recursiveUpdate sharedPolicies {
             # Disable ads on start page
             FirefoxHome = {
