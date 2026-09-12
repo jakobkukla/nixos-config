@@ -3,7 +3,7 @@ name: "Update machines"
 on:
   workflow_dispatch: # allows manual triggering
   schedule:
-    - cron: '30 04 * * MON' # runs weekly on Monday at 04:30
+    - cron: '30 04 * * WED' # runs weekly on Wednesday at 04:30 UTC
 
 jobs:
   update:
