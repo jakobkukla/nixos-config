@@ -21,6 +21,7 @@
       name = "pi";
       enableXdgUser = false;
     };
+    autoUpgrade.enable = true;
   };
 
   # Disable 3.5 jack audio device and disable power management for DAC
