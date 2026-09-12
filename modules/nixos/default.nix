@@ -5,6 +5,7 @@
       ./shell.nix
       ./secrets.nix
       ./nix.nix
+      ./auto-upgrade.nix
       ./filesystem.nix
       ./build-vm.nix
       ./greetd.nix
