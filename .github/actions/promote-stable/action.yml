@@ -1,0 +1,9 @@
+name: "Promote to stable"
+description: "Point the stable branch at the current commit"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Push stable branch
+      shell: bash
+      run: git push origin HEAD:stable

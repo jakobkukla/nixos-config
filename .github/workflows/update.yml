@@ -53,3 +53,6 @@ jobs:
           commit_message: 'build(deps): update packages'
           file_pattern: 'flake.lock'
 
+      - name: Promote to stable
+        uses: ./.github/actions/promote-stable
+

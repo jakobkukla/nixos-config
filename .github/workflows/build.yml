@@ -21,3 +21,14 @@ jobs:
       update: false
     secrets: inherit
 
+  promote:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Promote to stable
+        uses: ./.github/actions/promote-stable
+
