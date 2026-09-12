@@ -29,9 +29,8 @@
   - should be per machine?
   - how to easily spot breaking changes? (nixos-config-tui?)
 - autoUpgrade:
-  - some machines could benefit from that (inferno, ...)
-  - setup `stable` branch
-    - CI pushes to `stable` iff `main` passes
+  - think about enabling for vertigo?
+  - how to deal with private?
   - rollback would be nice
   - also health ping (to uptime-kuma)
   - nixos integration tests?
