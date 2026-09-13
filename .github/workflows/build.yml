@@ -28,6 +28,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Promote to stable
         uses: ./.github/actions/promote-stable
