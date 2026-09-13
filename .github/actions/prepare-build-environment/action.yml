@@ -1,5 +1,5 @@
 name: "Prepare build environment"
-description: "Free disk space and setup nix"
+description: "Prepare the runner for building NixOS systems"
 
 inputs:
   attic_token:
@@ -12,11 +12,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Free Disk Space (Ubuntu)
-      uses: jlumbroso/free-disk-space@main
-      with:
-        tool-cache: true
-
     - name: Create netrc file for private cache authentication
       shell: bash
       run: |
