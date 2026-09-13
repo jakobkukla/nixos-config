@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: '30 04 * * WED' # runs weekly on Wednesday at 04:30 UTC
 
+concurrency:
+  group: update
+
 jobs:
   update:
     runs-on: ubuntu-latest
