@@ -7,7 +7,7 @@
   cfg = config.modules.gaming.servers.satisfactory;
 in {
   options.modules.gaming.servers.satisfactory = {
-    enable = lib.mkEnableOption "Enable Satisfactory Dedicated Server";
+    enable = lib.mkEnableOption "Satisfactory Dedicated Server";
 
     beta = lib.mkOption {
       type = lib.types.enum ["public" "experimental"];
