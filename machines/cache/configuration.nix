@@ -7,7 +7,6 @@
     desktop.enable = false;
     server.enable = true;
     laptop.enable = false;
-    work.enable = false;
   };
 
   modules = {

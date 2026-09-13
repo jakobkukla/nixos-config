@@ -7,7 +7,6 @@
     desktop.enable = true;
     laptop.enable = false;
     gaming.enable = true;
-    work.enable = false;
   };
 
   modules = {
