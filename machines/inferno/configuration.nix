@@ -10,7 +10,6 @@ in {
     desktop.enable = false;
     laptop.enable = false;
     gaming.enable = false;
-    work.enable = false;
   };
 
   modules = {

@@ -6,7 +6,6 @@
       ./desktop.nix
       ./laptop.nix
       ./gaming.nix
-      ./work.nix
     ];
   };
 }
