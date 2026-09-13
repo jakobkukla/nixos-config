@@ -6,7 +6,6 @@
   profiles = {
     desktop.enable = true;
     laptop.enable = false;
-    gaming.enable = true;
   };
 
   modules = {
@@ -36,7 +35,10 @@
       ];
     };
 
-    games.servers.satisfactory.enable = true;
+    gaming = {
+      enable = true;
+      servers.satisfactory.enable = true;
+    };
   };
 
   home-manager.users.${config.modules.user.name} = {

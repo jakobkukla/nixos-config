@@ -5,7 +5,6 @@
       ./server.nix
       ./desktop.nix
       ./laptop.nix
-      ./gaming.nix
     ];
   };
 }

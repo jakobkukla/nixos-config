@@ -14,7 +14,7 @@
       ./hyprland
       ./printer.nix
       ./eduroam.nix
-      ./games
+      ./gaming
       ./librespot.nix
       ./hardware
     ];

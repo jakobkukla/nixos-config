@@ -4,10 +4,14 @@
   config,
   ...
 }: let
-  cfg = config.profiles.gaming;
+  cfg = config.modules.gaming;
 in {
-  options.profiles.gaming = with lib; {
-    enable = mkEnableOption "gaming profile";
+  imports = [
+    ./servers
+  ];
+
+  options.modules.gaming = with lib; {
+    enable = mkEnableOption "gaming";
   };
 
   config = lib.mkIf cfg.enable {

@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.modules.games.servers.satisfactory;
+  cfg = config.modules.gaming.servers.satisfactory;
 in {
-  options.modules.games.servers.satisfactory = {
+  options.modules.gaming.servers.satisfactory = {
     enable = lib.mkEnableOption "Enable Satisfactory Dedicated Server";
 
     beta = lib.mkOption {

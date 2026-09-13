@@ -130,7 +130,7 @@ in {
             # Save host ssh keys
             "/etc/ssh"
           ]
-          ++ (lib.optionals config.modules.games.servers.satisfactory.enable [
+          ++ (lib.optionals config.modules.gaming.servers.satisfactory.enable [
             # Satisfactory server
             {
               directory = "/var/lib/satisfactory";

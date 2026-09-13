@@ -10,7 +10,6 @@
   profiles = {
     desktop.enable = true;
     laptop.enable = true;
-    gaming.enable = true;
   };
 
   modules = {
@@ -29,6 +28,8 @@
       position = "0x0";
       scale = "2";
     };
+
+    gaming.enable = true;
   };
 
   home-manager.users.${config.modules.user.name} = {

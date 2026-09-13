@@ -9,7 +9,6 @@ in {
   profiles = {
     desktop.enable = false;
     laptop.enable = false;
-    gaming.enable = false;
   };
 
   modules = {
