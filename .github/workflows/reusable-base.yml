@@ -16,7 +16,7 @@ jobs:
     # FIXME: "ternary operator", see https://github.com/orgs/community/discussions/75928.
     runs-on: ${{ inputs.machine == 'inferno' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Prepare build environment
         uses: ./.github/actions/prepare-build-environment
@@ -26,7 +26,7 @@ jobs:
 
       - name: Download flake.lock artifact
         if: inputs.update == true
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: flake_lock
 
