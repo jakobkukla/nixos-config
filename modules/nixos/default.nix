@@ -2,6 +2,7 @@
   flake.nixosModules.system = {
     imports = [
       ./user.nix
+      ./roles
       ./locale.nix
       ./security.nix
       ./documentation.nix

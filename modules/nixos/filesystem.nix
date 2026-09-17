@@ -123,13 +123,17 @@ in {
             "/var/lib/docker"
             # Don't prompt sudo lecture on every reboot
             "/var/db/sudo/lectured"
-            # Save NetworkManager connections
-            "/etc/NetworkManager/system-connections"
-            # Needed to keep 802.1X (eduroam) iwd provisioning files
-            "/var/lib/iwd"
             # Save host ssh keys
             "/etc/ssh"
           ]
+          ++ (lib.optionals config.networking.networkmanager.enable [
+            # Save NetworkManager connections
+            "/etc/NetworkManager/system-connections"
+          ])
+          ++ (lib.optionals config.device.hardware.wifi [
+            # Needed to keep 802.1X (eduroam) iwd provisioning files
+            "/var/lib/iwd"
+          ])
           ++ (lib.optionals config.modules.gaming.servers.satisfactory.enable [
             # Satisfactory server
             {

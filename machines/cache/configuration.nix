@@ -3,11 +3,7 @@
     ./hardware-configuration.nix
   ];
 
-  profiles = {
-    desktop.enable = false;
-    server.enable = true;
-    laptop.enable = false;
-  };
+  device.role = "server";
 
   modules = {
     user = {
@@ -58,10 +54,6 @@
     enable = false;
     allowedTCPPorts = [80 443];
   };
-
-  # NOTE: Currently this needs to be turned off for initrd ssh.
-  # probably desired for a server anyways. Otherwise try this https://github.com/NixOS/nixpkgs/issues/63941#issuecomment-2081126437
-  networking.networkmanager.enable = false;
 
   # Enable docker
   virtualisation.docker.enable = true;

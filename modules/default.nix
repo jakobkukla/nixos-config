@@ -7,7 +7,6 @@
     ./darwin
     ./home
     ./nixos
-    ./profiles
     ./shared
   ];
 
@@ -22,9 +21,6 @@
 
         # system modules
         config.flake.nixosModules.system
-
-        # profiles
-        config.flake.nixosModules.profiles
       ];
     };
 

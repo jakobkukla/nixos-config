@@ -6,9 +6,9 @@ in {
     ./hardware-configuration.nix
   ];
 
-  profiles = {
-    desktop.enable = false;
-    laptop.enable = false;
+  device = {
+    role = "appliance";
+    hardware.wifi = true;
   };
 
   modules = {
@@ -53,9 +53,6 @@ in {
   boot.loader.generic-extlinux-compatible.enable = true;
 
   networking.hostName = "inferno";
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
 
   # FIXME: open librespot and shairport-sync ports in firewall instead
   networking.firewall.enable = false;

@@ -3,23 +3,14 @@
   pkgs,
   config,
   ...
-}: let
-  cfg = config.profiles.desktop;
-in {
-  options.profiles.desktop = with lib; {
-    enable = mkEnableOption "desktop profile";
-  };
-
-  config = lib.mkIf cfg.enable {
+}: {
+  config = lib.mkIf (config.device.role == "workstation") {
     modules.hyprland.enable = true;
 
-    fonts.packages = with pkgs; [
-      source-code-pro
-      nerd-fonts.symbols-only
-    ];
+    networking.networkmanager.enable = true;
 
     # Add eduroam configuration
-    modules.eduroam.enable = true;
+    modules.eduroam.enable = config.device.hardware.wifi;
 
     # FIXME: Does this make sense here?
     modules.printer.enable = true;
@@ -44,23 +35,10 @@ in {
 
       modules.home = {
         defaultApplications.enable = true;
-
-        browsers = {
-          defaultBrowser = "zen-browser";
-
-          firefox-based = {
-            firefox.enable = true;
-            zen-browser.enable = true;
-          };
-        };
-
-        alacritty.enable = true;
         bitwarden.enable = true;
       };
 
       services.dunst.enable = true;
-
-      programs.sioyek.enable = true;
     };
   };
 }

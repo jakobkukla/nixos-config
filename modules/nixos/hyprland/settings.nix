@@ -38,7 +38,7 @@ in {
           kb_options = "grp:ctrls_toggle";
 
           natural_scroll =
-            if cfg.enableNaturalScroll
+            if config.device.hardware.touchpad
             then "true"
             else "false";
           sensitivity = "0.1";

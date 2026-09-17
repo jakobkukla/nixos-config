@@ -3,9 +3,9 @@
     ./hardware-configuration.nix
   ];
 
-  profiles = {
-    desktop.enable = true;
-    laptop.enable = false;
+  device = {
+    role = "workstation";
+    hardware.wifi = true;
   };
 
   modules = {
@@ -63,9 +63,6 @@
 
   networking.hostName = "mirage";
   networking.hostId = "4090d928";
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
 
   networking.firewall.enable = false; # Necessary for accessing ports from another machine (eg Jellyfin developement)
 

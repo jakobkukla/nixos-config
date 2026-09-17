@@ -11,11 +11,9 @@
     ./networking.nix
   ];
 
-  profiles = {
-    bare-metal.enable = false;
-    desktop.enable = false;
-    server.enable = true;
-    laptop.enable = false;
+  device = {
+    role = "server";
+    virtual = true;
   };
 
   modules = {

@@ -7,9 +7,16 @@
     ./hardware-configuration.nix
   ];
 
-  profiles = {
-    desktop.enable = true;
-    laptop.enable = true;
+  device = {
+    role = "workstation";
+
+    hardware = {
+      battery = true;
+      bluetooth = true;
+      touchpad = true;
+      internalDisplay = true;
+      wifi = true;
+    };
   };
 
   modules = {
@@ -19,14 +26,23 @@
       enableImpermanence = true;
     };
 
-    hyprland.wallpapers = [
-      ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
-    ];
+    hyprland = {
+      monitors = {
+        "" = {
+          resolution = "highres";
+          position = "auto";
+          scale = "auto";
+        };
+        "eDP-1" = {
+          resolution = "3000x2000@60";
+          position = "0x0";
+          scale = "2";
+        };
+      };
 
-    hyprland.monitors."eDP-1" = {
-      resolution = "3000x2000@60";
-      position = "0x0";
-      scale = "2";
+      wallpapers = [
+        ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
+      ];
     };
 
     gaming.enable = true;
@@ -51,9 +67,6 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "aztec";
-
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
 
   networking.firewall.enable = true;
 

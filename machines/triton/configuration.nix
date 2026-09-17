@@ -7,9 +7,16 @@
     ./hardware-configuration.nix
   ];
 
-  profiles = {
-    desktop.enable = true;
-    laptop.enable = true;
+  device = {
+    role = "workstation";
+
+    hardware = {
+      battery = true;
+      bluetooth = true;
+      touchpad = true;
+      internalDisplay = true;
+      wifi = true;
+    };
   };
 
   modules = {
@@ -19,11 +26,18 @@
       enableImpermanence = true;
     };
 
-    hyprland.monitors."eDP-1" = {
-      resolution = "1920x1080";
-      position = "0x0";
-      scale = "1.25";
-      disableOnLidSwitch = true;
+    hyprland.monitors = {
+      "" = {
+        resolution = "highres";
+        position = "auto";
+        scale = "auto";
+      };
+      "eDP-1" = {
+        resolution = "1920x1080";
+        position = "0x0";
+        scale = "1.25";
+        disableOnLidSwitch = true;
+      };
     };
 
     vcs = {
@@ -45,8 +59,6 @@
   networking.hostName = "moxz-triton";
   networking.hostId = "73e775f3";
 
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
   networking.networkmanager.plugins = with pkgs; [
     networkmanager-openvpn
   ];

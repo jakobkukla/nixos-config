@@ -1,6 +1,8 @@
 {
   # nixos-rebuild build-vm support
   virtualisation.vmVariant = {
+    device.virtual = true;
+
     virtualisation = {
       # make ssh host keys available in build-vm for agenix to work
       sharedDirectories = {

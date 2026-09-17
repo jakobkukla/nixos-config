@@ -8,7 +8,6 @@
 in {
   options.modules.sway = with lib; {
     enable = mkEnableOption "Sway window manager";
-    enableNaturalScroll = mkEnableOption "natural scrolling";
   };
 
   config = lib.mkIf cfg.enable {
@@ -141,7 +140,7 @@ in {
               click_method = "clickfinger";
               dwt = "enabled";
               natural_scroll =
-                if cfg.enableNaturalScroll
+                if config.device.hardware.touchpad
                 then "enabled"
                 else "disabled";
             };

@@ -14,7 +14,6 @@ in {
 
   options.modules.hyprland = with lib; {
     enable = mkEnableOption "Hyprland window manager";
-    enableNaturalScroll = mkEnableOption "natural scrolling";
     enableTearing = mkEnableOption "tearing support (for cs2)";
 
     monitors = mkOption {
