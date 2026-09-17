@@ -34,6 +34,9 @@
   - nixos integration tests?
 - hyprland:
   - port config to lua (`wayland.windowManager.hyprland.configType`)
+- build-vm:
+  - fix failing services
+  - no password set?
 
 - darwin:
   - pull out shared config
