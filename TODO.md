@@ -34,3 +34,5 @@
   - rollback would be nice
   - also health ping (to uptime-kuma)
   - nixos integration tests?
+- hyprland:
+  - port config to lua (`wayland.windowManager.hyprland.configType`)
