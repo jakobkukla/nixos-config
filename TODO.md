@@ -37,7 +37,3 @@
 - build-vm:
   - fix failing services
   - no password set?
-
-- darwin:
-  - pull out shared config
-  - openssh? shared ssh config?
