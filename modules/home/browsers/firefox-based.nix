@@ -87,6 +87,9 @@ in {
         programs.firefox = {
           enable = true;
 
+          # Firefox isn't always cached on Darwin. Use the bin package instead.
+          package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin pkgs.firefox-bin;
+
           # Use XDG config dir (default as of home.stateVersion >= 26.05)
           configPath =
             lib.mkIf pkgs.stdenv.hostPlatform.isLinux
