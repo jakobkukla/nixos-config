@@ -33,6 +33,9 @@
     flake-modules.inputs.flake-parts.follows = "flake-parts";
     flake-modules.inputs.nixpkgs.follows = "nixpkgs";
     git-hooks-nix.follows = "flake-modules/git-hooks-nix";
+
+    nix-github-actions.url = "github:nix-community/nix-github-actions";
+    nix-github-actions.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {flake-parts, ...}:
@@ -40,6 +43,8 @@
       imports = [
         inputs.flake-modules.modules.flake.devshell
         inputs.flake-modules.modules.flake.formatter
+
+        ./ci.nix
 
         ./machines
         ./modules

@@ -16,12 +16,8 @@ concurrency:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        machine: [ aztec, cache, inferno, mirage, triton, vertigo ]
     uses: ./.github/workflows/reusable-base.yml
     with:
-      machine: ${{ matrix.machine }}
       update: false
     secrets: inherit
 

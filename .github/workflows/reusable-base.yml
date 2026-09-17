@@ -3,18 +3,40 @@
 on:
   workflow_call:
     inputs:
-      machine:
-        required: true
-        type: string
       update:
         required: false
         type: boolean
         default: false
 
 jobs:
+  generate-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Nix
+        uses: ./.github/actions/install-nix
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download flake.lock artifact
+        if: inputs.update == true
+        uses: actions/download-artifact@v8
+        with:
+          name: flake_lock
+
+      - name: Generate matrix
+        id: matrix
+        run: echo "matrix=$(nix eval --json '.#githubActions.matrix')" >> "$GITHUB_OUTPUT"
+
   build:
-    # FIXME: "ternary operator", see https://github.com/orgs/community/discussions/75928.
-    runs-on: ${{ inputs.machine == 'inferno' && 'ubuntu-24.04-arm' || 'ubuntu-latest' }}
+    name: ${{ matrix.name }} (${{ matrix.system }})
+    needs: generate-matrix
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix: ${{ fromJSON(needs.generate-matrix.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v7
 
@@ -32,11 +54,10 @@ jobs:
 
       - name: Build system
         # FIXME: nix-fast-build hangs indefinitely while copying some sources
-        # run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake ".#nixosConfigurations.${{ inputs.machine }}.config.system.build.toplevel"
-        run: nix build ".#nixosConfigurations.${{ inputs.machine }}.config.system.build.toplevel"
+        # run: nix run github:Mic92/nix-fast-build -- --skip-cached --no-nom --flake '.#${{ matrix.attr }}'
+        run: nix build '.#${{ matrix.attr }}'
 
       - name: Push system to private cache
         uses: ./.github/actions/push-to-cache
         with:
           attic_token: ${{ secrets.ATTIC_TOKEN }}
-
