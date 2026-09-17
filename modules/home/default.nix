@@ -5,20 +5,20 @@
 
   flake.homeModules.default = {
     imports = [
-      ./default-applications.nix
       ./alacritty.nix
-      ./rofi.nix
-      ./languages
-      ./helix.nix
-      ./neovim.nix
-      ./vscode.nix
-      ./browsers
-      ./spotify.nix
       ./bitwarden.nix
-      ./senpai.nix
+      ./browsers
       ./chat.nix
+      ./default-applications.nix
       ./development.nix
+      ./helix.nix
+      ./languages
       ./media.nix
+      ./neovim.nix
+      ./rofi.nix
+      ./senpai.nix
+      ./spotify.nix
+      ./vscode.nix
     ];
 
     config = {

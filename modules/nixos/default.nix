@@ -1,23 +1,23 @@
 {...}: {
   flake.nixosModules.system = {
     imports = [
-      ./user.nix
-      ./roles
-      ./locale.nix
-      ./security.nix
-      ./documentation.nix
-      ./ssh.nix
       ./auto-upgrade.nix
-      ./filesystem.nix
       ./build-vm.nix
-      ./greetd.nix
-      ./sway.nix
-      ./hyprland
-      ./printer.nix
+      ./documentation.nix
       ./eduroam.nix
+      ./filesystem.nix
       ./gaming
-      ./librespot.nix
+      ./greetd.nix
       ./hardware
+      ./hyprland
+      ./librespot.nix
+      ./locale.nix
+      ./printer.nix
+      ./roles
+      ./security.nix
+      ./ssh.nix
+      ./sway.nix
+      ./user.nix
     ];
 
     config = {

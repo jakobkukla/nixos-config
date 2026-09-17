@@ -8,8 +8,8 @@
 in {
   imports = [
     ./binds.nix
-    ./settings.nix
     ./hyprpaper.nix
+    ./settings.nix
   ];
 
   options.modules.hyprland = with lib; {
