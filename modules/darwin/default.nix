@@ -7,6 +7,7 @@
 
   flake.darwinModules.system = {
     imports = [
+      ./home-manager.nix
       ./user.nix
     ];
 
