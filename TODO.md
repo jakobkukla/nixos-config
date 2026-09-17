@@ -37,3 +37,5 @@
 - build-vm:
   - fix failing services
   - no password set?
+- impermanence:
+  - persistent files should be defined in the relevant module (not filesystem.nix)
