@@ -10,8 +10,9 @@
         };
       };
 
-      # Fix hyprland: see https://github.com/hyprwm/Hyprland/issues/1056
       qemu.options = [
+        "-audio pa,model=hda"
+        # Fix hyprland: see https://github.com/hyprwm/Hyprland/issues/1056
         "-device virtio-vga-gl"
         "-display sdl,gl=on,show-cursor=off"
       ];
