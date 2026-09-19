@@ -23,7 +23,5 @@ Build and run the VM with:
 
 ```bash
 nixos-rebuild build-vm --flake .#$MACHINE
-sudo SDL_VIDEODRIVER=wayland ./result/bin/run-nixos-$MACHINE-vm
+SDL_VIDEODRIVER=wayland ./result/bin/run-$MACHINE-vm
 ```
-
-Run the resulting path with `sudo`, otherwise agenix will fail to decrypt secrets.
