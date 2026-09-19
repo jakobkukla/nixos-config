@@ -7,8 +7,13 @@
   config = lib.mkIf (config.device.role == "workstation") {
     modules.desktopEnvironment = {
       enable = true;
+
       defaultCompositor = "hyprland";
-      compositors.hyprland.enable = true;
+      compositors = {
+        hyprland.enable = true;
+        sway.enable = true;
+      };
+
       input.naturalScroll = config.device.hardware.touchpad;
     };
 
