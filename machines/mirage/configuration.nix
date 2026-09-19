@@ -15,7 +15,7 @@
       enableImpermanence = true;
     };
 
-    hyprland = {
+    desktopEnvironment.compositors.hyprland = {
       monitors = {
         "DP-1" = {
           resolution = "2560x1440@144";

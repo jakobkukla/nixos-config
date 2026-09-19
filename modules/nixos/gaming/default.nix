@@ -36,7 +36,7 @@ in {
       capSysNice = false;
     };
 
-    modules.hyprland.enableTearing = true;
+    modules.desktopEnvironment.compositors.hyprland.enableTearing = true;
 
     home-manager.users.${config.modules.user.name} = {
       programs.mangohud.enable = true;

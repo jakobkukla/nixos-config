@@ -5,7 +5,12 @@
   ...
 }: {
   config = lib.mkIf (config.device.role == "workstation") {
-    modules.hyprland.enable = true;
+    modules.desktopEnvironment = {
+      enable = true;
+      defaultCompositor = "hyprland";
+      compositors.hyprland.enable = true;
+      input.naturalScroll = config.device.hardware.touchpad;
+    };
 
     networking.networkmanager.enable = true;
 
@@ -23,9 +28,6 @@
       alsa.enable = true;
     };
 
-    # location (needed for gammastep)
-    location.provider = "geoclue2";
-
     home-manager.users.${config.modules.user.name} = {
       home.packages = with pkgs; [
         pavucontrol
@@ -37,8 +39,6 @@
         defaultApplications.enable = true;
         bitwarden.enable = true;
       };
-
-      services.dunst.enable = true;
     };
   };
 }

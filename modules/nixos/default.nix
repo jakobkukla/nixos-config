@@ -3,20 +3,19 @@
     imports = [
       ./auto-upgrade.nix
       ./build-vm.nix
+      ./desktop-environment
       ./documentation.nix
       ./eduroam.nix
       ./filesystem.nix
       ./gaming
       ./greetd.nix
       ./hardware
-      ./hyprland
       ./librespot.nix
       ./locale.nix
       ./printer.nix
       ./roles
       ./security.nix
       ./ssh.nix
-      ./sway.nix
       ./user.nix
     ];
 

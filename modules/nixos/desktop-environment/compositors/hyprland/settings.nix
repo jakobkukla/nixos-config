@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  cfg = config.modules.hyprland;
+  cfg = config.modules.desktopEnvironment.compositors.hyprland;
 in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
@@ -38,7 +38,7 @@ in {
           kb_options = "grp:ctrls_toggle";
 
           natural_scroll =
-            if config.device.hardware.touchpad
+            if config.modules.desktopEnvironment.input.naturalScroll
             then "true"
             else "false";
           sensitivity = "0.1";

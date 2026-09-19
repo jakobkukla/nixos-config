@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  cfg = config.modules.hyprland;
+  cfg = config.modules.desktopEnvironment.compositors.hyprland;
 in {
   imports = [
     ./binds.nix
@@ -12,8 +12,12 @@ in {
     ./settings.nix
   ];
 
-  options.modules.hyprland = with lib; {
-    enable = mkEnableOption "Hyprland window manager";
+  options.modules.desktopEnvironment.compositors.hyprland = with lib; {
+    enable = mkEnableOption "Hyprland compositor";
+    sessionCommand = mkOption {
+      type = types.str;
+      internal = true;
+    };
     enableTearing = mkEnableOption "tearing support (for cs2)";
 
     monitors = mkOption {
@@ -89,61 +93,16 @@ in {
     lib.mkIf cfg.enable {
       assertions = [
         {
-          assertion = !config.modules.sway.enable;
-          message = "`sway` and `hyprland` modules must not be enabled at the same time";
+          assertion = config.modules.desktopEnvironment.enable;
+          message = "`modules.desktopEnvironment` must be enabled to use the hyprland compositor";
         }
       ];
 
-      modules.greetd = {
-        enable = true;
-        command = hyprlandWrapper.outPath;
-        user = config.modules.user.name;
-      };
+      modules.desktopEnvironment.compositors.hyprland.sessionCommand = hyprlandWrapper.outPath;
 
       programs.hyprland.enable = true;
 
       home-manager.users.${config.modules.user.name} = {
-        home.packages = with pkgs; [
-          wl-clipboard
-          # hyprland screenshot utility
-          grimblast
-        ];
-
-        home.sessionVariables = {
-          NIXOS_OZONE_WL = "1";
-          _JAVA_AWT_WM_NONREPARENTING = "1"; # Fix java non-parenting issues
-        };
-
-        home.pointerCursor = {
-          enable = true;
-          package = pkgs.adwaita-icon-theme;
-          name = "Adwaita";
-
-          gtk.enable = true;
-          size = 24;
-        };
-
-        gtk.enable = true;
-
-        services.swayidle = {
-          enable = true;
-          timeouts = [
-            {
-              timeout = 1200;
-              command = "${pkgs.systemd}/bin/systemctl suspend";
-            }
-          ];
-        };
-
-        modules.home.rofi.enable = true;
-
-        services.gammastep = {
-          enable = true;
-          # provider = "geoclue2";
-          latitude = 52.5200;
-          longitude = 13.4050;
-        };
-
         wayland.windowManager.hyprland = {
           enable = true;
           # TODO: port config to lua (default as of home.stateVersion >= 26.05)

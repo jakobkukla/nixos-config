@@ -1,10 +1,10 @@
 {
   lib,
-  pkgs,
   config,
   ...
 }: let
-  cfg = config.modules.hyprland;
+  cfg = config.modules.desktopEnvironment.compositors.hyprland;
+  commands = config.modules.desktopEnvironment.commands;
 
   # workspaces
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
@@ -24,9 +24,9 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
       wayland.windowManager.hyprland.settings = {
-        "$terminal" = "${pkgs.alacritty}/bin/alacritty";
-        "$menu" = "${pkgs.rofi}/bin/rofi -m 1 -show drun";
-        "$bitwarden" = "${pkgs.rofi-rbw-wayland}/bin/rofi-rbw";
+        "$terminal" = commands.terminal;
+        "$menu" = commands.launcher;
+        "$bitwarden" = commands.passwordManager;
 
         "$mod" = "SUPER";
 
@@ -39,8 +39,8 @@ in {
         bindl =
           [
             # volume
-            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-            ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+            ", XF86AudioMute, exec, ${commands.volumeMute}"
+            ", XF86AudioMicMute, exec, ${commands.micMute}"
           ]
           ++ (
             let
@@ -61,12 +61,12 @@ in {
 
         bindle = [
           # volume
-          ", XF86AudioRaiseVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+"
-          ", XF86AudioLowerVolume, exec, wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-"
+          ", XF86AudioRaiseVolume, exec, ${commands.volumeUp}"
+          ", XF86AudioLowerVolume, exec, ${commands.volumeDown}"
 
           # backlight
-          ", XF86MonBrightnessUp, exec, brightnessctl set +10%"
-          ", XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+          ", XF86MonBrightnessUp, exec, ${commands.brightnessUp}"
+          ", XF86MonBrightnessDown, exec, ${commands.brightnessDown}"
         ];
 
         bind =

@@ -26,7 +26,7 @@
       enableImpermanence = true;
     };
 
-    hyprland = {
+    desktopEnvironment.compositors.hyprland = {
       monitors = {
         "" = {
           resolution = "highres";
