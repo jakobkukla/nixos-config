@@ -46,12 +46,6 @@ in {
           terminal = commands.terminal;
           menu = "${commands.launcher} | xargs swaymsg exec --";
 
-          output = {
-            eDP-1 = {
-              scale = "2";
-            };
-          };
-
           input = {
             "type:keyboard" = {
               xkb_layout = "de";
