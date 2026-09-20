@@ -8,7 +8,6 @@
       ./eduroam.nix
       ./filesystem.nix
       ./gaming
-      ./greetd.nix
       ./hardware
       ./librespot.nix
       ./locale.nix
