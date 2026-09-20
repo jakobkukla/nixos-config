@@ -48,8 +48,9 @@ in {
 
           input = {
             "type:keyboard" = {
-              xkb_layout = "de";
-              xkb_variant = "nodeadkeys";
+              xkb_layout = "de,us";
+              xkb_variant = "nodeadkeys,";
+              xkb_options = "grp:ctrls_toggle";
             };
 
             "type:touchpad" = {
