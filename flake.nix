@@ -29,6 +29,9 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.inputs.home-manager.follows = "home-manager";
 
+    dms.url = "github:AvengeMedia/DankMaterialShell/stable";
+    dms.inputs.nixpkgs.follows = "nixpkgs";
+
     flake-modules.url = "github:jakobkukla/flake-modules";
     flake-modules.inputs.flake-parts.follows = "flake-parts";
     flake-modules.inputs.nixpkgs.follows = "nixpkgs";

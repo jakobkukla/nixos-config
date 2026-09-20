@@ -39,10 +39,6 @@
           scale = "2";
         };
       };
-
-      wallpapers = [
-        ",${config.modules.user.homeDirectory}/Pictures/wp.jpg"
-      ];
     };
 
     gaming.enable = true;

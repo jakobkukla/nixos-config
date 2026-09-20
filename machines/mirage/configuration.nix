@@ -28,11 +28,6 @@
           scale = "1.5";
         };
       };
-
-      wallpapers = [
-        "DP-1,${config.modules.user.homeDirectory}/Pictures/wallpaper0.jpg"
-        "DP-2,${config.modules.user.homeDirectory}/Pictures/wallpaper1.jpg"
-      ];
     };
 
     gaming = {

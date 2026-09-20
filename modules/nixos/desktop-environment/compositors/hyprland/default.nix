@@ -8,7 +8,6 @@
 in {
   imports = [
     ./binds.nix
-    ./hyprpaper.nix
     ./settings.nix
   ];
 
@@ -59,20 +58,6 @@ in {
         Attribute set mapping to Hyprland monitor configurations.
 
         See <https://wiki.hypr.land/Configuring/Monitors/>
-      '';
-    };
-
-    wallpapers = mkOption {
-      type = types.listOf types.str;
-      default = [];
-      example = literalExpression ''
-        [
-          "DP-1,/path/to/wallpaper1.png"
-          "DP-2,/path/to/wallpaper2.png"
-        ]
-      '';
-      description = ''
-        List of hyprpaper wallpaper configurations.
       '';
     };
   };

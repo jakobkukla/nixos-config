@@ -78,13 +78,24 @@ in {
             modifier = hmArgs.config.wayland.windowManager.sway.config.modifier;
           in
             lib.mkOptionDefault {
+              "${modifier}+space" = "exec ${commands.spotlight}";
               "${modifier}+Shift+b" = "exec ${commands.passwordManager}";
+              "${modifier}+n" = "exec ${commands.notifications}";
+              "${modifier}+comma" = "exec ${commands.settings}";
+              "${modifier}+p" = "exec ${commands.notepad}";
+              "${modifier}+Alt+l" = "exec ${commands.lock}";
+              "${modifier}+x" = "exec ${commands.powerMenu}";
+              "${modifier}+v" = "exec ${commands.clipboard}";
+              "${modifier}+Alt+n" = "exec ${commands.nightMode}";
+              "Print" = "exec ${commands.screenshot}";
+              "Shift+Print" = "exec ${commands.screenshotFull}";
 
               "XF86MonBrightnessUp" = "exec ${commands.brightnessUp}";
               "XF86MonBrightnessDown" = "exec ${commands.brightnessDown}";
               "XF86AudioRaiseVolume" = "exec ${commands.volumeUp}";
               "XF86AudioLowerVolume" = "exec ${commands.volumeDown}";
               "XF86AudioMute" = "exec ${commands.volumeMute}";
+              "XF86AudioMicMute" = "exec ${commands.micMute}";
             };
         };
       };

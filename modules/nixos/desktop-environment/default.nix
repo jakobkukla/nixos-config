@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: let
   cfg = config.modules.desktopEnvironment;
@@ -33,33 +34,73 @@ in {
         type = types.str;
         default = "${lib.getExe pkgs.rofi} -m 1 -show drun";
       };
+      spotlight = mkOption {
+        type = types.str;
+        default = "dms ipc spotlight toggle";
+      };
       passwordManager = mkOption {
         type = types.str;
         default = lib.getExe pkgs.rofi-rbw-wayland;
       };
+      notifications = mkOption {
+        type = types.str;
+        default = "dms ipc notifications toggle";
+      };
+      settings = mkOption {
+        type = types.str;
+        default = "dms ipc settings toggle";
+      };
+      notepad = mkOption {
+        type = types.str;
+        default = "dms ipc notepad toggle";
+      };
+      lock = mkOption {
+        type = types.str;
+        default = "dms ipc lock lock";
+      };
+      powerMenu = mkOption {
+        type = types.str;
+        default = "dms ipc powermenu toggle";
+      };
+      clipboard = mkOption {
+        type = types.str;
+        default = "dms ipc clipboard toggle";
+      };
+      nightMode = mkOption {
+        type = types.str;
+        default = "dms ipc night toggle";
+      };
+      screenshot = mkOption {
+        type = types.str;
+        default = "dms screenshot region";
+      };
+      screenshotFull = mkOption {
+        type = types.str;
+        default = "dms screenshot full";
+      };
       volumeUp = mkOption {
         type = types.str;
-        default = "wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%+";
+        default = "dms ipc audio increment 3";
       };
       volumeDown = mkOption {
         type = types.str;
-        default = "wpctl set-volume -l '1.0' @DEFAULT_AUDIO_SINK@ 6%-";
+        default = "dms ipc audio decrement 3";
       };
       volumeMute = mkOption {
         type = types.str;
-        default = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        default = "dms ipc audio mute";
       };
       micMute = mkOption {
         type = types.str;
-        default = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+        default = "dms ipc audio micmute";
       };
       brightnessUp = mkOption {
         type = types.str;
-        default = "brightnessctl set +10%";
+        default = "dms ipc brightness increment 5 ''";
       };
       brightnessDown = mkOption {
         type = types.str;
-        default = "brightnessctl set 10%-";
+        default = "dms ipc brightness decrement 5 ''";
       };
     };
   };
@@ -75,6 +116,7 @@ in {
     services.displayManager.dms-greeter = {
       enable = true;
       compositor.name = cfg.greeterCompositor;
+      configHome = config.modules.user.homeDirectory;
     };
 
     environment.sessionVariables = {
@@ -85,30 +127,35 @@ in {
     # fix xdg-open in FHS or wrappers (see https://github.com/NixOS/nixpkgs/issues/160923)
     xdg.portal.xdgOpenUsePortal = true;
 
-    # location (needed for gammastep)
+    # location (needed for DMS weather and night mode)
     location.provider = "geoclue2";
 
-    # Enable polkit authentication agent
-    systemd.user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = ["graphical-session.target"];
-      wants = ["graphical-session.target"];
-      after = ["graphical-session.target"];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
-
     home-manager.users.${config.modules.user.name} = {
+      imports = [
+        inputs.dms.homeModules.dank-material-shell
+      ];
+
+      programs.dank-material-shell = {
+        enable = true;
+        systemd.enable = true;
+
+        settings = {
+          # Theme
+          currentThemeName = "dynamic";
+          matugenScheme = "scheme-tonal-spot";
+
+          # Power management
+          lockBeforeSuspend = true;
+          acSuspendTimeout = 1200;
+          batterySuspendTimeout = 1200;
+
+          # Auto-location for weather and night mode
+          useAutoLocation = true;
+        };
+      };
+
       home.packages = with pkgs; [
         wl-clipboard
-        # screenshot utilities
-        grim
-        slurp
       ];
 
       home.pointerCursor = {
@@ -124,23 +171,6 @@ in {
       gtk.enable = true;
 
       modules.home.rofi.enable = true;
-
-      services.dunst.enable = true;
-
-      services.swayidle = {
-        enable = true;
-        timeouts = [
-          {
-            timeout = 1200;
-            command = "${pkgs.systemd}/bin/systemctl suspend";
-          }
-        ];
-      };
-
-      services.gammastep = {
-        enable = true;
-        provider = "geoclue2";
-      };
     };
   };
 }

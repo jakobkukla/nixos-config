@@ -39,6 +39,9 @@ in {
         bindl =
           [
             # volume
+            "$mod ALT, N, exec, ${commands.nightMode}"
+
+            # volume
             ", XF86AudioMute, exec, ${commands.volumeMute}"
             ", XF86AudioMicMute, exec, ${commands.micMute}"
           ]
@@ -83,10 +86,19 @@ in {
 
             "$mod, RETURN, exec, $terminal"
             "$mod, D, exec, $menu"
+            "$mod, SPACE, exec, ${commands.spotlight}"
             "$mod, F, fullscreen,"
             "$mod SHIFT, Q, killactive,"
 
             "$mod SHIFT, B, exec, $bitwarden"
+            "$mod, N, exec, ${commands.notifications}"
+            "$mod, COMMA, exec, ${commands.settings}"
+            "$mod, P, exec, ${commands.notepad}"
+            "$mod ALT, L, exec, ${commands.lock}"
+            "$mod, X, exec, ${commands.powerMenu}"
+            "$mod, V, exec, ${commands.clipboard}"
+            ", Print, exec, ${commands.screenshot}"
+            "SHIFT, Print, exec, ${commands.screenshotFull}"
           ]
           ++ workspaces;
       };
