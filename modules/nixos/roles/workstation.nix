@@ -8,9 +8,10 @@
     modules.desktopEnvironment = {
       enable = true;
 
-      greeterCompositor = "hyprland";
+      greeterCompositor = "niri";
       compositors = {
         hyprland.enable = true;
+        niri.enable = true;
         sway.enable = true;
       };
 
