@@ -170,7 +170,7 @@ in {
 
       gtk.enable = true;
 
-      modules.home.rofi.enable = true;
+      programs.rofi.enable = true;
     };
   };
 }

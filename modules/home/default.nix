@@ -15,7 +15,6 @@
       ./languages
       ./media.nix
       ./neovim.nix
-      ./rofi.nix
       ./senpai.nix
       ./spotify.nix
       ./vscode.nix
