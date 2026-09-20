@@ -9,6 +9,7 @@
 in {
   imports = [
     ./compositors/hyprland
+    ./compositors/niri
     ./compositors/sway.nix
   ];
 
@@ -16,7 +17,7 @@ in {
     enable = mkEnableOption "Wayland desktop environment";
 
     greeterCompositor = mkOption {
-      type = types.enum ["hyprland" "sway"];
+      type = types.enum ["hyprland" "niri" "sway"];
       example = "hyprland";
       description = ''
         The compositor the greeter runs in.
