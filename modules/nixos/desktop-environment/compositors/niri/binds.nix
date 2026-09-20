@@ -12,12 +12,14 @@
     spawn-sh = command;
   };
 
-  # binds Mod + [Shift +] {1..9} to [move to] workspace {1..9}
-  workspaces = lib.mergeAttrsList (lib.map (i: {
-      "Mod+${toString i}".focus-workspace = i;
-      "Mod+Shift+${toString i}".move-column-to-workspace = i;
+  # binds Mod + [Shift +] {1..0} to [move to] workspace {1..10}
+  workspaces = lib.mergeAttrsList (lib.map (i: let
+      key = toString (lib.mod i 10);
+    in {
+      "Mod+${key}".focus-workspace = i;
+      "Mod+Shift+${key}".move-column-to-workspace = i;
     })
-    (lib.range 1 9));
+    (lib.range 1 10));
 in {
   config = lib.mkIf cfg.enable {
     home-manager.users.${config.modules.user.name} = {
