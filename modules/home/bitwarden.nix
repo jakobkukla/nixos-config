@@ -11,6 +11,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    modules.home.rofi.enable = true;
+
     home.packages = with pkgs; [
       rofi-rbw-wayland
     ];
