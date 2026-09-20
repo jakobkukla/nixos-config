@@ -86,6 +86,7 @@ in {
               "${modifier}+Alt+l" = "exec ${commands.lock}";
               "${modifier}+x" = "exec ${commands.powerMenu}";
               "${modifier}+v" = "exec ${commands.clipboard}";
+              "${modifier}+m" = "exec ${commands.processList}";
               "${modifier}+Alt+n" = "exec ${commands.nightMode}";
               "Print" = "exec ${commands.screenshot}";
               "Shift+Print" = "exec ${commands.screenshotFull}";

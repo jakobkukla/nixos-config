@@ -66,6 +66,10 @@ in {
         type = types.str;
         default = "dms ipc clipboard toggle";
       };
+      processList = mkOption {
+        type = types.str;
+        default = "dms ipc processlist toggle";
+      };
       nightMode = mkOption {
         type = types.str;
         default = "dms ipc night toggle";

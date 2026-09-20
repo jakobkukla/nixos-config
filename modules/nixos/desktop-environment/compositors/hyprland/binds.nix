@@ -97,6 +97,7 @@ in {
             "$mod ALT, L, exec, ${commands.lock}"
             "$mod, X, exec, ${commands.powerMenu}"
             "$mod, V, exec, ${commands.clipboard}"
+            "$mod, M, exec, ${commands.processList}"
             ", Print, exec, ${commands.screenshot}"
             "SHIFT, Print, exec, ${commands.screenshotFull}"
           ]
