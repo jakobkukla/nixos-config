@@ -14,11 +14,11 @@ in {
   options.modules.desktopEnvironment = with lib; {
     enable = mkEnableOption "Wayland desktop environment";
 
-    defaultCompositor = mkOption {
+    greeterCompositor = mkOption {
       type = types.enum ["hyprland" "sway"];
       example = "hyprland";
       description = ''
-        The compositor started by the login manager.
+        The compositor the greeter runs in.
       '';
     };
 
@@ -67,15 +67,19 @@ in {
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = cfg.compositors.${cfg.defaultCompositor}.enable;
-        message = "`${cfg.defaultCompositor}` is configured as the default compositor but is not enabled";
+        assertion = cfg.compositors.${cfg.greeterCompositor}.enable;
+        message = "`${cfg.greeterCompositor}` is configured as the greeter compositor but is not enabled";
       }
     ];
 
-    modules.greetd = {
+    services.displayManager.dms-greeter = {
       enable = true;
-      command = cfg.compositors.${cfg.defaultCompositor}.sessionCommand;
-      user = config.modules.user.name;
+      compositor.name = cfg.greeterCompositor;
+    };
+
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      _JAVA_AWT_WM_NONREPARENTING = "1"; # Fix java non-parenting issues
     };
 
     # fix xdg-open in FHS or wrappers (see https://github.com/NixOS/nixpkgs/issues/160923)
@@ -106,11 +110,6 @@ in {
         grim
         slurp
       ];
-
-      home.sessionVariables = {
-        NIXOS_OZONE_WL = "1";
-        _JAVA_AWT_WM_NONREPARENTING = "1"; # Fix java non-parenting issues
-      };
 
       home.pointerCursor = {
         enable = true;

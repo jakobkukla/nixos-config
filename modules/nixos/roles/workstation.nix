@@ -8,7 +8,7 @@
     modules.desktopEnvironment = {
       enable = true;
 
-      defaultCompositor = "hyprland";
+      greeterCompositor = "hyprland";
       compositors = {
         hyprland.enable = true;
         sway.enable = true;

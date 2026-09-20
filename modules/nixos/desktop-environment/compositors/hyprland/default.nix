@@ -14,10 +14,6 @@ in {
 
   options.modules.desktopEnvironment.compositors.hyprland = with lib; {
     enable = mkEnableOption "Hyprland compositor";
-    sessionCommand = mkOption {
-      type = types.str;
-      internal = true;
-    };
     enableTearing = mkEnableOption "tearing support (for cs2)";
 
     monitors = mkOption {
@@ -81,37 +77,26 @@ in {
     };
   };
 
-  config = let
-    # FIXME: This is needed to source home.sessionVariables in Hyprland.
-    # Keep track of https://github.com/nix-community/home-manager/issues/2659 for a cleaner solution.
-    hyprlandWrapper = pkgs.writeShellScript "hyprland_wrapper" ''
-      source "${config.modules.user.homeDirectory}/.nix-profile/etc/profile.d/hm-session-vars.sh"
+  config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.modules.desktopEnvironment.enable;
+        message = "`modules.desktopEnvironment` must be enabled to use the hyprland compositor";
+      }
+    ];
 
-      exec ${lib.getExe config.programs.hyprland.package} $@
-    '';
-  in
-    lib.mkIf cfg.enable {
-      assertions = [
-        {
-          assertion = config.modules.desktopEnvironment.enable;
-          message = "`modules.desktopEnvironment` must be enabled to use the hyprland compositor";
-        }
-      ];
+    programs.hyprland.enable = true;
 
-      modules.desktopEnvironment.compositors.hyprland.sessionCommand = hyprlandWrapper.outPath;
-
-      programs.hyprland.enable = true;
-
-      home-manager.users.${config.modules.user.name} = {
-        wayland.windowManager.hyprland = {
-          enable = true;
-          # TODO: port config to lua (default as of home.stateVersion >= 26.05)
-          configType = "hyprlang";
-          systemd.variables = ["--all"];
-          plugins = with pkgs.hyprlandPlugins; [
-            csgo-vulkan-fix
-          ];
-        };
+    home-manager.users.${config.modules.user.name} = {
+      wayland.windowManager.hyprland = {
+        enable = true;
+        # TODO: port config to lua (default as of home.stateVersion >= 26.05)
+        configType = "hyprlang";
+        systemd.variables = ["--all"];
+        plugins = with pkgs.hyprlandPlugins; [
+          csgo-vulkan-fix
+        ];
       };
     };
+  };
 }

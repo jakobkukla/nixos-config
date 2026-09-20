@@ -8,10 +8,6 @@
 in {
   options.modules.desktopEnvironment.compositors.sway = with lib; {
     enable = mkEnableOption "Sway compositor";
-    sessionCommand = mkOption {
-      type = types.str;
-      internal = true;
-    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -21,9 +17,6 @@ in {
         message = "`modules.desktopEnvironment` must be enabled to use the sway compositor";
       }
     ];
-
-    modules.desktopEnvironment.compositors.sway.sessionCommand =
-      lib.getExe config.home-manager.users.${config.modules.user.name}.wayland.windowManager.sway.package;
 
     # Sway config is managed by home-manager. This is needed for the DM and xdg-desktop-portal.
     programs.sway.enable = true;
