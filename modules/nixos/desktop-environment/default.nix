@@ -98,6 +98,22 @@ in {
         type = types.str;
         default = "dms ipc audio micmute";
       };
+      mediaPlayPause = mkOption {
+        type = types.str;
+        default = "${lib.getExe pkgs.playerctl} play-pause";
+      };
+      mediaStop = mkOption {
+        type = types.str;
+        default = "${lib.getExe pkgs.playerctl} stop";
+      };
+      mediaPrevious = mkOption {
+        type = types.str;
+        default = "${lib.getExe pkgs.playerctl} previous";
+      };
+      mediaNext = mkOption {
+        type = types.str;
+        default = "${lib.getExe pkgs.playerctl} next";
+      };
       brightnessUp = mkOption {
         type = types.str;
         default = "dms ipc brightness increment 5 ''";

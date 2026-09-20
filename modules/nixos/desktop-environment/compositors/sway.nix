@@ -97,6 +97,10 @@ in {
               "XF86AudioLowerVolume" = "exec ${commands.volumeDown}";
               "XF86AudioMute" = "exec ${commands.volumeMute}";
               "XF86AudioMicMute" = "exec ${commands.micMute}";
+              "XF86AudioPlay" = "exec ${commands.mediaPlayPause}";
+              "XF86AudioStop" = "exec ${commands.mediaStop}";
+              "XF86AudioPrev" = "exec ${commands.mediaPrevious}";
+              "XF86AudioNext" = "exec ${commands.mediaNext}";
             };
         };
       };
