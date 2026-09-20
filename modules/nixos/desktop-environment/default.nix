@@ -155,6 +155,10 @@ in {
         inputs.dms.homeModules.dank-material-shell
       ];
 
+      # Workaround for broken XDG portals
+      # TODO: remove once https://github.com/nix-community/home-manager/issues/7124 is closed.
+      xdg.portal.extraPortals = lib.mkForce config.xdg.portal.extraPortals;
+
       programs.dank-material-shell = {
         enable = true;
         systemd.enable = true;
