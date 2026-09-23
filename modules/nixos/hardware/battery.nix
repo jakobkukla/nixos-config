@@ -6,7 +6,6 @@
   config = lib.mkIf config.device.hardware.battery {
     # Power management and performance scaling
     powerManagement.enable = true;
-    services.thermald.enable = true;
     services.upower.enable = true;
     services.power-profiles-daemon.enable = true;
 

@@ -1,4 +1,4 @@
-# agency (MacBook Air)
+# agency (MacBook Air - nix-darwin)
 
 ## Install Nix
 
