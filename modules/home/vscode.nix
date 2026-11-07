@@ -37,7 +37,7 @@ in {
           ]
           ++ lib.optionals cfg.enableLatex [
             james-yu.latex-workshop
-            valentjn.vscode-ltex # Latex spell checking
+            ltex-plus.vscode-ltex-plus # Latex spell checking
           ];
 
         userSettings = lib.mkMerge [
