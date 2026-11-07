@@ -20,6 +20,9 @@
           W = ":set whitespace.render none";
         };
       };
+
+      # Don't analyze .direnv.
+      languages.language-server.rust-analyzer.config.files.excludeDirs = [".direnv"];
     };
   };
 }
