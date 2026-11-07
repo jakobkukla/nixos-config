@@ -16,7 +16,7 @@ in {
       # language server
       texlab
       # another language server
-      ltex-ls
+      ltex-ls-plus
     ];
   };
 }
