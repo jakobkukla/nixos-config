@@ -13,6 +13,7 @@
       ./shell.nix
       ./user.nix
       ./vcs.nix
+      ./version.nix
     ];
   };
 }
